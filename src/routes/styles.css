@@ -1,0 +1,8 @@
+@import "@catppuccin/palette/css/catppuccin.css";
+@import "@fontsource/iosevka";
+
+body {
+    color: var(--ctp-macchiato-text);
+    background-color: var(--ctp-macchiato-base);
+    font-family: "Iosevka", monospace;
+}
