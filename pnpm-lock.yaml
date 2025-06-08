@@ -7,6 +7,13 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@catppuccin/palette':
+        specifier: ^1.7.1
+        version: 1.7.1
+      style:
+        specifier: link:@catppuccin/palette/style
+        version: link:@catppuccin/palette/style
     devDependencies:
       '@eslint/compat':
         specifier: ^1.2.5
@@ -65,6 +72,9 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
+
+  '@catppuccin/palette@1.7.1':
+    resolution: {integrity: sha512-aRc1tbzrevOTV7nFTT9SRdF26w/MIwT4Jwt4fDMc9itRZUDXCuEDBLyz4TQMlqO9ZP8mf5Hu4Jr6D03NLFc6Gw==}
 
   '@esbuild/aix-ppc64@0.25.5':
     resolution: {integrity: sha512-9o3TMmpmftaCMepOdA5k/yDw8SfInyzWWTjYTFCX3kPSDJMROQTb8jg+h9Cnwnmm1vOzvxN7gIfB5V2ewpjtGA==}
@@ -1186,6 +1196,8 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
+
+  '@catppuccin/palette@1.7.1': {}
 
   '@esbuild/aix-ppc64@0.25.5':
     optional: true

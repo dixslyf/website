@@ -36,5 +36,9 @@
 		"onlyBuiltDependencies": [
 			"esbuild"
 		]
+	},
+	"dependencies": {
+		"@catppuccin/palette": "^1.7.1",
+		"style": "link:@catppuccin/palette/style"
 	}
 }
