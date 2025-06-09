@@ -1,6 +1,7 @@
 <script>
   import "./styles.css";
 
+  import { Title } from "$lib/components";
   import { Navbar } from "$lib/components";
 
   const { children } = $props();
@@ -8,6 +9,7 @@
 
 <div class="root-container">
   <div class="content-container">
+    <Title />
     <Navbar />
     {@render children()}
   </div>
