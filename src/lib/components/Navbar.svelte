@@ -19,7 +19,7 @@
 <Section title="navbar">
   <div class="navbar">
     {#each pages as page (page.display)}
-      <a href={page.href}>{page.display}</a>
+      <div class="link-container"><a href={page.href}>{page.display}</a></div>
     {/each}
   </div>
 </Section>
@@ -31,9 +31,14 @@
     height: 40px;
   }
 
-  .navbar > a {
-    font-size: 16pt;
+  .link-container {
+    display: flex;
+    justify-content: center;
     flex-grow: 1;
+  }
+
+  .link-container > a {
+    font-size: 16pt;
     text-align: center;
   }
 </style>
