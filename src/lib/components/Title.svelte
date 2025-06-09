@@ -2,7 +2,9 @@
   import { page } from "$app/state";
   import { watch } from "runed";
 
-  import { Typewriter } from "$lib/utils";
+  import { Typewriter, TypewriterState } from "$lib/utils";
+  import { TextCaret } from "$lib/components";
+  import { blink } from "$lib/transitions";
 
   const pathname = $derived(page.url.pathname);
   const pathnameDisplay = $derived(pathname === "/" ? "" : pathname);
@@ -17,7 +19,9 @@
 </script>
 
 <h1 class="title">
-  /home/dixslyf{typewriter.current}
+  /home/dixslyf{typewriter.current}{#if typewriter.state !== TypewriterState.Idle}<span out:blink>
+      <TextCaret --color="var(--ctp-macchiato-lavender)" />
+    </span>{/if}
 </h1>
 
 <style>
