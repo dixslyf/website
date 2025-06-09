@@ -26,7 +26,7 @@ function triangleWave(x) {
  *
  * @returns A Svelte transition config object.
  */
-export function blink(node, { cycles = 3.5, duration = 4000, delay = 0, easing = linear }) {
+export function blink(node, { cycles = 3.5, duration = 4200, delay = 0, easing = linear }) {
     const opacity = +getComputedStyle(node).opacity;
     return {
         delay,
