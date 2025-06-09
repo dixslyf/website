@@ -40,6 +40,7 @@
 	"dependencies": {
 		"@catppuccin/palette": "^1.7.1",
 		"@fontsource/iosevka": "^5.2.5",
+		"runed": "^0.28.0",
 		"style": "link:@catppuccin/palette/style"
 	}
 }
