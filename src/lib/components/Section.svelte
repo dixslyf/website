@@ -23,12 +23,15 @@
     border-width: 2px;
     border-color: var(--ctp-macchiato-mauve);
     border-radius: 4px;
+
+    padding: 12px;
+    margin: 8pt 0 0 0;
   }
 
   .section-title {
     position: absolute;
     top: -0.75em;
-    left: 8pt;
+    left: 16pt;
 
     padding: 0 4px;
     margin: 0;

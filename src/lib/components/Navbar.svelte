@@ -28,7 +28,6 @@
   .navbar {
     display: flex;
     align-items: center;
-    height: 40px;
   }
 
   .link-container {
