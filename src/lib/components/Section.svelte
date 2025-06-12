@@ -1,16 +1,16 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+
   type Props = {
     title?: string;
-    class?: string;
-    style?: string;
     children: Snippet;
-  };
+  } & HTMLAttributes<HTMLDivElement>;
 
-  const { title = "", class: className = "", style = "", children }: Props = $props();
+  const { title = "", children, ...rest }: Props = $props();
 </script>
 
-<div class="section {className}" {style}>
+<div class="section" {...rest}>
   <h2 class="section-title">
     {title}
   </h2>
