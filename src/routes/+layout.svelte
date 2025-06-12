@@ -14,7 +14,7 @@
   import { page } from "$app/state";
   import { fly } from "svelte/transition";
 
-  import { Title, Navbar, Stack, Group } from "$lib/components";
+  import { Title, Navbar, Stack } from "$lib/components";
 
   const { children } = $props();
 </script>
@@ -43,7 +43,7 @@
   .root-container {
     display: flex;
     justify-content: center;
-    padding: 32pt 0;
+    padding: 32px 0;
   }
 
   .subroot-container {
@@ -56,6 +56,6 @@
 
   .content-container {
     position: absolute;
-    inset: 0;
+    padding-bottom: 32px;
   }
 </style>

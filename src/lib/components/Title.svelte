@@ -29,6 +29,10 @@
 </h1>
 
 <style>
+  h1 {
+    margin: 0 0 16px 0;
+  }
+
   .title {
     color: var(--ctp-macchiato-lavender);
   }
