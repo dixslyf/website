@@ -25,7 +25,7 @@
   }
 </script>
 
-<Section title="navbar">
+<Section title="Navbar" style="padding: 12px 20px;">
   <div class="navbar">
     {#each pages as page (page.display)}
       <div class="link-container">
@@ -54,7 +54,7 @@
 
     color: var(--ctp-macchiato-text);
     &:hover {
-      color: var(--ctp-macchiato-blue);
+      color: var(--ctp-macchiato-rosewater);
     }
   }
 
