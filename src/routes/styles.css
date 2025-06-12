@@ -19,6 +19,22 @@ a {
     }
 }
 
+p {
+    text-align: justify;
+
+    &:first-of-type {
+        margin-top: 0;
+    }
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+li + li {
+    margin-top: 1em;
+}
+
 .adaptive-row {
     display: flex;
     flex-direction: row;
