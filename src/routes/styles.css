@@ -18,3 +18,32 @@ a {
         color: var(--ctp-macchiato-sky);
     }
 }
+
+.adaptive-row {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+
+    gap: 8px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.adaptive-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    flex: 1;
+}
+
+@media screen and (max-width: 1000px) {
+    .adaptive-row {
+        flex-wrap: wrap;
+    }
+
+    .adaptive-cell {
+        flex-basis: 100%;
+    }
+}
