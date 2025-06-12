@@ -5,6 +5,7 @@ body {
     color: var(--ctp-macchiato-text);
     background-color: var(--ctp-macchiato-base);
     font-family: "Iosevka", monospace;
+    font-weight: 500;
 }
 
 a {
@@ -29,6 +30,15 @@ p {
     &:last-of-type {
         margin-bottom: 0;
     }
+}
+
+strong {
+    font-weight: 500;
+    color: var(--ctp-macchiato-rosewater);
+}
+
+em {
+    font-style: oblique 10deg;
 }
 
 li + li {
