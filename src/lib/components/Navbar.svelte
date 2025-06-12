@@ -60,6 +60,7 @@
 
   .link-current {
     font-weight: bold;
-    color: var(--ctp-macchiato-mauve);
+    /* --accent is set by the Section */
+    color: var(--accent);
   }
 </style>
