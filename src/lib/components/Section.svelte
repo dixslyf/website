@@ -19,27 +19,38 @@
 
 <style>
   .section {
+    --accent: var(--ctp-macchiato-blue);
+    --background-color: var(--ctp-macchiato-base);
+
     position: relative;
 
     border-style: solid;
     border-width: 2px;
-    border-color: var(--ctp-macchiato-mauve);
+    border-color: var(--accent);
     border-radius: 4px;
 
-    padding: 12px;
+    padding: 20px;
     margin: 8pt 0 0 0;
-  }
 
-  .section-title {
-    position: absolute;
-    top: -0.75em;
-    left: 16pt;
+    background-color: var(--background-color);
 
-    padding: 0 4px;
-    margin: 0;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+      --accent: var(--accent-hover, var(--ctp-macchiato-pink));
+      transform: scale(1.01);
+    }
 
-    font-size: 12pt;
-    color: var(--ctp-macchiato-mauve);
-    background-color: var(--ctp-macchiato-base);
+    .section-title {
+      position: absolute;
+      top: -0.75em;
+      left: 8pt;
+
+      padding: 0 4px;
+      margin: 0;
+
+      font-size: 12pt;
+      color: var(--accent);
+      background-color: var(--background-color);
+    }
   }
 </style>
