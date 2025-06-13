@@ -2,11 +2,14 @@ import type { PageLoad } from "./$types";
 
 import { Octokit } from "@octokit/rest";
 
-const octokit = new Octokit({
-    userAgent: "dixslyf-website",
-});
+export const load: PageLoad = ({ fetch }) => {
+    const octokit = new Octokit({
+        userAgent: "dixslyf-website",
+        request: {
+            fetch,
+        },
+    });
 
-export const load: PageLoad = () => {
     const reposReq = octokit.rest.repos
         .listForUser({
             username: "dixslyf",
