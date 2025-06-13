@@ -2,7 +2,6 @@
   import "./styles.css";
 
   import { page } from "$app/state";
-  import { fly } from "svelte/transition";
 
   import { Title, Navbar } from "$lib/components";
 
@@ -15,11 +14,7 @@
     <Navbar />
     <div class="content-container-wrapper">
       {#key page.url.pathname}
-        <div
-          class="content-container"
-          in:fly={{ x: "30%", duration: 500 }}
-          out:fly={{ x: "-30%", duration: 500 }}
-        >
+        <div class="content-container">
           {@render children()}
         </div>
       {/key}
@@ -47,6 +42,6 @@
 
   .content-container {
     position: absolute;
-    padding-bottom: 32px;
+    margin-bottom: 32px;
   }
 </style>

@@ -6,6 +6,7 @@
 
   import { Section, LanguagesBar, IconText } from "$lib/components";
   import type { Component } from "svelte";
+  import { fly } from "svelte/transition";
 
   type RepoInfo = Endpoints["GET /users/{username}/repos"]["response"]["data"][number] & {
     languages: Endpoints["GET /repos/{owner}/{repo}/languages"]["response"]["data"];
@@ -98,8 +99,13 @@
   waiting...
 {:then repos}
   <div class="root">
-    {#each repos.sort(sortRepos) as repo (repo.id)}
-      {@render repoCard(repo)}
+    {#each repos.sort(sortRepos) as repo, idx (repo.id)}
+      <div
+        in:fly|global={{ x: "30vw", duration: 500, delay: idx * 250 }}
+        out:fly|global={{ x: "-30vw", duration: 500 }}
+      >
+        {@render repoCard(repo)}
+      </div>
     {/each}
   </div>
 {:catch error}
