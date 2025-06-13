@@ -5,3 +5,4 @@ export { default as TextCaret } from "./TextCaret.svelte";
 export { default as Group } from "./Group.svelte";
 export { default as Stack } from "./Stack.svelte";
 export { default as IconText } from "./IconText.svelte";
+export { default as LanguagesBar } from "./LanguagesBar.svelte";
