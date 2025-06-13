@@ -1,15 +1,6 @@
 <script>
   import "./styles.css";
 
-  import "@fontsource/iosevka/100.css";
-  import "@fontsource/iosevka/200.css";
-  import "@fontsource/iosevka/300.css";
-  import "@fontsource/iosevka/400.css";
-  import "@fontsource/iosevka/500.css";
-  import "@fontsource/iosevka/600.css";
-  import "@fontsource/iosevka/700.css";
-  import "@fontsource/iosevka/800.css";
-  import "@fontsource/iosevka/900.css";
 
   import { page } from "$app/state";
   import { fly } from "svelte/transition";
