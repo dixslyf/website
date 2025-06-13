@@ -44,6 +44,7 @@
 		"@lucide/svelte": "^0.514.0",
 		"@tailwindcss/vite": "^4.1.10",
 		"devicon": "^2.16.0",
+		"gh-lang-colors": "^0.1.12",
 		"runed": "^0.28.0",
 		"style": "link:@catppuccin/palette/style",
 		"tailwindcss": "^4.1.10"
