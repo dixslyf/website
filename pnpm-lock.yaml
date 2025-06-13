@@ -17,9 +17,15 @@ importers:
       '@icons-pack/svelte-simple-icons':
         specifier: ^5.0.0
         version: 5.0.0(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.33.14)(vite@6.3.5(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)))(svelte@5.33.14)(vite@6.3.5(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)))(svelte@5.33.14)
+      '@lucide/svelte':
+        specifier: ^0.514.0
+        version: 0.514.0(svelte@5.33.14)
       '@tailwindcss/vite':
         specifier: ^4.1.10
         version: 4.1.10(vite@6.3.5(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2))
+      devicon:
+        specifier: ^2.16.0
+        version: 2.16.0
       runed:
         specifier: ^0.28.0
         version: 0.28.0(svelte@5.33.14)
@@ -342,6 +348,11 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@lucide/svelte@0.514.0':
+    resolution: {integrity: sha512-vK6oevxN1CdIWiiCtHKUUlZE/wRVFCtxD+Lj14hbYb5lt+kmU4pBHWjcWhTJL5bJfE1JwCM/pWr+MVzew6JrVg==}
+    peerDependencies:
+      svelte: ^5
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -768,6 +779,9 @@ packages:
 
   devalue@5.1.1:
     resolution: {integrity: sha512-maua5KUiapvEwiEAe+XnlZ3Rh0GD+qI1J/nb9vrJc3muPXvcF/8gXYTWF76+5DAqHyDUtOIImEuo0YKE9mshVw==}
+
+  devicon@2.16.0:
+    resolution: {integrity: sha512-PE5a2HBNeN4av+Iu975OiiWEwS8LJPw5HAvlv0JUHb62jZTdYxTpz4ga+cQyvdtb3x1side2P9Sr1mmOmUkO/g==}
 
   enhanced-resolve@5.18.1:
     resolution: {integrity: sha512-ZSW3ma5GkcQBIpwZTSRAI8N71Uuwgs93IezB7mf7R60tC8ZbJideoDNKjHn2O9KIlx6rkGTTEk1xUCK2E1Y2Yg==}
@@ -1735,6 +1749,10 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  '@lucide/svelte@0.514.0(svelte@5.33.14)':
+    dependencies:
+      svelte: 5.33.14
+
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -2120,6 +2138,8 @@ snapshots:
   detect-libc@2.0.4: {}
 
   devalue@5.1.1: {}
+
+  devicon@2.16.0: {}
 
   enhanced-resolve@5.18.1:
     dependencies:
