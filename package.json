@@ -41,7 +41,9 @@
 		"@catppuccin/palette": "^1.7.1",
 		"@fontsource/iosevka": "^5.2.5",
 		"@icons-pack/svelte-simple-icons": "^5.0.0",
+		"@tailwindcss/vite": "^4.1.10",
 		"runed": "^0.28.0",
-		"style": "link:@catppuccin/palette/style"
+		"style": "link:@catppuccin/palette/style",
+		"tailwindcss": "^4.1.10"
 	}
 }
