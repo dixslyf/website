@@ -22,6 +22,7 @@
     SiNeovim,
     SiGithubactions,
     SiMantine,
+    SiTypst,
   } from "@icons-pack/svelte-simple-icons";
 
   const webTech = [
@@ -65,6 +66,7 @@
   const miscTech = [
     { icon: SiGit, label: "Git" },
     { icon: SiNeovim, label: "Neovim" },
+    { icon: SiTypst, label: "Typst" },
   ];
 </script>
 
