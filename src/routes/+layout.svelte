@@ -1,32 +1,29 @@
 <script>
   import "./styles.css";
 
-
   import { page } from "$app/state";
   import { fly } from "svelte/transition";
 
-  import { Title, Navbar, Stack } from "$lib/components";
+  import { Title, Navbar } from "$lib/components";
 
   const { children } = $props();
 </script>
 
 <div class="root-container">
   <div class="subroot-container">
-    <Stack>
-      <Title />
-      <Navbar />
-      <div class="content-container-wrapper">
-        {#key page.url.pathname}
-          <div
-            class="content-container"
-            in:fly={{ x: "30%", duration: 500 }}
-            out:fly={{ x: "-30%", duration: 500 }}
-          >
-            {@render children()}
-          </div>
-        {/key}
-      </div>
-    </Stack>
+    <Title />
+    <Navbar />
+    <div class="content-container-wrapper">
+      {#key page.url.pathname}
+        <div
+          class="content-container"
+          in:fly={{ x: "30%", duration: 500 }}
+          out:fly={{ x: "-30%", duration: 500 }}
+        >
+          {@render children()}
+        </div>
+      {/key}
+    </div>
   </div>
 </div>
 
@@ -38,6 +35,9 @@
   }
 
   .subroot-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     width: 70%;
   }
 

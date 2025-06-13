@@ -1,12 +1,20 @@
-<script>
-  const props = $props();
+<script lang="ts">
+  import type { Snippet } from "svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+
+  type Props = {
+    icon?: Snippet;
+    class?: string;
+    label: string;
+  } & HTMLAttributes<HTMLDivElement>;
+  const { icon, label, class: className, ...rest }: Props = $props();
 </script>
 
-<div class="root">
-  {#if props.icon}
-    <span class="icon">{@render props.icon()}</span>
+<div class="root {className}" {...rest}>
+  {#if icon}
+    <span class="icon">{@render icon()}</span>
   {/if}
-  <span class="label">{props.label}</span>
+  <span class="label">{label}</span>
 </div>
 
 <style>
@@ -16,19 +24,20 @@
     align-items: center;
     gap: 0.5em;
 
-    padding: 0.4em 0.6em;
+    padding: var(--padding, 0.4em 0.6em);
+    line-height: 0;
 
-    border-radius: 12px;
+    border-radius: 8px;
 
-    background-color: var(--ctp-macchiato-surface0);
+    background-color: var(--bg, var(--ctp-macchiato-surface0));
   }
 
   .icon {
-    color: var(--ctp-macchiato-flamingo);
+    color: var(--icon-color, var(--ctp-macchiato-flamingo));
   }
 
   .label {
-    font-size: 10pt;
+    font-size: var(--font-size, 10pt);
     font-weight: 600;
   }
 </style>

@@ -25,7 +25,7 @@
   }
 </script>
 
-<Section title="Navbar" style="padding: 12px 20px;">
+<Section title="Navbar">
   <div class="navbar">
     {#each pages as page (page.display)}
       <div class="link-container">

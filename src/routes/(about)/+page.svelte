@@ -1,27 +1,37 @@
 <script>
-  import { Section, Stack } from "$lib/components";
+  import { Section } from "$lib/components";
   import { Overview, Education, Technologies } from ".";
 </script>
 
-<Stack>
+<div class="root">
   <div class="adaptive-row">
     <div class="adaptive-cell overview-container">
-      <Section title="Overview" style="height: 100%;"><Overview /></Section>
+      <Section title="Overview" class="h-full"><Overview /></Section>
     </div>
     <div class="adaptive-cell education-container">
-      <Section title="Education" style="height: 100%;"><Education /></Section>
+      <Section title="Education" class="h-full"><Education /></Section>
     </div>
   </div>
   <Section title="Technologies"><Technologies /></Section>
-</Stack>
+</div>
 
 <style>
+  .root {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
   .overview-container {
     flex: 15;
   }
 
   .education-container {
     flex: 8;
+  }
+
+  .adaptive-row {
+    gap: 8px 16px;
   }
 
   @media screen and (max-width: 1400px) {

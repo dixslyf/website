@@ -75,7 +75,7 @@
   {/each}
 {/snippet}
 
-<div>
+<div class="root">
   <div class="adaptive-row">
     <div class="adaptive-cell">
       Web:
@@ -114,21 +114,29 @@
 
   <div class="adaptive-row">
     <div class="adaptive-cell">
-      Misadaptive-cellaneous:
+      Miscellaneous:
       <div class="icon-group">{@render iconSet(miscTech)}</div>
     </div>
   </div>
 </div>
 
 <style>
-  .adaptive-cell {
-    margin-bottom: 1.5em;
+  .root {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+  }
+
+  .adaptive-row {
+    gap: 1.5em 1em;
   }
 
   .icon-group {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0.5em;
+    gap: 8px;
+
+    margin-top: 8px;
   }
 </style>
