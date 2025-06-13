@@ -41,10 +41,6 @@ strong {
     color: var(--ctp-macchiato-rosewater);
 }
 
-em {
-    font-style: oblique 10deg;
-}
-
 li + li {
     margin-top: 1em;
 }
