@@ -16,6 +16,7 @@
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",
 		"@eslint/js": "^9.18.0",
+		"@octokit/types": "^14.1.0",
 		"@sveltejs/adapter-static": "^3.0.8",
 		"@sveltejs/kit": "^2.16.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
@@ -42,6 +43,7 @@
 		"@fontsource/iosevka": "^5.2.5",
 		"@icons-pack/svelte-simple-icons": "^5.0.0",
 		"@lucide/svelte": "^0.514.0",
+		"@octokit/rest": "^22.0.0",
 		"@tailwindcss/vite": "^4.1.10",
 		"devicon": "^2.16.0",
 		"gh-lang-colors": "^0.1.12",
