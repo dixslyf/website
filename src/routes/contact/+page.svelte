@@ -32,47 +32,30 @@
 {/snippet}
 
 <div class="root">
-  <div class="contact-boxes-container">
-    <div class="adaptive-row contact-boxes">
-      <!-- This icon boilerplate sucks. -->
-      {#snippet githubIcon()}<SiGithub size={ICON_SIZE} />{/snippet}
-      {#snippet gitlabIcon()}<SiGitlab size={ICON_SIZE} />{/snippet}
-      {#snippet linkedinIcon()}<Devicon name="linkedin" size={ICON_SIZE} />{/snippet}
-      {#snippet emailIcon()}<Mail size={ICON_SIZE} />{/snippet}
+  <div class="adaptive-row contact-boxes">
+    <!-- This icon boilerplate sucks. -->
+    {#snippet githubIcon()}<SiGithub size={ICON_SIZE} />{/snippet}
+    {#snippet gitlabIcon()}<SiGitlab size={ICON_SIZE} />{/snippet}
+    {#snippet linkedinIcon()}<Devicon name="linkedin" size={ICON_SIZE} />{/snippet}
+    {#snippet emailIcon()}<Mail size={ICON_SIZE} />{/snippet}
 
-      {@render contactBox(0, "//github.com/dixslyf", githubIcon, "GitHub")}
-      {@render contactBox(1, "//gitlab.com/dixslyf", gitlabIcon, "GitLab")}
-      {@render contactBox(2, "//www.linkedin.com/in/dixslyf/", linkedinIcon, "LinkedIn")}
-      {@render contactBox(3, `mailto:${email}`, emailIcon, "Email")}
-    </div>
+    {@render contactBox(0, "//github.com/dixslyf", githubIcon, "GitHub")}
+    {@render contactBox(1, "//gitlab.com/dixslyf", gitlabIcon, "GitLab")}
+    {@render contactBox(2, "//www.linkedin.com/in/dixslyf/", linkedinIcon, "LinkedIn")}
+    {@render contactBox(3, `mailto:${email}`, emailIcon, "Email")}
   </div>
-  <!-- Empty flex child so that we have more control over the margins for the contact boxes. -->
-  <div class="fake-space"></div>
 </div>
 
 <style>
   .root {
-    display: flex;
-    flex-direction: column;
-
-    height: 100%;
     margin-top: 8px;
-  }
-
-  .contact-boxes-container {
-    display: flex;
-    align-items: center;
-
-    flex: 1;
-  }
-
-  .fake-space {
-    flex: 1;
   }
 
   .contact-boxes {
     justify-content: center;
     gap: 16px;
+
+    margin-top: max(0px, calc(50vh - 320px));
   }
 
   .contact-box {
@@ -82,7 +65,7 @@
     text-decoration: none;
   }
 
-  /* 
+  /*
    * For some reason, the `a` element's underline would still apply to `Devicon`
    * even if we explicitly disable text decorations on the `Devicon`'s `i` element.
    * To work around that, underlines are disabled for `a` and set on `.label` instead.
