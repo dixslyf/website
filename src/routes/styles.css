@@ -9,8 +9,6 @@
 @import "@fontsource/iosevka/600.css";
 @import "@fontsource/iosevka/700.css";
 
-@import "devicon/devicon.min.css";
-
 body {
     color: var(--ctp-macchiato-text);
     background-color: var(--ctp-macchiato-base);

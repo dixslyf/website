@@ -6,3 +6,4 @@ export { default as Group } from "./Group.svelte";
 export { default as Stack } from "./Stack.svelte";
 export { default as IconText } from "./IconText.svelte";
 export { default as LanguagesBar } from "./LanguagesBar.svelte";
+export { default as Devicon } from "./Devicon.svelte";
