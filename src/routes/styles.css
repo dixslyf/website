@@ -14,6 +14,10 @@ body {
     background-color: var(--ctp-macchiato-base);
     font-family: "Iosevka", monospace;
     font-weight: 500;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 a {

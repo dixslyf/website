@@ -26,6 +26,8 @@
   .root-container {
     display: flex;
     justify-content: center;
+
+    flex: 1;
     padding: 32px 0;
   }
 
@@ -37,11 +39,15 @@
   }
 
   .content-container-wrapper {
-    position: relative;
+    /* See https://stackoverflow.com/a/50086485 */
+    display: grid;
+    grid-template-columns: 1fr;
+
+    flex: 1;
   }
 
   .content-container {
-    position: absolute;
-    margin-bottom: 32px;
+    grid-row-start: 1;
+    grid-column-start: 1;
   }
 </style>
