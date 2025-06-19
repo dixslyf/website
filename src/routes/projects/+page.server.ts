@@ -1,4 +1,5 @@
 import type { PageServerLoad } from "./$types";
+import { GITHUB_TOKEN } from "$env/static/private";
 
 import { Octokit } from "@octokit/rest";
 
@@ -29,6 +30,7 @@ export const load: PageServerLoad = ({ fetch }) => {
         request: {
             fetch,
         },
+        auth: GITHUB_TOKEN,
     });
 
     const reposReq = fetchRepos(octokit);
