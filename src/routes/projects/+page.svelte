@@ -3,10 +3,10 @@
   import type { Endpoints } from "@octokit/types";
   import { Star, Scale, GitFork, Eye } from "@lucide/svelte";
   import { SiGithub } from "@icons-pack/svelte-simple-icons";
-
-  import { Section, LanguagesBar, IconText } from "$lib/components";
   import type { Component } from "svelte";
-  import { fly } from "svelte/transition";
+  import { fade, fly } from "svelte/transition";
+
+  import { Section, LanguagesBar, IconText, Spinner } from "$lib/components";
 
   type RepoInfo = Endpoints["GET /users/{username}/repos"]["response"]["data"][number] & {
     languages: Endpoints["GET /repos/{owner}/{repo}/languages"]["response"]["data"];
@@ -108,31 +108,61 @@
   </Section>
 {/snippet}
 
-{#await data.repos}
-  waiting...
-{:then repos}
-  <div class="root">
-    {#each repos.sort(sortRepos) as repo, idx (repo.id)}
-      <div
-        in:fly|global={{ x: "30vw", duration: 500, delay: idx * 250 }}
-        out:fly|global={{ x: "-30vw", duration: 500 }}
-      >
-        {@render repoCard(repo)}
-      </div>
-    {/each}
-  </div>
-{:catch error}
-  something went wrong: {error}
-{/await}
+<div class="root">
+  {#await data.repos}
+    <div class="root-child spinner-root" transition:fade|global={{ duration: 500 }}>
+      <Spinner count={8} />
+    </div>
+  {:then repos}
+    <div class="root-child cards-root">
+      {#each repos.sort(sortRepos) as repo, idx (repo.id)}
+        <div
+          in:fly|global={{ x: "30vw", duration: 500, delay: idx * 250 }}
+          out:fly|global={{ x: "-30vw", duration: 500 }}
+        >
+          {@render repoCard(repo)}
+        </div>
+      {/each}
+    </div>
+  {:catch}
+    <div class="root-child error-root" transition:fade|global={{ duration: 500 }}>
+      Oh no!<br />Failed to fetch projects! :(
+    </div>
+  {/await}
+</div>
 
 <style>
   .root {
+    /* See https://stackoverflow.com/a/50086485 */
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .root-child {
+    grid-row-start: 1;
+    grid-column-start: 1;
+  }
+
+  .spinner-root {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: max(0px, calc(50vh - 320px));
+  }
+
+  .error-root {
+    text-align: center;
+    font-size: 24pt;
+    margin-top: max(0px, calc(50vh - 320px));
+  }
+
+  .cards-root {
     display: grid;
     gap: 16px;
   }
 
   @media (min-width: 1200px) {
-    .root {
+    .cards-root {
       grid-template-columns: repeat(2, 1fr);
     }
   }
