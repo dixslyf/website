@@ -7,3 +7,4 @@ export { default as Stack } from "./Stack.svelte";
 export { default as IconText } from "./IconText.svelte";
 export { default as LanguagesBar } from "./LanguagesBar.svelte";
 export { default as Devicon } from "./Devicon.svelte";
+export { default as Spinner } from "./Spinner.svelte";
