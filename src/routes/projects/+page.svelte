@@ -56,7 +56,7 @@
   <Section class="h-full mt-[8px]">
     <div class="card-content">
       <div class="card-header">
-        <a class="repo-title" href={repo.html_url}>
+        <a class="repo-title" href={repo.html_url} target="_blank">
           <div class="card-header-icon"><SiGithub /></div>
           {repo.owner.login}/{repo.name}</a
         >
