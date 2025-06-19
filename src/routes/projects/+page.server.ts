@@ -40,3 +40,10 @@ export const load: PageServerLoad = ({ fetch }) => {
         repos: reposReq,
     };
 };
+
+export const config = {
+    isr: {
+        // Regenerate every half an hour.
+        expiration: 60 * 30,
+    },
+};
