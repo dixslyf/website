@@ -35,6 +35,7 @@
     --background-color: var(--ctp-macchiato-base);
 
     position: relative;
+    display: flex;
 
     flex: 1;
 
@@ -65,6 +66,7 @@
     }
 
     .content-container {
+      flex: 1;
       padding: 20px;
     }
   }

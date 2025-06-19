@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { PageProps } from "./$types";
   import type { Endpoints } from "@octokit/types";
-  import { Star, Scale, GitFork, Code, Eye } from "@lucide/svelte";
+  import { Star, Scale, GitFork, Eye } from "@lucide/svelte";
   import { SiGithub } from "@icons-pack/svelte-simple-icons";
 
   import { Section, LanguagesBar, IconText } from "$lib/components";
@@ -56,11 +56,32 @@
   <Section class="h-full mt-[8px]">
     <div class="card-content">
       <div class="card-header">
-        <a class="card-title" href={repo.html_url}>
+        <a class="repo-title" href={repo.html_url}>
           <div class="card-header-icon"><SiGithub /></div>
           {repo.owner.login}/{repo.name}</a
         >
 
+        <div class="repo-tags">
+          {#if repo.owner.login !== "dixslyf"}<div
+              class="badge bg-(--ctp-macchiato-mauve) text-(--ctp-macchiato-base)"
+            >
+              Collaborator
+            </div>{/if}
+          {#if repo.archived}<div
+              class="badge bg-(--ctp-macchiato-peach) text-(--ctp-macchiato-base)"
+            >
+              Archived
+            </div>{/if}
+        </div>
+      </div>
+
+      <div class="card-middle">
+        <div>
+          {#if repo.description}{repo.description}{:else}<em>No description.</em>{/if}
+        </div>
+      </div>
+
+      <div class="card-footer">
         <div class="repo-small-stats">
           {#snippet smallStat(iconComponent: { component: Component }, label: string)}
             {#snippet icon()}<iconComponent.component></iconComponent.component>{/snippet}
@@ -74,18 +95,10 @@
             />
           {/snippet}
 
-          {@render smallStat({ component: Scale }, repo.license?.name ?? "Unlicensed")}
-          {@render smallStat({ component: GitFork }, (repo.forks_count ?? 0).toString())}
-          {@render smallStat({ component: Eye }, (repo.watchers_count ?? 0).toString())}
           {@render smallStat({ component: Star }, (repo.stargazers_count ?? 0).toString())}
-        </div>
-      </div>
-
-      <div class="card-body">
-        <div>{repo.description ? repo.description : "No description"}</div>
-        <div class="repo-tags">
-          {#if repo.owner.login !== "dixslyf"}<div class="badge">Collaborator</div>{/if}
-          {#if repo.archived}<div class="badge">Archived</div>{/if}
+          {@render smallStat({ component: Eye }, (repo.watchers_count ?? 0).toString())}
+          {@render smallStat({ component: GitFork }, (repo.forks_count ?? 0).toString())}
+          {@render smallStat({ component: Scale }, repo.license?.name ?? "Unlicensed")}
         </div>
         <div class="repo-languages">
           <LanguagesBar languages={repo.languages} />
@@ -124,10 +137,18 @@
     }
   }
 
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    height: 100%;
+    width: 100%;
+  }
+
   .card-header {
     display: flex;
     flex-direction: row;
-    align-items: center;
     gap: 16px;
   }
 
@@ -136,22 +157,26 @@
     margin-right: 0.5em;
   }
 
-  .card-title {
+  .repo-title {
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    flex: 1;
 
     font-weight: bold;
     font-size: 1.2em;
   }
 
-  .card-content {
+  .card-middle {
+    flex: 1;
+
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
   }
 
-  .card-body {
+  .card-footer {
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -159,7 +184,6 @@
 
   .repo-small-stats {
     display: flex;
-    flex-direction: row-reverse;
     align-items: center;
     flex-wrap: wrap;
     gap: 24px;
@@ -181,10 +205,7 @@
 
   .badge {
     border-radius: 16px;
-    padding: 4px 8px;
-
-    background-color: var(--ctp-macchiato-overlay0);
-
+    padding: 4px 12px;
     font-size: 0.9em;
   }
 </style>
