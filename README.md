@@ -1,38 +1,42 @@
-# sv
+# dixslyf's Website
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This repository contains the source code for my personal website: [dixslyf.dev](https://dixslyf.dev).
+The website is built with Vite and Svelte 5 / SvelteKit.
 
-## Creating a project
+## Developing and Building
 
-If you're seeing this, you've probably already done this step. Congrats!
+This project uses `pnpm` for package management.
 
-```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+To run the development server, run:
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm run dev
 ```
 
-## Building
-
-To create a production version of your app:
+To build for production, run:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
-You can preview the production build with `npm run preview`.
+To preview the production build, run:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```bash
+pnpm run preview
+```
+
+## Environment Variables
+
+To fetch information about my projects, the server-side code uses Octokit to query the GitHub REST API.
+If the `GITHUB_TOKEN` environment variable is set, it will be passed to Octokit for authentication
+(authenticated requests have higher rate limits).
+
+Environment variables can be specified in a `.env` or `.env.local` file.
+
+## Deployment
+
+The website is currently hosted on Vercel.
+
+Note that the `/projects` route uses incremental static regeneration (ISR) with a 30-minute expiration time.
+That is, every 30 minutes, its server-side code is run to fetch my projects from the GitHub REST API,
+after which the page is pre-rendered with the fetched data and served statically.
