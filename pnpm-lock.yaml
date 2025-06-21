@@ -11,6 +11,12 @@ importers:
       '@catppuccin/palette':
         specifier: ^1.7.1
         version: 1.7.1
+      '@fontsource/iosevka-aile':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/iosevka-etoile':
+        specifier: ^5.2.5
+        version: 5.2.5
       the-new-css-reset:
         specifier: ^1.11.3
         version: 1.11.3
@@ -412,6 +418,12 @@ packages:
   '@eslint/plugin-kit@0.3.2':
     resolution: {integrity: sha512-4SaFZCNfJqvk/kenHpI8xvN42DMaoycy4PzKc5otHxRswww1kAt82OlBuwRVLofCACCTZEcla2Ydxv8scMXaTg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@fontsource/iosevka-aile@5.2.5':
+    resolution: {integrity: sha512-K9EwsSxfWPWjvrYM+NkgHaImpHgaVgC67l6uWf6W+4taeca6LKMJn/U11mQiRwLlecoI0PP2Q9o/8iIPaLOSgg==}
+
+  '@fontsource/iosevka-etoile@5.2.5':
+    resolution: {integrity: sha512-DaqaNB1G6qhGh+D+WxZUrln0UJmrM7qXgJgdeXm3U1ekcIph2aWPAcmI1edDj9FLkuGl2ZU9TYywIvzVF6lz0Q==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -2021,6 +2033,10 @@ snapshots:
     dependencies:
       '@eslint/core': 0.15.0
       levn: 0.4.1
+
+  '@fontsource/iosevka-aile@5.2.5': {}
+
+  '@fontsource/iosevka-etoile@5.2.5': {}
 
   '@humanfs/core@0.19.1': {}
 
