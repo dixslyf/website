@@ -41,6 +41,9 @@ importers:
       tailwindcss:
         specifier: ^4.1.10
         version: 4.1.10
+      the-new-css-reset:
+        specifier: ^1.11.3
+        version: 1.11.3
     devDependencies:
       '@eslint/compat':
         specifier: ^1.2.5
@@ -1658,6 +1661,9 @@ packages:
     resolution: {integrity: sha512-5S7Va8hKfV7W5U6g3aYxXmlPoZVAwUMy9AOKyF2fVuZa2UD3qZjg578OrLRt8PcNN1PleVaL/5/yYATNL0ICUw==}
     engines: {node: '>=18'}
 
+  the-new-css-reset@1.11.3:
+    resolution: {integrity: sha512-61SB81vu9foUyEIqoU1CeqxrdlsVjJojj/CBXoG8BdvlKFsllB0Rza63DblnRqH+3uttPj3FGWo7+c9nu7MT+A==}
+
   tinyglobby@0.2.14:
     resolution: {integrity: sha512-tX5e7OM1HnYr2+a2C/4V0htOcSQcoSTH9KgJnVvNm5zm/cyEWKJ7j7YutsH9CxMdtOkkLFy2AHrMci9IM8IPZQ==}
     engines: {node: '>=12.0.0'}
@@ -3249,6 +3255,8 @@ snapshots:
       minizlib: 3.0.2
       mkdirp: 3.0.1
       yallist: 5.0.0
+
+  the-new-css-reset@1.11.3: {}
 
   tinyglobby@0.2.14:
     dependencies:

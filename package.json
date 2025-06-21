@@ -49,6 +49,7 @@
 		"gh-lang-colors": "^0.1.12",
 		"runed": "^0.28.0",
 		"style": "link:@catppuccin/palette/style",
-		"tailwindcss": "^4.1.10"
+		"tailwindcss": "^4.1.10",
+		"the-new-css-reset": "^1.11.3"
 	}
 }
