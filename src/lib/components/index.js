@@ -1,8 +1,0 @@
-export { default as Title } from "./Title.svelte";
-export { default as Navbar } from "./Navbar.svelte";
-export { default as Section } from "./Section.svelte";
-export { default as TextCaret } from "./TextCaret.svelte";
-export { default as IconText } from "./IconText.svelte";
-export { default as LanguagesBar } from "./LanguagesBar.svelte";
-export { default as Devicon } from "./Devicon.svelte";
-export { default as Spinner } from "./Spinner.svelte";

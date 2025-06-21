@@ -1,1 +1,0 @@
-export { blink } from "./blink";
