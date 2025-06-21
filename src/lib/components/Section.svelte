@@ -27,7 +27,6 @@
 <style>
   .root {
     display: flex;
-    box-sizing: border-box;
   }
 
   .subroot {

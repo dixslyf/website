@@ -1,0 +1,16 @@
+@layer reset;
+@import "the-new-css-reset/css/reset.css" layer(reset);
+
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@import "@catppuccin/palette/css/catppuccin.css";
+
+@import "@fontsource/iosevka/400.css";
+@import "@fontsource/iosevka/500.css";
+@import "@fontsource/iosevka/600.css";
+@import "@fontsource/iosevka/700.css";
+
+@import "./defaults.css";
+@import "./utilities.css";

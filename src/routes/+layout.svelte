@@ -1,5 +1,5 @@
 <script>
-  import "./styles.css";
+  import "$lib/css/styles.css";
 
   import { page } from "$app/state";
 
