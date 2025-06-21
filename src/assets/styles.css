@@ -1,2 +1,39 @@
 @layer reset;
 @import "the-new-css-reset/css/reset.css" layer(reset);
+
+@import "@catppuccin/palette/css/catppuccin.css";
+
+/* Colours. */
+:root {
+  --bg: var(--ctp-macchiato-base);
+  --fg: var(--ctp-macchiato-text);
+  --fg-strong: var(--ctp-macchiato-rosewater);
+
+  --accent-primary: var(--ctp-macchiato-pink);
+  --accent-secondary: var(--ctp-macchiato-blue);
+
+  --link-fg: var(--ctp-macchiato-blue);
+  --link-fg-visited: var(--ctp-macchiato-lavender);
+  --link-fg-hover: var(--ctp-macchiato-sky);
+}
+
+body {
+  color: var(--fg);
+  background-color: var(--bg);
+}
+
+a {
+  color: var(--link-fg);
+
+  &:visited {
+    color: var(--link-fg-visited);
+  }
+
+  &:hover {
+    color: var(--link-fg-hover);
+  }
+}
+
+strong {
+  color: var(--fg-strong);
+}
