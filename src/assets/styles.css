@@ -29,6 +29,13 @@
   /* Typography */
   --line-height: 1.5;
   --measure: 60ch;
+
+  /* Borders */
+  --border-thin: 2px;
+  --border-thick: 4px;
+
+  /* Misc */
+  --content-max-width: 960px;
 }
 
 /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1280,24,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
