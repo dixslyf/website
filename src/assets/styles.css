@@ -15,18 +15,16 @@
 @import "@fontsource/iosevka-etoile/600.css";
 @import "@fontsource/iosevka-etoile/700.css";
 
-/* Colours. */
 :root {
-  --bg: var(--ctp-macchiato-base);
-  --fg: var(--ctp-macchiato-text);
-  --fg-strong: var(--ctp-macchiato-rosewater);
+  /* Colours */
+  --bg: #fffbef;
+  --fg: #5c6a72;
+  --fg-strong: var(--fg);
+  --fg-light: #939f91;
 
-  --accent-primary: var(--ctp-macchiato-pink);
-  --accent-secondary: var(--ctp-macchiato-blue);
-
-  --link-fg: var(--ctp-macchiato-blue);
-  --link-fg-visited: var(--ctp-macchiato-lavender);
-  --link-fg-hover: var(--ctp-macchiato-sky);
+  --link-fg: var(--fg);
+  --link-fg-visited: var(--fg);
+  --link-fg-hover: var(--fg);
 }
 
 body {
