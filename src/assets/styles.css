@@ -25,6 +25,10 @@
   --link-fg: var(--fg);
   --link-fg-visited: var(--fg);
   --link-fg-hover: var(--fg);
+
+  /* Typography */
+  --line-height: 1.5;
+  --measure: 60ch;
 }
 
 /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1280,24,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
@@ -62,11 +66,27 @@
   --space-2xl-3xl: clamp(4.5rem, 3.4565rem + 5.2174vw, 7.5rem);
 }
 
+* {
+  max-inline-size: var(--measure);
+}
+
+html,
+body,
+div,
+header,
+nav,
+main,
+footer {
+  max-inline-size: none;
+}
+
 body {
   color: var(--fg);
   background-color: var(--bg);
 
   font-family: "Iosevka Aile", sans-serif;
+  font-size: var(--type-0);
+  line-height: var(--line-height);
 }
 
 p {
