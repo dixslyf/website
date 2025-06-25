@@ -17,6 +17,12 @@ importers:
       '@fontsource/iosevka-etoile':
         specifier: ^5.2.5
         version: 5.2.5
+      devicon:
+        specifier: ^2.16.0
+        version: 2.16.0
+      lucide-vue-next:
+        specifier: ^0.523.0
+        version: 0.523.0(vue@3.5.17(typescript@5.8.3))
       the-new-css-reset:
         specifier: ^1.11.3
         version: 1.11.3
@@ -26,6 +32,9 @@ importers:
       vue-router:
         specifier: ^4.5.0
         version: 4.5.1(vue@3.5.17(typescript@5.8.3))
+      vue3-simple-icons:
+        specifier: ^15.0.0
+        version: 15.0.0(typescript@5.8.3)
     devDependencies:
       '@tsconfig/node22':
         specifier: ^22.0.1
@@ -945,6 +954,9 @@ packages:
     resolution: {integrity: sha512-N+MeXYoqr3pOgn8xfyRPREN7gHakLYjhsHhWGT3fWAiL4IkAt0iDw14QiiEm2bE30c5XX5q0FtAA3CK5f9/BUg==}
     engines: {node: '>=12'}
 
+  devicon@2.16.0:
+    resolution: {integrity: sha512-PE5a2HBNeN4av+Iu975OiiWEwS8LJPw5HAvlv0JUHb62jZTdYxTpz4ga+cQyvdtb3x1side2P9Sr1mmOmUkO/g==}
+
   electron-to-chromium@1.5.171:
     resolution: {integrity: sha512-scWpzXEJEMrGJa4Y6m/tVotb0WuvNmasv3wWVzUAeCgKU0ToFOhUW6Z+xWnRQANMYGxN4ngJXIThgBJOqzVPCQ==}
 
@@ -1278,6 +1290,11 @@ packages:
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
+
+  lucide-vue-next@0.523.0:
+    resolution: {integrity: sha512-PLbjArdcFgUcJLtszpCzGyaGm4AUfZ/SzDKfPjhkoEpG6j5k6fS3AGbMEbwt/xGJdD9DuSEgypNT/eqSPLfHfw==}
+    peerDependencies:
+      vue: '>=3.0.1'
 
   magic-string@0.30.17:
     resolution: {integrity: sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==}
@@ -1673,6 +1690,9 @@ packages:
     hasBin: true
     peerDependencies:
       typescript: '>=5.0.0'
+
+  vue3-simple-icons@15.0.0:
+    resolution: {integrity: sha512-RvynBry4kkuTFhxtmfEIbGLWEYlVzsUp3ExSqsZdaab8c2p2T+LcDyyDhNMWWHg++9Qn8/sxSKVo83KZzrx0UA==}
 
   vue@3.5.17:
     resolution: {integrity: sha512-LbHV3xPN9BeljML+Xctq4lbz2lVHCR6DtbpTf5XIO6gugpXUN49j2QQPcMj086r9+AkJ0FfUT8xjulKKBkkr9g==}
@@ -2558,6 +2578,8 @@ snapshots:
 
   define-lazy-prop@3.0.0: {}
 
+  devicon@2.16.0: {}
+
   electron-to-chromium@1.5.171: {}
 
   entities@4.5.0: {}
@@ -2889,6 +2911,10 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
+
+  lucide-vue-next@0.523.0(vue@3.5.17(typescript@5.8.3)):
+    dependencies:
+      vue: 3.5.17(typescript@5.8.3)
 
   magic-string@0.30.17:
     dependencies:
@@ -3260,6 +3286,12 @@ snapshots:
       '@volar/typescript': 2.4.14
       '@vue/language-core': 2.2.10(typescript@5.8.3)
       typescript: 5.8.3
+
+  vue3-simple-icons@15.0.0(typescript@5.8.3):
+    dependencies:
+      vue: 3.5.17(typescript@5.8.3)
+    transitivePeerDependencies:
+      - typescript
 
   vue@3.5.17(typescript@5.8.3):
     dependencies:
