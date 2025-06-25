@@ -16,18 +16,16 @@
 <template>
   <div :class="$style.root">
     <Center gutters="0">
-      <div :class="$style.contentRoot">
-        <Stack gap="var(--space-m)">
-          <header>
-            <Navbar
-              :routes="routes"
-              :currentRoutePath="route.path"
-            />
-          </header>
+      <Stack gap="var(--space-m)">
+        <header>
+          <Navbar
+            :routes="routes"
+            :currentRoutePath="route.path"
+          />
+        </header>
 
-          <RouterView />
-        </Stack>
-      </div>
+        <RouterView />
+      </Stack>
     </Center>
   </div>
 </template>
@@ -36,9 +34,5 @@
   .root {
     padding-block: var(--space-m-l);
     padding-inline: var(--space-m);
-  }
-
-  .contentRoot {
-    max-width: var(--content-max-width);
   }
 </style>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
   const {
-    max = "var(--measure)",
+    max = "var(--content-max-width)",
     gutters = "var(--space-s)",
     intrinsic = false,
   } = defineProps<{

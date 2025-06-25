@@ -74,6 +74,7 @@
   }
 
   .nav {
+    font-size: var(--type-1);
     font-weight: 500;
   }
 </style>
