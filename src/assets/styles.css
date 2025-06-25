@@ -77,6 +77,14 @@
   --space-2xl-3xl: clamp(3.5rem, 2.4167rem + 5.4167vw, 6.75rem);
 }
 
+:root {
+  /* @link https://utopia.fyi/clamp/calculator?a=480,960,0—180 */
+  --fluid-0-180: clamp(0rem, -11.25rem + 37.5vw, 11.25rem);
+
+  /* @link https://utopia.fyi/clamp/calculator?a=880,1280,0—120 */
+  --fluid-h-0-120: clamp(0rem, -7.5rem + 18.75vh, 7.5rem);
+}
+
 * {
   max-inline-size: var(--measure);
 }
