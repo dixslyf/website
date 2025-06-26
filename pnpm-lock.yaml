@@ -17,6 +17,15 @@ importers:
       '@fontsource/iosevka-etoile':
         specifier: ^5.2.5
         version: 5.2.5
+      '@iconify-json/devicon-plain':
+        specifier: ^1.2.28
+        version: 1.2.28
+      '@iconify-json/lucide':
+        specifier: ^1.2.52
+        version: 1.2.52
+      '@iconify-json/simple-icons':
+        specifier: ^1.2.40
+        version: 1.2.40
       '@nuxt/eslint':
         specifier: 1.4.1
         version: 1.4.1(@typescript-eslint/utils@8.35.0(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-sfc@3.5.17)(eslint@9.29.0(jiti@2.4.2))(magicast@0.3.5)(typescript@5.8.3)(vite@6.3.5(@types/node@24.0.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))
@@ -26,15 +35,9 @@ importers:
       '@nuxt/icon':
         specifier: 1.14.0
         version: 1.14.0(magicast@0.3.5)(vite@6.3.5(@types/node@24.0.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue@3.5.17(typescript@5.8.3))
-      devicon:
-        specifier: ^2.16.0
-        version: 2.16.0
       eslint:
         specifier: ^9.29.0
         version: 9.29.0(jiti@2.4.2)
-      lucide-vue-next:
-        specifier: ^0.523.0
-        version: 0.523.0(vue@3.5.17(typescript@5.8.3))
       nuxt:
         specifier: ^3.17.5
         version: 3.17.5(@parcel/watcher@2.5.1)(@types/node@24.0.4)(db0@0.3.2)(eslint@9.29.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.44.1)(terser@5.43.1)(typescript@5.8.3)(vite@6.3.5(@types/node@24.0.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(yaml@2.8.0)
@@ -47,10 +50,10 @@ importers:
       vue-router:
         specifier: ^4.5.1
         version: 4.5.1(vue@3.5.17(typescript@5.8.3))
-      vue3-simple-icons:
-        specifier: ^15.0.0
-        version: 15.0.0(typescript@5.8.3)
     devDependencies:
+      '@iconify/types':
+        specifier: ^2.0.0
+        version: 2.0.0
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -470,6 +473,15 @@ packages:
   '@humanwhocodes/retry@0.4.3':
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
+
+  '@iconify-json/devicon-plain@1.2.28':
+    resolution: {integrity: sha512-8/UVoq0acj0uVBjK+fm4Q4WaFf6SPie+NWqvE+knNkSRbV2kAI3H1kPuc6wDDic2ZUEXU7J5Mv7fXZ4aFgwErA==}
+
+  '@iconify-json/lucide@1.2.52':
+    resolution: {integrity: sha512-MUFX9bB2XL7ugvUgEj8ftSJfamL1fp0Yp/oGLoLvCy8BC1vX0Z/a6TWHtqidSX4P3ERmDC2pqRwwuSTyZePdrA==}
+
+  '@iconify-json/simple-icons@1.2.40':
+    resolution: {integrity: sha512-sr2fbrS8rRhJNap41ucTStctxTcWQ3lcsHkY3loc4Yt1KNOne6D+l1JTOQCDj9f/VrUktVIEdaRQoYTvqfuSSw==}
 
   '@iconify/collections@1.0.562':
     resolution: {integrity: sha512-fNGc0xWMInNR3snWMCq6jvrydZTmeRai0u2pEq2gqVrsu51nNBJ10Fgc4lLnDtwN0rcHfIHl8OWxVk6hRMxeNQ==}
@@ -1906,9 +1918,6 @@ packages:
   devalue@5.1.1:
     resolution: {integrity: sha512-maua5KUiapvEwiEAe+XnlZ3Rh0GD+qI1J/nb9vrJc3muPXvcF/8gXYTWF76+5DAqHyDUtOIImEuo0YKE9mshVw==}
 
-  devicon@2.16.0:
-    resolution: {integrity: sha512-PE5a2HBNeN4av+Iu975OiiWEwS8LJPw5HAvlv0JUHb62jZTdYxTpz4ga+cQyvdtb3x1side2P9Sr1mmOmUkO/g==}
-
   dfa@1.2.0:
     resolution: {integrity: sha512-ED3jP8saaweFTjeGX8HQPjeC1YYyZs98jGNZx6IiBvxW7JG5v492kamAQB3m2wop07CvU/RQmzcKr6bgcC5D/Q==}
 
@@ -2744,11 +2753,6 @@ packages:
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
-
-  lucide-vue-next@0.523.0:
-    resolution: {integrity: sha512-PLbjArdcFgUcJLtszpCzGyaGm4AUfZ/SzDKfPjhkoEpG6j5k6fS3AGbMEbwt/xGJdD9DuSEgypNT/eqSPLfHfw==}
-    peerDependencies:
-      vue: '>=3.0.1'
 
   luxon@3.6.1:
     resolution: {integrity: sha512-tJLxrKJhO2ukZ5z0gyjY1zPh3Rh88Ej9P7jNrZiHMUXHae1yvI2imgOZtL1TO8TW6biMMKfTtAOoEJANgtWBMQ==}
@@ -4151,9 +4155,6 @@ packages:
     peerDependencies:
       vue: ^3.2.0
 
-  vue3-simple-icons@15.0.0:
-    resolution: {integrity: sha512-RvynBry4kkuTFhxtmfEIbGLWEYlVzsUp3ExSqsZdaab8c2p2T+LcDyyDhNMWWHg++9Qn8/sxSKVo83KZzrx0UA==}
-
   vue@3.5.17:
     resolution: {integrity: sha512-LbHV3xPN9BeljML+Xctq4lbz2lVHCR6DtbpTf5XIO6gugpXUN49j2QQPcMj086r9+AkJ0FfUT8xjulKKBkkr9g==}
     peerDependencies:
@@ -4704,6 +4705,18 @@ snapshots:
   '@humanwhocodes/retry@0.3.1': {}
 
   '@humanwhocodes/retry@0.4.3': {}
+
+  '@iconify-json/devicon-plain@1.2.28':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/lucide@1.2.52':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/simple-icons@1.2.40':
+    dependencies:
+      '@iconify/types': 2.0.0
 
   '@iconify/collections@1.0.562':
     dependencies:
@@ -6426,8 +6439,6 @@ snapshots:
 
   devalue@5.1.1: {}
 
-  devicon@2.16.0: {}
-
   dfa@1.2.0: {}
 
   diff@8.0.2: {}
@@ -7316,10 +7327,6 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
-
-  lucide-vue-next@0.523.0(vue@3.5.17(typescript@5.8.3)):
-    dependencies:
-      vue: 3.5.17(typescript@5.8.3)
 
   luxon@3.6.1: {}
 
@@ -8913,12 +8920,6 @@ snapshots:
     dependencies:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.17(typescript@5.8.3)
-
-  vue3-simple-icons@15.0.0(typescript@5.8.3):
-    dependencies:
-      vue: 3.5.17(typescript@5.8.3)
-    transitivePeerDependencies:
-      - typescript
 
   vue@3.5.17(typescript@5.8.3):
     dependencies:
