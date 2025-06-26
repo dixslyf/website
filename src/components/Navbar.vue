@@ -1,9 +1,6 @@
 <script setup lang="ts">
   import { watch } from "vue";
-  import { RouterLink } from "vue-router";
 
-  import { TextCaret } from "@/components";
-  import { Box, Cluster } from "@/components/primitives";
   import { TypewriterState, useTypewriter } from "@/composables/typewriter";
 
   const { routes, currentRoutePath } = defineProps<{
@@ -50,14 +47,14 @@
           :columnGap
           rowGap="var(--space-2xs)"
         >
-          <RouterLink
+          <NuxtLink
             v-for="route in routes"
             :key="route.path"
             :to="route.path"
             class="hoverUnderline"
           >
             {{ route.name }}
-          </RouterLink>
+          </NuxtLink>
         </Cluster>
       </Cluster>
     </Box>

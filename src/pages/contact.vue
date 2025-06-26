@@ -3,9 +3,7 @@
 
   import { GitHubIcon, GitLabIcon } from "vue3-simple-icons";
   import { Mail } from "lucide-vue-next";
-
-  import { Devicon, LucideWrapper } from "@/components";
-  import { Grid, Stack, Box } from "@/components/primitives";
+  import { Devicon, LucideWrapper } from "#components";
 
   const gridTargetMinWidth = "12rem";
 
