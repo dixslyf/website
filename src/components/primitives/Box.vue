@@ -3,14 +3,10 @@
     paddingBlock = "var(--space-s)",
     paddingInline = "var(--space-s)",
     borderWidth = "var(--border-thin)",
-    fg = "inherit",
-    bg = "transparent",
   } = defineProps<{
     paddingBlock?: string;
     paddingInline?: string;
     borderWidth?: string;
-    fg?: string;
-    bg?: string;
   }>();
 </script>
 
@@ -29,12 +25,5 @@
     border-radius: 1rem;
     outline: v-bind(borderWidth) transparent;
     outline-offset: calc(v-bind(borderWidth) * -1);
-
-    color: v-bind(fg);
-    background-color: v-bind(bg);
-  }
-
-  .box * {
-    color: inherit;
   }
 </style>
