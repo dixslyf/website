@@ -17,7 +17,9 @@
         "@nuxt/eslint": "1.4.1",
         "@nuxt/fonts": "0.11.4",
         "@nuxt/icon": "1.14.0",
+        "@octokit/rest": "^22.0.0",
         "eslint": "^9.29.0",
+        "gh-lang-colors": "^0.1.13",
         "nuxt": "^3.17.5",
         "the-new-css-reset": "^1.11.3",
         "vue": "^3.5.17",
@@ -25,7 +27,9 @@
     },
     "devDependencies": {
         "@iconify/types": "^2.0.0",
-        "prettier": "3.5.3"
+        "@octokit/types": "^14.1.0",
+        "prettier": "3.5.3",
+        "typescript": "^5.8.3"
     },
     "packageManager": "pnpm@10.12.3+sha512.467df2c586056165580ad6dfb54ceaad94c5a30f80893ebdec5a44c5aa73c205ae4a5bb9d5ed6bb84ea7c249ece786642bbb49d06a307df218d03da41c317417"
 }

@@ -17,4 +17,7 @@ export default defineNuxtConfig({
       { name: "Iosevka Etoile", weights: [400, 500, 600, 700] },
     ],
   },
+  runtimeConfig: {
+    githubToken: "",
+  },
 });
