@@ -1,11 +1,5 @@
 <script setup lang="ts">
-  import { h, onMounted, ref, type Ref, type Component, computed } from "vue";
-
-  import { GitHubIcon, GitLabIcon } from "vue3-simple-icons";
-  import { Mail } from "lucide-vue-next";
-
-  import { Devicon, LucideWrapper } from "@/components";
-  import { Grid, Stack, Box } from "@/components/primitives";
+  import { onMounted, ref, type Ref, computed } from "vue";
 
   const gridTargetMinWidth = "12rem";
 
@@ -16,31 +10,30 @@
     email.value = atob(EMAIL_B64);
   });
 
-  const size = "2.5em";
   const contactData: Array<{
     href: string | Ref<string>;
     label: string;
-    icon: Component;
+    icon: string;
   }> = [
     {
       href: "//github.com/dixslyf",
       label: "GitHub",
-      icon: h(GitHubIcon, { size }),
+      icon: "simple-icons:github",
     },
     {
       href: "//gitlab.com/dixslyf",
       label: "GitLab",
-      icon: h(GitLabIcon, { size }),
+      icon: "simple-icons:gitlab",
     },
     {
       href: "//www.linkedin.com/in/dixslyf/",
       label: "LinkedIn",
-      icon: h(Devicon, { icon: "linkedin", size }),
+      icon: "devicon-plain:linkedin",
     },
     {
       href: computed(() => `mailto:${email.value}`),
       label: "Email",
-      icon: h(LucideWrapper, { size }, [h(Mail)]),
+      icon: "lucide:mail",
     },
   ];
 </script>
@@ -64,7 +57,10 @@
           :class="$style.iconText"
           gap="var(--space-xs)"
         >
-          <component :is="contact.icon" />
+          <Icon
+            :name="contact.icon"
+            size="2.5em"
+          />
           <span>{{ contact.label }}</span>
         </Stack>
       </Box>

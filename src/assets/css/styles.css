@@ -1,22 +1,6 @@
 @layer reset;
 @import "the-new-css-reset/css/reset.css" layer(reset);
 
-@import "@catppuccin/palette/css/catppuccin.css";
-
-/* TODO: Remove unneeded variants. */
-@import "@fontsource/iosevka-aile/400.css";
-@import "@fontsource/iosevka-aile/500.css";
-@import "@fontsource/iosevka-aile/600.css";
-@import "@fontsource/iosevka-aile/700.css";
-
-@import "@fontsource/iosevka-etoile/400.css";
-@import "@fontsource/iosevka-etoile/400-italic.css";
-@import "@fontsource/iosevka-etoile/500.css";
-@import "@fontsource/iosevka-etoile/600.css";
-@import "@fontsource/iosevka-etoile/700.css";
-
-@import "devicon/devicon.min.css";
-
 @import "./utils.css";
 
 :root {
