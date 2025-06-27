@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  const { gap = "--space-s", targetMinWidth = "10rem" } = defineProps<{
+  const { gap = "var(--space-s)", targetMinWidth = "10rem" } = defineProps<{
     gap?: string;
     targetMinWidth?: string;
   }>();
