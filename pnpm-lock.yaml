@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@catppuccin/palette':
-        specifier: ^1.7.1
-        version: 1.7.1
       '@iconify-json/devicon-plain':
         specifier: ^1.2.28
         version: 1.2.28
@@ -186,9 +183,6 @@ packages:
 
   '@capsizecss/unpack@2.4.0':
     resolution: {integrity: sha512-GrSU71meACqcmIUxPYOJvGKF0yryjN/L1aCuE9DViCTJI7bfkjgYDPD1zbNDcINJwSSP6UaBZY9GAbYDO7re0Q==}
-
-  '@catppuccin/palette@1.7.1':
-    resolution: {integrity: sha512-aRc1tbzrevOTV7nFTT9SRdF26w/MIwT4Jwt4fDMc9itRZUDXCuEDBLyz4TQMlqO9ZP8mf5Hu4Jr6D03NLFc6Gw==}
 
   '@clack/core@0.4.2':
     resolution: {integrity: sha512-NYQfcEy8MWIxrT5Fj8nIVchfRFA26yYKJcvBS7WlUIlw2OmQOY9DhGGXMovyI5J5PpxrCPGkgUi207EBrjpBvg==}
@@ -4461,8 +4455,6 @@ snapshots:
       fontkit: 2.0.4
     transitivePeerDependencies:
       - encoding
-
-  '@catppuccin/palette@1.7.1': {}
 
   '@clack/core@0.4.2':
     dependencies:
