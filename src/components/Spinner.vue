@@ -1,11 +1,11 @@
 <script setup lang="ts">
   const {
     count = 8,
-    barStartHeight = "1rem",
-    barPeakHeight = "8rem",
-    barWidth = "1rem",
-    barRadius = "0.5rem",
-    barGap = "1rem",
+    barStartHeight = "0.8rem",
+    barPeakHeight = "6rem",
+    barWidth = "0.8rem",
+    barRadius = "0.8rem",
+    barGap = "0.8rem",
     color = "var(--fg)",
     duration = 2400,
   } = defineProps<{
