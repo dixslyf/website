@@ -12,8 +12,6 @@
     },
     "dependencies": {
         "@catppuccin/palette": "^1.7.1",
-        "@fontsource/iosevka-aile": "^5.2.5",
-        "@fontsource/iosevka-etoile": "^5.2.5",
         "@iconify-json/devicon-plain": "^1.2.28",
         "@iconify-json/lucide": "^1.2.52",
         "@iconify-json/simple-icons": "^1.2.40",

@@ -11,12 +11,6 @@ importers:
       '@catppuccin/palette':
         specifier: ^1.7.1
         version: 1.7.1
-      '@fontsource/iosevka-aile':
-        specifier: ^5.2.5
-        version: 5.2.5
-      '@fontsource/iosevka-etoile':
-        specifier: ^5.2.5
-        version: 5.2.5
       '@iconify-json/devicon-plain':
         specifier: ^1.2.28
         version: 1.2.28
@@ -447,12 +441,6 @@ packages:
 
   '@fastify/busboy@3.1.1':
     resolution: {integrity: sha512-5DGmA8FTdB2XbDeEwc/5ZXBl6UbBAyBOOLlPuBnZ/N1SwdH9Ii+cOX3tBROlDgcTXxjOYnLMVoKk9+FXAw0CJw==}
-
-  '@fontsource/iosevka-aile@5.2.5':
-    resolution: {integrity: sha512-K9EwsSxfWPWjvrYM+NkgHaImpHgaVgC67l6uWf6W+4taeca6LKMJn/U11mQiRwLlecoI0PP2Q9o/8iIPaLOSgg==}
-
-  '@fontsource/iosevka-etoile@5.2.5':
-    resolution: {integrity: sha512-DaqaNB1G6qhGh+D+WxZUrln0UJmrM7qXgJgdeXm3U1ekcIph2aWPAcmI1edDj9FLkuGl2ZU9TYywIvzVF6lz0Q==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -4688,10 +4676,6 @@ snapshots:
       levn: 0.4.1
 
   '@fastify/busboy@3.1.1': {}
-
-  '@fontsource/iosevka-aile@5.2.5': {}
-
-  '@fontsource/iosevka-etoile@5.2.5': {}
 
   '@humanfs/core@0.19.1': {}
 
