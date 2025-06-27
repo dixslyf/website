@@ -97,6 +97,8 @@ body {
 
 p {
   font-family: "Iosevka Etoile", serif;
+  text-align: justify;
+  hyphens: auto;
 }
 
 a {
