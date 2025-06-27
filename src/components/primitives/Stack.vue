@@ -1,5 +1,8 @@
 <script setup lang="ts">
-  const { gap = "var(--space-s)" } = defineProps<{ gap?: string }>();
+  const { gap = "var(--space-s)", direction = "column" } = defineProps<{
+    gap?: string;
+    direction?: "column" | "row";
+  }>();
 </script>
 
 <template>
@@ -11,7 +14,7 @@
 <style module>
   .stack {
     display: flex;
-    flex-direction: column;
+    flex-direction: v-bind(direction);
     justify-content: flex-start;
     gap: v-bind(gap);
   }
