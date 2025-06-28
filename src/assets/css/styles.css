@@ -1,6 +1,8 @@
 @layer reset;
 @import "the-new-css-reset/css/reset.css" layer(reset);
 
+@import "@catppuccin/palette/css/catppuccin.css";
+
 @import "./utils.css";
 
 :root {
