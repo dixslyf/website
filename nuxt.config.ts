@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     families: [
       { name: "Iosevka Aile", weights: [400, 500, 600, 700] },
       { name: "Iosevka Etoile", weights: [400, 500, 600, 700] },
+      { name: "Noto Sans SC", weights: ["100 900"] },
     ],
   },
   runtimeConfig: {

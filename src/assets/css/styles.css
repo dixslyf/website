@@ -36,6 +36,8 @@
   --type-3: clamp(1.512rem, 1.2836rem + 1.1421vw, 2.1973rem);
   --type-4: clamp(1.8144rem, 1.5037rem + 1.5536vw, 2.7466rem);
   --type-5: clamp(2.1773rem, 1.7586rem + 2.0932vw, 3.4332rem);
+  --type-6: clamp(2.6127rem, 2.0531rem + 2.798vw, 4.2915rem);
+  --type-7: clamp(3.1353rem, 2.3922rem + 3.7152vw, 5.3644rem);
 }
 
 /* @link https://utopia.fyi/space/calculator?c=320,14,1.2,1280,18,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
@@ -95,10 +97,25 @@ body {
   line-height: var(--line-height);
 }
 
-p {
+p,
+li {
   font-family: "Iosevka Etoile", serif;
   text-align: justify;
   hyphens: auto;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  list-style-type: disc;
+  list-style-position: outside;
+  margin-inline-start: 1.5em;
+}
+
+h1 {
+  font-size: var(--type-2);
+  font-weight: 700;
 }
 
 a {

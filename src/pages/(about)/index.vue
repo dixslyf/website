@@ -6,5 +6,16 @@
 </script>
 
 <template>
-  <p>about</p>
+  <Stack gap="var(--space-2xl)">
+    <NameDisplay :class="$style.nameDisplay" />
+    <AboutMe />
+    <Technologies />
+  </Stack>
 </template>
+
+<style module>
+  .nameDisplay {
+    margin-top: var(--fluid-h-0-240);
+    margin-bottom: calc(1.5 * var(--fluid-h-0-240));
+  }
+</style>
