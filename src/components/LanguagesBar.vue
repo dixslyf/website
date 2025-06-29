@@ -72,7 +72,7 @@
             @mouseenter="hoveredLang = { source: 'icon-text', language }"
             @mouseleave="hoveredLang = null"
           >
-            {{ language }} {{ percentage.toFixed(1) }}%
+          {{ language }} {{ percentage > 0.1 ? percentage.toFixed(1) : "< 0.1" }}%
           </IconText>
         </Badge>
       </template>
