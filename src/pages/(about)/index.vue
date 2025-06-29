@@ -7,7 +7,6 @@
 
 <template>
   <Stack gap="var(--space-2xl)">
-    <NameDisplay :class="$style.nameDisplay" />
     <AboutMe />
     <Technologies />
   </Stack>
