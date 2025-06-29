@@ -50,7 +50,8 @@
 
 <style module>
   .root {
-    padding-block: var(--space-m-l);
+    padding-top: var(--space-m-l);
+    padding-bottom: var(--space-xl-2xl);
     padding-inline: var(--space-m);
   }
 </style>

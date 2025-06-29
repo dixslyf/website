@@ -13,8 +13,7 @@ export default defineNuxtConfig({
   css: ["@/assets/css/styles.css"],
   fonts: {
     families: [
-      { name: "Iosevka Aile", weights: [400, 500, 600, 700] },
-      { name: "Iosevka Etoile", weights: [400, 500, 600, 700] },
+      { name: "Iosevka", weights: [400, 500, 600, 700] },
       { name: "Noto Sans SC", weights: ["100 900"] },
     ],
   },

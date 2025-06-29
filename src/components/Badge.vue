@@ -1,8 +1,8 @@
 <script setup lang="ts">
   const {
-    bg = "var(--fg)",
-    fg = "var(--bg)",
-    padding = "calc(1em / var(--line-height)) 1em",
+    bg = "var(--bg-light)",
+    fg = "var(--fg)",
+    padding = "0.4em 1em",
     borderRadius = "2rem",
     fontSize = "var(--type--1)",
   } = defineProps<{

@@ -31,7 +31,7 @@
 
 <template>
   <Stack>
-    <IconText icon="lucide:code">Languages</IconText>
+    <IconText icon="lucide:code"><span :class="$style.languagesLabel">Languages</span></IconText>
     <Stack
       direction="row"
       gap="0"
@@ -52,7 +52,7 @@
         @mouseleave="hoveredLang = null"
       ></div>
     </Stack>
-    <Cluster row-gap="var(--space-2xs)">
+    <Cluster row-gap="var(--space-xs)">
       <template
         v-for="{ language, percentage, color, icon } in langsProcessed"
         :key="language"
@@ -81,6 +81,10 @@
 </template>
 
 <style module>
+  .languagesLabel {
+    font-weight: 600;
+  }
+
   .bar {
     height: 0.5rem;
   }
@@ -93,8 +97,7 @@
     transition: filter 0.2s ease-in-out;
 
     &.highlighted {
-      /* FIXME: Change color. */
-      outline: 2px solid var(--fg);
+      outline: 2px solid var(--accent-sec);
       border-radius: 2px !important;
       z-index: 50;
     }
@@ -112,12 +115,12 @@
     transition: transform 100ms ease-in-out;
 
     &:hover {
-      /* FIXME: Change color. */
-      outline: 2px solid var(--fg);
+      outline: 2px solid var(--accent-sec);
     }
   }
 
   .langBadgeHover {
     transform: translateY(-0.4em);
+    outline: 2px solid var(--accent-sec);
   }
 </style>

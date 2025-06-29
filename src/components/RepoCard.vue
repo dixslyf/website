@@ -42,13 +42,29 @@
             icon="simple-icons:github"
             iconSize="2em"
           >
-            {{ repo.owner.login }}/{{ repo.name }}
+            <span>
+              <span :class="$style.repoTitleText">{{ repo.owner.login }}/{{ repo.name }}</span>
+              <Icon
+                name="lucide:external-link"
+                :class="$style.repoTitleExternalLink"
+              />
+            </span>
           </IconText>
         </a>
 
-        <Cluster>
-          <Badge v-if="repo.owner.login !== 'dixslyf'">Collaborator</Badge>
-          <Badge v-if="repo.archived">Archived</Badge>
+        <Cluster :class="$style.repoStatusCluster">
+          <Badge
+            v-if="repo.owner.login !== 'dixslyf'"
+            fg="var(--repo-collaborator-fg)"
+            bg="var(--repo-collaborator-bg)"
+            >Collaborator</Badge
+          >
+          <Badge
+            v-if="repo.archived"
+            fg="var(--repo-archived-fg)"
+            bg="var(--repo-archived-bg)"
+            >Archived</Badge
+          >
         </Cluster>
       </Cluster>
 
@@ -84,8 +100,21 @@
   }
 
   .repoTitle {
-    font-weight: 500;
+    font-weight: 600;
     font-size: var(--type-1);
+  }
+
+  .repoTitleText {
+    text-decoration: underline;
+  }
+
+  .repoTitleExternalLink {
+    font-size: 0.8em;
+    margin-inline-start: 0.25em;
+  }
+
+  .repoStatusCluster {
+    align-items: center;
   }
 
   .cardMiddle {

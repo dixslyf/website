@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { onMounted, ref, type Ref, computed } from "vue";
 
-  const gridTargetMinWidth = "12rem";
+  const gridTargetMinWidth = "13rem";
 
   // Basic email obfuscation to prevent scrapers from getting my email address.
   let email: Ref<string | null> = ref(null);
@@ -71,7 +71,9 @@
 <style module>
   .contactGrid {
     margin-top: var(--fluid-h-0-120);
-    margin-inline: var(--fluid-0-180);
+
+    /* @link https://utopia.fyi/clamp/calculator?a=500,1280,0—320 */
+    margin-inline: clamp(0rem, -12.8205rem + 41.0256vw, 20rem);
   }
 
   .iconText {

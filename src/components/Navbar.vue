@@ -11,15 +11,18 @@
     currentRoutePath: string;
   }>();
 
-  const typewriter = useTypewriter();
+  function routeDisplay(route: string) {
+    if (route === "/") {
+      return "";
+    }
+    return route;
+  }
+
+  const typewriter = useTypewriter({ initialText: routeDisplay(currentRoutePath) });
   watch(
     () => currentRoutePath,
     (newRoute, _oldRoute) => {
-      if (newRoute === "/") {
-        typewriter.type("");
-        return;
-      }
-      typewriter.type(newRoute);
+      typewriter.type(routeDisplay(newRoute));
     },
   );
 
@@ -27,11 +30,11 @@
 </script>
 
 <template>
-  <nav :class="$style.nav">
+  <nav :class="$style.navRoot">
     <Box
-      class="hoverScale"
       paddingInline="var(--space-m)"
       paddingBlock="calc(var(--space-m) / var(--line-height))"
+      label="Navbar"
     >
       <Cluster
         :class="$style.outerCluster"
@@ -39,7 +42,9 @@
         rowGap="var(--space-m)"
       >
         <span>
-          /home/dixslyf<span>{{ typewriter.text.value }}</span>
+          <span :class="$style.currentPath"
+            >/home/dixslyf<span>{{ typewriter.text.value }}</span></span
+          >
           <TextCaret :visible="typewriter.state.value !== TypewriterState.Idle" />
         </span>
         <Cluster
@@ -51,7 +56,11 @@
             v-for="route in routes"
             :key="route.path"
             :to="route.path"
-            class="hoverUnderline"
+            :class="[
+              $style.navlink,
+              'hoverUnderline',
+              { [$style.navlinkCurrent]: route.path === currentRoutePath },
+            ]"
           >
             {{ route.name }}
           </NuxtLink>
@@ -64,14 +73,31 @@
 <style module>
   .outerCluster {
     justify-content: space-between;
+
+    font-size: var(--type-1);
+    font-weight: 500;
   }
 
   .innerCluster {
     justify-content: flex-start;
   }
 
-  .nav {
-    font-size: var(--type-1);
-    font-weight: 500;
+  .navRoot {
+    --local-accent: var(--accent);
+    &:hover {
+      --local-accent: var(--accent-sec);
+    }
+  }
+
+  .navlink {
+    text-decoration: none;
+
+    &:hover {
+      color: var(--accent-nav-hover) !important;
+    }
+  }
+
+  .navlinkCurrent {
+    color: var(--local-accent) !important;
   }
 </style>

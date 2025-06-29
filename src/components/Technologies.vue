@@ -1,6 +1,16 @@
 <script setup lang="ts">
-  const techData = {
+  import * as simpleIcons from "simple-icons";
+  import type { SimpleIcon } from "simple-icons";
+
+  type Tech = {
+    icon: string | null;
+    label: string;
+  };
+
+  const techData: Record<string, Tech[]> = {
     Web: [
+      { icon: "simple-icons:vuedotjs", label: "Vue" },
+      { icon: "simple-icons:nuxt", label: "Nuxt.js" },
       { icon: "simple-icons:svelte", label: "Svelte" },
       { icon: "simple-icons:react", label: "React" },
       { icon: "simple-icons:nextdotjs", label: "Next.js" },
@@ -46,39 +56,61 @@
       { icon: "simple-icons:typst", label: "Typst" },
     ],
   };
+
+  function getIconColor(tech: Tech): string | null {
+    if (!tech.icon) {
+      return null;
+    }
+
+    const color = getLanguageColor(tech.label);
+    if (color !== FALLBACK_LANG_COLOR) {
+      return color;
+    }
+
+    if (tech.icon.startsWith("simple-icons:")) {
+      const slug = tech.icon.slice("simple-icons:".length);
+      const cSlug = slug[0].toUpperCase() + slug.slice(1);
+      const entryName = `si${cSlug}`;
+      if (entryName in simpleIcons) {
+        const iconData = simpleIcons[entryName as keyof typeof simpleIcons] as SimpleIcon;
+        return `#${iconData["hex"]}`;
+      }
+    }
+
+    return FALLBACK_LANG_COLOR;
+  }
 </script>
 
 <template>
   <Box
     paddingInline="var(--space-m)"
     paddingBlock="var(--space-m)"
+    label="Technologies and Skills"
+    labelComponent="h1"
   >
-    <Stack gap="var(--space-m)">
-      <h1># Technologies and Skills</h1>
-      <Grid
-        target-min-width="40ch"
-        gap="var(--space-l)"
+    <Grid
+      target-min-width="25rem"
+      gap="var(--space-l)"
+    >
+      <Stack
+        v-for="[cat, values] in Object.entries(techData)"
+        gap="1em"
       >
-        <Stack
-          v-for="[cat, values] in Object.entries(techData)"
-          gap="1em"
+        <p :class="$style.categoryLabel">{{ cat }}:</p>
+        <Cluster
+          columnGap="var(--space-xs)"
+          rowGap="var(--space-xs)"
         >
-          <p :class="$style.categoryLabel">{{ cat }}:</p>
-          <Cluster
-            columnGap="var(--space-xs)"
-            rowGap="var(--space-xs)"
-          >
-            <Badge v-for="{ icon, label } in values">
-              <IconText
-                :icon="icon"
-                :iconColor="getLanguageColor(label)"
-                >{{ label }}</IconText
-              >
-            </Badge>
-          </Cluster>
-        </Stack>
-      </Grid>
-    </Stack>
+          <Badge v-for="{ icon, label } in values">
+            <IconText
+              :icon="icon"
+              :iconColor="getIconColor({ icon, label }) ?? undefined"
+              >{{ label }}</IconText
+            >
+          </Badge>
+        </Cluster>
+      </Stack>
+    </Grid>
   </Box>
 </template>
 

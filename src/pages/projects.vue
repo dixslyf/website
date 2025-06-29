@@ -7,39 +7,43 @@
 </script>
 
 <template>
-  <Center
-    v-if="status === 'pending'"
-    :class="$style.spinnerRoot"
-  >
-    <Spinner />
-  </Center>
-  <div
-    v-else-if="error"
-    :class="$style.errorRoot"
-  >
-    Oh no!<br />Failed to fetch projects! :(
+  <div :class="$style.projectsRoot">
+    <Stack
+      v-if="status === 'pending'"
+      :class="$style.topMarginRoot"
+    >
+      <Center>
+        <Spinner />
+      </Center>
+    </Stack>
+    <Stack
+      v-else-if="error"
+      :class="$style.topMarginRoot"
+    >
+      <Center :class="$style.errorRoot"> Oh no!<br />Failed to fetch projects! :( </Center>
+    </Stack>
+    <Grid
+      v-else
+      targetMinWidth="30rem"
+      gap="var(--space-m)"
+    >
+      <RepoCard
+        v-for="repo in repos"
+        :key="repo.id"
+        :repo="repo"
+      />
+    </Grid>
   </div>
-  <Grid
-    v-else
-    targetMinWidth="24rem"
-    gap="var(--space-m)"
-  >
-    <RepoCard
-      v-for="repo in repos"
-      :key="repo.id"
-      :repo="repo"
-    />
-  </Grid>
 </template>
 
 <style module>
-  .spinnerRoot {
-    margin-top: var(--fluid-h-0-240);
+  .topMarginRoot {
+    min-height: 35vh;
+    justify-content: flex-end;
   }
 
   .errorRoot {
     text-align: center;
-    font-size: var(--type-1);
-    margin-top: var(--fluid-h-0-240);
+    font-size: var(--type-2);
   }
 </style>

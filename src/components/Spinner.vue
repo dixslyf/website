@@ -6,7 +6,7 @@
     barWidth = "0.8rem",
     barRadius = "0.8rem",
     barGap = "0.8rem",
-    color = "var(--fg)",
+    color = "var(--accent)",
     duration = 2400,
   } = defineProps<{
     count?: number;

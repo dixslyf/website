@@ -7,14 +7,24 @@
 
 :root {
   /* Colours */
-  --bg: #fffbef;
-  --fg: #5c6a72;
-  --fg-strong: var(--fg);
-  --fg-light: #939f91;
+  --bg: var(--ctp-macchiato-base);
+  --fg: var(--ctp-macchiato-text);
+  --fg-strong: var(--ctp-macchiato-rosewater);
+  --bg-light: var(--ctp-macchiato-surface0);
 
-  --link-fg: var(--fg);
-  --link-fg-visited: var(--fg);
-  --link-fg-hover: var(--fg);
+  --accent: var(--ctp-macchiato-blue);
+  --accent-sec: var(--ctp-macchiato-pink);
+
+  --accent-nav-hover: var(--ctp-macchiato-rosewater);
+
+  --link-fg: var(--ctp-macchiato-blue);
+  --link-fg-visited: var(--ctp-macchiato-lavender);
+  --link-fg-hover: var(--ctp-macchiato-sky);
+
+  --repo-archived-fg: var(--ctp-macchiato-mantle);
+  --repo-archived-bg: var(--ctp-macchiato-peach);
+  --repo-collaborator-fg: var(--ctp-macchiato-mantle);
+  --repo-collaborator-bg: var(--ctp-macchiato-mauve);
 
   /* Typography */
   --line-height: 1.5;
@@ -25,7 +35,7 @@
   --border-thick: 4px;
 
   /* Misc */
-  --content-max-width: 960px;
+  --content-max-width: 1280px;
 }
 
 /* @link https://utopia.fyi/type/calculator?c=320,14,1.2,1280,18,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
@@ -66,9 +76,6 @@
 }
 
 :root {
-  /* @link https://utopia.fyi/clamp/calculator?a=480,960,0—180 */
-  --fluid-0-180: clamp(0rem, -11.25rem + 37.5vw, 11.25rem);
-
   /* @link https://utopia.fyi/clamp/calculator?a=880,1280,0—120 */
   --fluid-h-0-120: clamp(0rem, -7.5rem + 18.75vh, 7.5rem);
 
@@ -94,14 +101,16 @@ body {
   color: var(--fg);
   background-color: var(--bg);
 
-  font-family: "Iosevka Aile", sans-serif;
+  font-family: "Iosevka", sans-serif;
   font-size: var(--type-0);
+  font-weight: 500;
   line-height: var(--line-height);
 }
 
 p,
 li {
-  font-family: "Iosevka Etoile", serif;
+  font-family: "Iosevka", serif;
+  font-weight: 400;
   text-align: justify;
   hyphens: auto;
 }
@@ -115,13 +124,9 @@ ul {
   margin-inline-start: 1.5em;
 }
 
-h1 {
-  font-size: var(--type-2);
-  font-weight: 700;
-}
-
 a {
   color: var(--link-fg);
+  text-decoration: underline;
 
   &:visited {
     color: var(--link-fg-visited);

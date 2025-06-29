@@ -4,7 +4,7 @@ import { type IconifyJSON } from "@iconify/types";
 import simpleIconsJson from "@iconify-json/simple-icons/icons.json";
 import deviconJson from "@iconify-json/devicon-plain/icons.json";
 
-const FALLBACK_LANG_COLOR = "#cccccc";
+export const FALLBACK_LANG_COLOR = "#cccccc";
 
 export function getLanguageColor(lang: string): string {
   return lang in langColors ? langColors[lang as keyof typeof langColors] : FALLBACK_LANG_COLOR;
