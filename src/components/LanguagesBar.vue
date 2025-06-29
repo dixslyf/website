@@ -98,16 +98,16 @@
 
     &.highlighted {
       outline: 2px solid var(--accent-sec);
-      border-radius: 2px !important;
+      border-radius: var(--border-radius) !important;
       z-index: 50;
     }
 
     &:first-child {
-      border-radius: 2px 0 0 2px;
+      border-radius: var(--border-radius) 0 0 var(--border-radius);
     }
 
     &:last-child {
-      border-radius: 0 2px 2px 0;
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
     }
   }
 

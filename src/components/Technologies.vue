@@ -9,8 +9,8 @@
 
   const techData: Record<string, Tech[]> = {
     Web: [
-      { icon: "simple-icons:vuedotjs", label: "Vue" },
-      { icon: "simple-icons:nuxt", label: "Nuxt.js" },
+      { icon: "simple-icons:vuedotjs", label: "Vue.js" },
+      { icon: "simple-icons:nuxt", label: "Nuxt" },
       { icon: "simple-icons:svelte", label: "Svelte" },
       { icon: "simple-icons:react", label: "React" },
       { icon: "simple-icons:nextdotjs", label: "Next.js" },
@@ -94,7 +94,7 @@
     >
       <Stack
         v-for="[cat, values] in Object.entries(techData)"
-        gap="1em"
+        gap="0.5em"
       >
         <p :class="$style.categoryLabel">{{ cat }}:</p>
         <Cluster

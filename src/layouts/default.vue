@@ -34,7 +34,7 @@
 <template>
   <div :class="$style.root">
     <Center gutters="0">
-      <Stack gap="var(--space-m)">
+      <Stack gap="var(--space-xl)">
         <header>
           <Navbar
             :routes="routes"

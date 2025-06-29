@@ -6,7 +6,7 @@
 </script>
 
 <template>
-  <Stack gap="var(--space-2xl)">
+  <Stack gap="var(--space-l)">
     <AboutMe />
     <Technologies />
   </Stack>

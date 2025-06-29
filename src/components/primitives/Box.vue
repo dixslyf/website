@@ -43,7 +43,7 @@
 
     --border-width: v-bind(borderWidth);
     border: var(--border-width) solid var(--box-accent);
-    border-radius: 0.5rem;
+    border-radius: var(--border-radius);
     outline: var(--border-width) transparent;
     outline-offset: calc(var(--border-width) * -1);
 

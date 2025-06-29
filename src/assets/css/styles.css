@@ -28,11 +28,13 @@
 
   /* Typography */
   --line-height: 1.5;
-  --measure: 60ch;
+  --measure: 100ch;
 
   /* Borders */
   --border-thin: 2px;
   --border-thick: 4px;
+  --border-radius: 0.4rem;
+  --badge-radius: 1rem;
 
   /* Misc */
   --content-max-width: 1280px;

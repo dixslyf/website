@@ -3,7 +3,7 @@
     bg = "var(--bg-light)",
     fg = "var(--fg)",
     padding = "0.4em 1em",
-    borderRadius = "2rem",
+    borderRadius = "var(--badge-radius)",
     fontSize = "var(--type--1)",
   } = defineProps<{
     bg?: string;
