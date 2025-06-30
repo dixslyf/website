@@ -1,3 +1,7 @@
+.weak {
+  color: var(--fg-dim-0);
+}
+
 .hoverScale {
   transition: transform 0.2s ease-out;
 

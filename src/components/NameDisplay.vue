@@ -53,6 +53,6 @@
   .subtitle {
     font-weight: 400;
     font-size: var(--type-2);
-    color: var(--fg-light);
+    color: var(--fg-dim-1);
   }
 </style>

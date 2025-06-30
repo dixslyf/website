@@ -6,7 +6,7 @@
     labelComponent="h1"
   >
     <Stack gap="1em">
-      <p>Hi! I'm Dixon. I like to:</p>
+      <p>Hi! I'm Dixon <span class="weak">(Sean Low Yan Feng)</span>. I like to:</p>
       <ul>
         <li>Tinker with <strong>Linux</strong> and <strong>open-source software</strong>.</li>
         <li>
