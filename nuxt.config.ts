@@ -22,6 +22,7 @@ export default defineNuxtConfig({
 
     // Re-validate every hour.
     "/projects": { prerender: false, isr: 60 * 60 },
+    "/api/**": { prerender: false, isr: 60 * 60 },
   },
   runtimeConfig: {
     githubToken: "",
