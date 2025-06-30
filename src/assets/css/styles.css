@@ -10,6 +10,7 @@
   /* Colours */
   --bg: var(--ctp-macchiato-base);
   --fg: var(--ctp-macchiato-text);
+  --fg-light: var(--ctp-macchiato-subtext0);
   --fg-strong: var(--ctp-macchiato-rosewater);
   --bg-light: var(--ctp-macchiato-surface0);
 

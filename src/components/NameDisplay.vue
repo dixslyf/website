@@ -35,6 +35,7 @@
     font-weight: 400;
     font-family: Noto Sans SC;
     line-height: 1;
+    color: var(--accent-sec);
   }
 
   .latinContainer {
@@ -52,5 +53,6 @@
   .subtitle {
     font-weight: 400;
     font-size: var(--type-2);
+    color: var(--fg-light);
   }
 </style>
