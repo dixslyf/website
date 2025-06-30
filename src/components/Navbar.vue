@@ -41,14 +41,11 @@
         :columnGap
         rowGap="var(--space-m)"
       >
-        <span>
-          <span :class="$style.currentPath"
-            >/home/dixslyf<span>{{ typewriter.text.value }}</span></span
-          >
+        <span :class="$style.navTitle">
+          /home/dixslyf{{ typewriter.text.value }}
           <TextCaret :visible="typewriter.state.value !== TypewriterState.Idle" />
         </span>
         <Cluster
-          :class="$style.innerCluster"
           :columnGap
           rowGap="var(--space-2xs)"
         >
@@ -71,22 +68,22 @@
 </template>
 
 <style module>
-  .outerCluster {
-    justify-content: space-between;
-
-    font-size: var(--type-1);
-    font-weight: 500;
-  }
-
-  .innerCluster {
-    justify-content: flex-start;
-  }
-
   .navRoot {
     --local-accent: var(--accent);
     &:hover {
       --local-accent: var(--accent-sec);
     }
+  }
+
+  .outerCluster {
+    justify-content: center;
+
+    font-size: var(--type-1);
+    font-weight: 500;
+  }
+
+  .navTitle {
+    flex-grow: 1;
   }
 
   .navlink {
