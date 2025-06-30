@@ -17,6 +17,12 @@ export default defineNuxtConfig({
       { name: "Noto Sans SC", weights: ["100 900"] },
     ],
   },
+  routeRules: {
+    "/**": { prerender: true },
+
+    // Re-validate every hour.
+    "/projects": { prerender: false, isr: 60 * 60 },
+  },
   runtimeConfig: {
     githubToken: "",
   },
