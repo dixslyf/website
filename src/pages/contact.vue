@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { onMounted, ref, type Ref, computed } from "vue";
+  import { motion } from "motion-v";
 
   const gridTargetMinWidth = "13rem";
 
@@ -36,6 +37,9 @@
       icon: "lucide:mail",
     },
   ];
+
+  const route = useRoute();
+  const slideInDirection = route.meta.inDirection || "left";
 </script>
 
 <template>
@@ -44,27 +48,33 @@
     :targetMinWidth="gridTargetMinWidth"
     gap="var(--space-m)"
   >
-    <a
-      v-for="contact in contactData"
-      :href="typeof contact.href === 'string' ? contact.href : contact.href.value"
-      target="_blank"
-    >
-      <Box
-        paddingBlock="var(--space-m)"
-        paddingInline="var(--space-m)"
+    <!-- Not completely sure what's going on, but this transition group is needed.
+         Otherwise, there will be an error about WeakMap and null keys. -->
+    <TransitionGroup>
+      <motion.a
+        v-for="(contact, idx) in contactData"
+        :key="contact.label"
+        :href="typeof contact.href === 'string' ? contact.href : contact.href.value"
+        v-bind="slideInProps({ direction: slideInDirection, idx })"
+        target="_blank"
       >
-        <Stack
-          :class="$style.iconText"
-          gap="var(--space-xs)"
+        <Box
+          paddingBlock="var(--space-m)"
+          paddingInline="var(--space-m)"
         >
-          <Icon
-            :name="contact.icon"
-            size="2.5em"
-          />
-          <span>{{ contact.label }}</span>
-        </Stack>
-      </Box>
-    </a>
+          <Stack
+            :class="$style.iconText"
+            gap="var(--space-xs)"
+          >
+            <Icon
+              :name="contact.icon"
+              size="2.5em"
+            />
+            <span>{{ contact.label }}</span>
+          </Stack>
+        </Box>
+      </motion.a>
+    </TransitionGroup>
   </Grid>
 </template>
 

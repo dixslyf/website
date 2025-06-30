@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
-  modules: ["@nuxt/eslint", "@nuxt/fonts", "@nuxt/icon"],
+  modules: ["@nuxt/eslint", "@nuxt/fonts", "@nuxt/icon", "motion-v/nuxt"],
   srcDir: "src/",
   components: [
     {
@@ -19,5 +19,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     githubToken: "",
+  },
+  app: {
+    pageTransition: { name: "page-slide-left", mode: "out-in" },
   },
 });

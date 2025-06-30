@@ -10,25 +10,7 @@
       name: name?.toString() || "undefined",
     }))
     // Sort order: about, projects, contact
-    .sort((routeA, routeB) => {
-      if (routeA.name === "about") {
-        return -1;
-      }
-
-      if (routeB.name === "about") {
-        return 1;
-      }
-
-      if (routeA.name === "projects" && routeB.name === "contact") {
-        return -1;
-      }
-
-      if (routeA.name === "contact" && routeB.name === "projects") {
-        return 1;
-      }
-
-      return 0;
-    });
+    .sort((routeA, routeB) => sortRoutes(routeA.name, routeB.name));
 </script>
 
 <template>

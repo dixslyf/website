@@ -1,14 +1,30 @@
 <script setup lang="ts">
-  import { definePageMeta } from "#imports";
+  import { motion } from "motion-v";
+
   definePageMeta({
     name: "about",
   });
+
+  const route = useRoute();
+  const slideInDirection = route.meta.inDirection || "right";
 </script>
 
 <template>
   <Stack gap="var(--space-l)">
-    <AboutMe />
-    <Technologies />
+    <TransitionGroup>
+      <motion.div
+        key="about-me"
+        v-bind="slideInProps({ direction: slideInDirection })"
+      >
+        <AboutMe />
+      </motion.div>
+      <motion.div
+        key="technologies"
+        v-bind="slideInProps({ direction: slideInDirection, idx: 1, delayStep: 0.4 })"
+      >
+        <Technologies />
+      </motion.div>
+    </TransitionGroup>
   </Stack>
 </template>
 

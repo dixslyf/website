@@ -4,6 +4,7 @@
 @import "@catppuccin/palette/css/catppuccin.css";
 
 @import "./utils.css";
+@import "./transitions.css";
 
 :root {
   /* Colours */

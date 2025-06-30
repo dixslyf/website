@@ -1,30 +1,33 @@
 <script setup lang="ts">
   const showSplash = ref(true);
 
-  onBeforeMount(() => {
+  onMounted(() => {
     const hasSeenSplash = sessionStorage.getItem("hasSeenSplash");
     if (hasSeenSplash) {
       showSplash.value = false;
-    }
-  });
-
-  onMounted(() => {
-    if (!showSplash.value) {
       return;
     }
+
+    showSplash.value = true;
 
     // Hide the splash after a delay.
     setTimeout(() => {
       showSplash.value = false;
       sessionStorage.setItem("hasSeenSplash", "true");
-    }, 2000);
+    }, 3000);
   });
 </script>
 
 <template>
-  <FadeTransition>
-    <Splash v-if="showSplash" />
-  </FadeTransition>
+  <AnimatePresence>
+    <Motion
+      v-if="showSplash"
+      v-bind="splashProps()"
+      asChild
+    >
+      <Splash />
+    </Motion>
+  </AnimatePresence>
 
   <NuxtLayout>
     <NuxtPage />

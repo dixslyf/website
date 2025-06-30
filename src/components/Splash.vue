@@ -10,12 +10,13 @@
   <div :class="$style.splashRoot">
     <Stack :class="$style.splashStack">
       <Center>
-        <FadeTransition>
-          <NameDisplay
-            :class="$style.splashContent"
-            v-if="showNameDisplay"
-          />
-        </FadeTransition>
+        <Motion
+          v-if="showNameDisplay"
+          v-bind="fadeProps()"
+          asChild
+        >
+          <NameDisplay :class="$style.splashContent" />
+        </Motion>
       </Center>
     </Stack>
   </div>
