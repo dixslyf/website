@@ -1,6 +1,8 @@
 <script setup lang="ts">
   import { watch } from "vue";
 
+  import { useDark, useToggle } from "@vueuse/core";
+
   import { TypewriterState, useTypewriter } from "@/composables/typewriter";
 
   const { routes, currentRoutePath } = defineProps<{
@@ -17,6 +19,16 @@
     }
     return route;
   }
+
+  const isDark = useDark();
+  const toggleDark = useToggle(isDark);
+  const themeAnimProps = slideProps({
+    inDirection: "up",
+    outDirection: "up",
+    inDistance: 1,
+    outDistance: -1,
+    duration: 0.3,
+  });
 
   const typewriter = useTypewriter({ initialText: routeDisplay(currentRoutePath) });
   watch(
@@ -46,6 +58,7 @@
           <TextCaret :visible="typewriter.state.value !== TypewriterState.Idle" />
         </span>
         <Cluster
+          :class="$style.innerCluster"
           :columnGap
           rowGap="var(--space-2xs)"
         >
@@ -61,6 +74,32 @@
           >
             {{ route.name }}
           </NuxtLink>
+          <div :class="$style.themeIconContainer">
+            <AnimatePresence mode="wait">
+              <Motion
+                asChild
+                v-if="isDark"
+                v-bind="themeAnimProps"
+              >
+                <Icon
+                  :name="'lucide:moon'"
+                  :class="$style.themeIcon"
+                  @click="toggleDark()"
+                />
+              </Motion>
+              <Motion
+                asChild
+                v-else
+                v-bind="themeAnimProps"
+              >
+                <Icon
+                  :name="'lucide:sun'"
+                  :class="$style.themeIcon"
+                  @click="toggleDark()"
+                />
+              </Motion>
+            </AnimatePresence>
+          </div>
         </Cluster>
       </Cluster>
     </Box>
@@ -86,6 +125,10 @@
     flex-grow: 1;
   }
 
+  .innerCluster {
+    align-items: center;
+  }
+
   .navlink {
     text-decoration: none;
 
@@ -102,5 +145,17 @@
 
   .navlinkCurrent {
     color: var(--local-accent) !important;
+  }
+
+  .themeIconContainer {
+    display: flex;
+  }
+
+  .themeIcon {
+    cursor: pointer;
+
+    &:hover {
+      color: var(--accent-nav-hover);
+    }
   }
 </style>

@@ -35,7 +35,7 @@
     font-weight: 400;
     font-family: Noto Sans SC;
     line-height: 1;
-    color: var(--accent-sec);
+    color: var(--accent-splash);
   }
 
   .latinContainer {

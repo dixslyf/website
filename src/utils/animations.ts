@@ -14,20 +14,73 @@ function fillDefaults(o?: BaseAnimationOptions) {
   };
 }
 
+export type Direction = "left" | "right" | "up" | "down";
+
+function defaultDistance(direction: Direction) {
+  if (direction === "left") {
+    return 25;
+  }
+
+  if (direction === "right") {
+    return -25;
+  }
+
+  if (direction === "up") {
+    return 8;
+  }
+
+  return -8;
+}
+
 export type SlideInOptions = {
-  direction: "left" | "right" | "up" | "down";
+  direction: Direction;
+  distance?: number; // In "rem" units.
 } & BaseAnimationOptions;
 
 export function slideInProps(options?: SlideInOptions) {
   const { idx, duration, delayStep, baseDelay } = fillDefaults(options);
   const direction = options?.direction || "left";
+  const distance = options?.distance === undefined ? defaultDistance(direction) : options.distance;
   return {
     initial: {
-      x: direction === "left" ? "25rem" : direction === "right" ? "-25rem" : 0,
-      y: direction === "up" ? "8rem" : direction === "down" ? "-8rem" : 0,
+      x: ["left", "right"].includes(direction) ? `${distance}rem` : 0,
+      y: ["up", "down"].includes(direction) ? `${distance}rem` : 0,
       opacity: 0,
     },
     animate: { x: 0, y: 0, opacity: 1 },
+    transition: { delay: baseDelay + delayStep * idx, duration, ease: "easeInOut" as const },
+  };
+}
+
+export type SlideOptions = {
+  inDirection: Direction;
+  outDirection: Direction;
+  inDistance?: number; // In "rem" units.
+  outDistance?: number; // In "rem" units.
+} & BaseAnimationOptions;
+
+export function slideProps(options?: SlideOptions) {
+  const { idx, duration, delayStep, baseDelay } = fillDefaults(options);
+  const inDirection = options?.inDirection || "up";
+  const outDirection = options?.outDirection || "up";
+
+  const inDistance =
+    options?.inDistance === undefined ? defaultDistance(inDirection) : options.inDistance;
+  const outDistance =
+    options?.outDistance === undefined ? defaultDistance(outDirection) : options.outDistance;
+
+  return {
+    initial: {
+      x: ["left", "right"].includes(inDirection) ? `${inDistance}rem` : 0,
+      y: ["up", "down"].includes(inDirection) ? `${inDistance}rem` : 0,
+      opacity: 0,
+    },
+    animate: { x: 0, y: 0, opacity: 1 },
+    exit: {
+      x: ["left", "right"].includes(outDirection) ? `${outDistance}rem` : 0,
+      y: ["up", "down"].includes(outDirection) ? `${outDistance}rem` : 0,
+      opacity: 0,
+    },
     transition: { delay: baseDelay + delayStep * idx, duration, ease: "easeInOut" as const },
   };
 }
