@@ -21,3 +21,17 @@
 .page-slide-right-leave-to {
   transform: translateX(25rem);
 }
+
+.page-fade-enter-active,
+.page-fade-leave-active,
+.page-fade-enter-active,
+.page-fade-leave-active {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.page-fade-enter-from,
+.page-fade-leave-to,
+.page-fade-enter-from,
+.page-fade-leave-to {
+  opacity: 0;
+}

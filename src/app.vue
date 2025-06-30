@@ -19,17 +19,19 @@
 </script>
 
 <template>
-  <AnimatePresence>
-    <Motion
-      v-if="showSplash"
-      v-bind="splashProps()"
-      asChild
-    >
-      <Splash />
-    </Motion>
-  </AnimatePresence>
+  <MotionConfig reducedMotion="user">
+    <AnimatePresence>
+      <Motion
+        v-if="showSplash"
+        v-bind="splashProps()"
+        asChild
+      >
+        <Splash />
+      </Motion>
+    </AnimatePresence>
 
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </MotionConfig>
 </template>
