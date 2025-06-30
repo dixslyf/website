@@ -89,6 +89,12 @@
   .navlink {
     text-decoration: none;
 
+    color: var(--fg);
+
+    transition:
+      color 0.2s ease-in-out,
+      transform 0.2s ease-out; /* For hoverUnderline. */
+
     &:hover {
       color: var(--accent-nav-hover) !important;
     }

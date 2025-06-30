@@ -20,8 +20,7 @@
 
   --accent-nav-hover: var(--ctp-macchiato-rosewater);
 
-  --link-fg: var(--ctp-macchiato-blue);
-  --link-fg-visited: var(--ctp-macchiato-lavender);
+  --link-fg: var(--ctp-macchiato-lavender);
   --link-fg-hover: var(--ctp-macchiato-sky);
 
   --repo-archived-fg: var(--ctp-macchiato-mantle);
@@ -133,9 +132,7 @@ a {
   color: var(--link-fg);
   text-decoration: underline;
 
-  &:visited {
-    color: var(--link-fg-visited);
-  }
+  transition: color 0.2s ease-in-out;
 
   &:hover {
     color: var(--link-fg-hover);

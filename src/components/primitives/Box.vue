@@ -47,6 +47,10 @@
     outline: var(--border-width) transparent;
     outline-offset: calc(var(--border-width) * -1);
 
+    transition:
+      border-color 0.2s ease-in-out,
+      transform 0.2s ease-out; /* For hoverScale. */
+
     &:hover {
       --box-accent: var(--border-color-hover);
     }
@@ -60,6 +64,8 @@
     left: 0.75em;
 
     padding-inline: 0.25em;
+
+    transition: color 0.2s ease-out;
 
     font-size: v-bind(labelFontSize);
     color: var(--box-accent);
