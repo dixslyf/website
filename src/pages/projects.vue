@@ -1,9 +1,7 @@
 <script setup lang="ts">
   import { motion } from "motion-v";
 
-  const { status, data, error } = useFetch("/api/githubProjects", {
-    lazy: true,
-  });
+  const { status, data, error } = await useFetch("/api/githubProjects");
 
   const repos = computed(() => data.value?.repos ?? []);
 </script>
