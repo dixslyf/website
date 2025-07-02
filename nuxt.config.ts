@@ -18,10 +18,8 @@ export default defineNuxtConfig({
     ],
   },
   routeRules: {
-    "/**": { prerender: true },
-
-    // Re-validate every hour.
-    "/projects": { prerender: false, isr: 60 * 60 },
+    // Re-validate routes every hour.
+    "/**": { isr: 60 * 60 },
   },
   runtimeConfig: {
     githubToken: "",
