@@ -34,8 +34,10 @@ export default defineEventHandler(async (event) => {
     auth: runtimeConfig.githubToken,
   });
 
+  const fetchedAt = new Date().toISOString();
   const repos = (await fetchRepos(octokit)).sort(sortRepos);
   return {
     repos,
+    fetchedAt,
   };
 });

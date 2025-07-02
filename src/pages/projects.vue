@@ -1,12 +1,25 @@
 <script setup lang="ts">
   import { motion } from "motion-v";
+  import ms from "ms";
 
   const { status, data, error } = await useFetch("/api/githubProjects");
 
   const repos = computed(() => data.value?.repos ?? []);
+
+  const generatedAt = useState(() => new Date().toISOString());
+  const date = new Date(generatedAt.value);
+  const timeAgo = ref();
+  onMounted(() => {
+    timeAgo.value = ms(Date.now() - date.valueOf(), { long: true });
+  });
 </script>
 
 <template>
+  <span>
+    <strong v-if="timeAgo">Page last updated at: {{ timeAgo }} ago</strong>
+    <br />
+    <strong v-if="data?.fetchedAt">Repos last fetched at: {{ data.fetchedAt }}</strong>
+  </span>
   <div :class="$style.projectsRoot">
     <AnimatePresence mode="wait">
       <Motion
