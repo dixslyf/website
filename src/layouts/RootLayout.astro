@@ -3,7 +3,7 @@ import "@/styles/global.css";
 
 import { ClientRouter } from "astro:transitions";
 
-import { Navbar } from "@/components";
+import { Navbar, Splash } from "@/components";
 import { Center, Stack } from "@/components/primitives";
 
 const pageAnim = {
@@ -66,6 +66,8 @@ const pageTransition = {
 
   <body>
     <div class="root">
+      <Splash client:load />
+
       <Center gutters="0">
         <Stack gap="var(--space-xl)">
           <header>
