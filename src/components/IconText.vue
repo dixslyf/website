@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { Icon } from "@iconify/vue";
+
   const {
     icon,
     iconSize = "1em",
@@ -18,7 +20,7 @@
   <div :class="$style.iconText">
     <Icon
       v-if="icon"
-      :name="icon"
+      :icon="icon"
       :class="$style.icon"
     />
     <slot />

@@ -1,5 +1,6 @@
-import type { Endpoints } from "@octokit/types";
+import { Octokit } from "@octokit/rest";
 
+import type { Endpoints } from "@octokit/types";
 export type RepoInfo = Endpoints["GET /users/{username}/repos"]["response"]["data"][number] & {
   languages: Endpoints["GET /repos/{owner}/{repo}/languages"]["response"]["data"];
 };
@@ -40,3 +41,39 @@ export function sortRepos(repoA: RepoInfo, repoB: RepoInfo): number {
 
   return 0;
 }
+
+async function fetchGitHubRepos(octokit: Octokit) {
+  const res = await octokit.rest.repos.listForUser({
+    username: "dixslyf",
+    type: "all",
+  });
+
+  // Filter out forks.
+  const reposFiltered = res.data.filter((repo) => !repo.fork);
+
+  return Promise.all(
+    reposFiltered.map(async (repo) => {
+      // Fetch languages.
+      const res = await octokit.rest.repos.listLanguages({
+        owner: repo.owner.login,
+        repo: repo.name,
+      });
+      return { ...repo, languages: res.data };
+    }),
+  );
+}
+
+export default async function projectsData(): Promise<{ repos: RepoInfo[] }> {
+  const octokit = new Octokit({
+    userAgent: "dixslyf-website",
+    request: {
+      fetch,
+    },
+    auth: import.meta.env.GITHUB_TOKEN,
+  });
+
+  const repos = (await fetchGitHubRepos(octokit)).sort(sortRepos);
+  return { repos };
+}
+
+export type Data = Awaited<ReturnType<typeof projectsData>>;

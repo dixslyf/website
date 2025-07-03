@@ -3,6 +3,14 @@
 
 @import "@catppuccin/palette/css/catppuccin.css";
 
+@import "@fontsource/iosevka/400";
+@import "@fontsource/iosevka/400-italic";
+@import "@fontsource/iosevka/500";
+@import "@fontsource/iosevka/600";
+@import "@fontsource/iosevka/700";
+
+@import "@fontsource-variable/noto-sans-sc";
+
 @import "./utils.css";
 @import "./transitions.css";
 

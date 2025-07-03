@@ -3,7 +3,13 @@
 
   import { useDark, useToggle } from "@vueuse/core";
 
+  import { AnimatePresence, Motion } from "motion-v";
+  import { Icon } from "@iconify/vue";
+
+  import { Box, Cluster } from "@/components/primitives";
+  import { TextCaret } from "@/components";
   import { TypewriterState, useTypewriter } from "@/composables/typewriter";
+  import { slideProps } from "@/utils/animations";
 
   const { routes, currentRoutePath } = defineProps<{
     routes: ReadonlyArray<{
@@ -62,18 +68,14 @@
           :columnGap
           rowGap="var(--space-2xs)"
         >
-          <NuxtLink
+          <a
             v-for="route in routes"
             :key="route.path"
-            :to="route.path"
-            :class="[
-              $style.navlink,
-              'hoverUnderline',
-              { [$style.navlinkCurrent]: route.path === currentRoutePath },
-            ]"
+            :href="route.path"
+            :class="[$style.navlink, 'hoverUnderline', { [$style.navlinkCurrent]: route.path === currentRoutePath }]"
           >
             {{ route.name }}
-          </NuxtLink>
+          </a>
           <div :class="$style.themeIconContainer">
             <AnimatePresence mode="wait">
               <Motion
@@ -82,7 +84,7 @@
                 v-bind="themeAnimProps"
               >
                 <Icon
-                  :name="'lucide:moon'"
+                  :icon="'lucide:moon'"
                   :class="$style.themeIcon"
                   @click="toggleDark()"
                 />
@@ -93,7 +95,7 @@
                 v-bind="themeAnimProps"
               >
                 <Icon
-                  :name="'lucide:sun'"
+                  :icon="'lucide:sun'"
                   :class="$style.themeIcon"
                   @click="toggleDark()"
                 />

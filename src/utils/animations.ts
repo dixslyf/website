@@ -64,10 +64,8 @@ export function slideProps(options?: SlideOptions) {
   const inDirection = options?.inDirection || "up";
   const outDirection = options?.outDirection || "up";
 
-  const inDistance =
-    options?.inDistance === undefined ? defaultDistance(inDirection) : options.inDistance;
-  const outDistance =
-    options?.outDistance === undefined ? defaultDistance(outDirection) : options.outDistance;
+  const inDistance = options?.inDistance === undefined ? defaultDistance(inDirection) : options.inDistance;
+  const outDistance = options?.outDistance === undefined ? defaultDistance(outDirection) : options.outDistance;
 
   return {
     initial: {

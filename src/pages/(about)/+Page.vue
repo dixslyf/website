@@ -1,12 +1,14 @@
 <script setup lang="ts">
+  import { TransitionGroup } from "vue";
+
   import { motion } from "motion-v";
 
-  definePageMeta({
-    name: "about",
-  });
+  import { Stack } from "@/components/primitives";
+  import { AboutMe, Technologies } from "@/components";
+  import { slideInProps } from "@/utils/animations";
 
-  const route = useRoute();
-  const slideInDirection = route.meta.inDirection || "right";
+  // const route = useRoute();
+  const slideInDirection = "right"; // route.meta.inDirection || "right";
 </script>
 
 <template>

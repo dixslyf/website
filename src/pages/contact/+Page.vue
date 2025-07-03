@@ -2,6 +2,11 @@
   import { onMounted, ref, type Ref, computed } from "vue";
   import { motion } from "motion-v";
 
+  import { Icon } from "@iconify/vue";
+
+  import { Box, Stack, Grid } from "@/components/primitives";
+  import { slideInProps } from "@/utils/animations";
+
   const gridTargetMinWidth = "13rem";
 
   // Basic email obfuscation to prevent scrapers from getting my email address.
@@ -38,8 +43,8 @@
     },
   ];
 
-  const route = useRoute();
-  const slideInDirection = route.meta.inDirection || "left";
+  // const route = useRoute();
+  const slideInDirection = "left"; // route.meta.inDirection || "left";
 </script>
 
 <template>
@@ -67,8 +72,8 @@
             gap="var(--space-xs)"
           >
             <Icon
-              :name="contact.icon"
-              size="2.5em"
+              :icon="contact.icon"
+              font-size="2.5em"
             />
             <span>{{ contact.label }}</span>
           </Stack>

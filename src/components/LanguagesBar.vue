@@ -1,15 +1,15 @@
 <script setup lang="ts">
   import { computed, ref, type Ref } from "vue";
 
+  import { Stack, Cluster } from "@/components/primitives";
+  import { IconText, Badge } from "@/components";
   import { getLanguageIcon, getLanguageColor } from "@/utils/languages";
 
   const { languages } = defineProps<{
     languages: Record<string, number>;
   }>();
 
-  const langsSizeTotal = computed(() =>
-    Object.values(languages).reduce((prev, curr) => prev + curr),
-  );
+  const langsSizeTotal = computed(() => Object.values(languages).reduce((prev, curr) => prev + curr));
 
   const langsProcessed = computed(() =>
     Object.entries(languages)
@@ -61,8 +61,7 @@
           :class="[
             $style.langBadge,
             {
-              [$style.langBadgeHover]:
-                hoveredLang?.language === language && hoveredLang?.source === 'bar-section',
+              [$style.langBadgeHover]: hoveredLang?.language === language && hoveredLang?.source === 'bar-section',
             },
           ]"
         >
@@ -72,7 +71,7 @@
             @mouseenter="hoveredLang = { source: 'icon-text', language }"
             @mouseleave="hoveredLang = null"
           >
-          {{ language }} {{ percentage > 0.1 ? percentage.toFixed(1) : "< 0.1" }}%
+            {{ language }} {{ percentage > 0.1 ? percentage.toFixed(1) : "< 0.1" }}%
           </IconText>
         </Badge>
       </template>

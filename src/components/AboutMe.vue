@@ -1,3 +1,7 @@
+<script setup lang="ts">
+  import {Box, Stack } from "@/components/primitives";
+</script>
+
 <template>
   <Box
     paddingInline="var(--space-m)"
@@ -10,14 +14,13 @@
       <ul>
         <li>Tinker with <strong>Linux</strong> and <strong>open-source software</strong>.</li>
         <li>
-          Use the <strong>terminal</strong>. Here are some of my favourite tools: Neovim, Git, Nix,
-          Zeillj, zoxide.
+          Use the <strong>terminal</strong>. Here are some of my favourite tools: Neovim, Git, Nix, Zeillj, zoxide.
         </li>
         <li><strong>Learn</strong> new things (usually, but not limited to, software).</li>
       </ul>
       <p>
-        I am also passionate about <strong>artificial intelligence</strong>,
-        <strong>software engineering</strong> and <strong>reproducibility</strong>.
+        I am also passionate about <strong>artificial intelligence</strong>, <strong>software engineering</strong> and
+        <strong>reproducibility</strong>.
       </p>
     </Stack>
   </Box>

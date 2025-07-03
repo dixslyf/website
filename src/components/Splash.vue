@@ -1,4 +1,11 @@
 <script setup lang="ts">
+  import { onMounted, ref } from "vue";
+  import { Motion } from "motion-v";
+
+  import { Stack, Center } from "@/components/primitives";
+  import { NameDisplay } from "@/components";
+  import { fadeProps } from "@/utils/animations";
+
   // For avoiding layout shift during initial load.
   const showNameDisplay = ref(false);
   onMounted(() => {

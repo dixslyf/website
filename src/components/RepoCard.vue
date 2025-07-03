@@ -1,4 +1,11 @@
 <script setup lang="ts">
+  import { RepoInfo } from "@/pages/projects/+data";
+
+  import { Icon } from "@iconify/vue";
+
+  import { Box, Stack, Cluster } from "@/components/primitives";
+  import { IconText, Badge, LanguagesBar } from "@/components";
+
   const { repo } = defineProps<{
     repo: RepoInfo;
   }>();

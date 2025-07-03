@@ -6,30 +6,12 @@ devenv.local.nix
 .direnv
 .envrc
 
-# pre-commit
 .pre-commit-config.yaml
 
-# Nuxt dev/build outputs
-.output
-.data
-.nuxt
-.nitro
-.cache
-dist
+node_modules/
 
-# Node dependencies
-node_modules
+.env*
 
-# Logs
-logs
-*.log
+.vercel/
 
-# Misc
-.DS_Store
-.fleet
-.idea
-
-# Local env files
-.env
-.env.*
-!.env.example
+dist/

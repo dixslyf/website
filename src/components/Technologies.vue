@@ -1,6 +1,10 @@
 <script setup lang="ts">
+  import { FALLBACK_LANG_COLOR, getLanguageColor } from "@/utils/languages";
   import * as simpleIcons from "simple-icons";
   import type { SimpleIcon } from "simple-icons";
+
+  import { Box, Grid, Stack, Cluster } from "@/components/primitives";
+  import { Badge, IconText } from "@/components";
 
   type Tech = {
     icon: string | null;
@@ -41,9 +45,7 @@
       { icon: "simple-icons:gnubash", label: "Bash" },
     ],
 
-    "Continuous integration / continuous deployment": [
-      { icon: "simple-icons:githubactions", label: "GitHub Actions" },
-    ],
+    "Continuous integration / continuous deployment": [{ icon: "simple-icons:githubactions", label: "GitHub Actions" }],
 
     "Operating systems": [
       { icon: "simple-icons:nixos", label: "NixOS" },
@@ -105,8 +107,9 @@
             <IconText
               :icon="icon"
               :iconColor="getIconColor({ icon, label }) ?? undefined"
-              >{{ label }}</IconText
             >
+              {{ label }}
+            </IconText>
           </Badge>
         </Cluster>
       </Stack>
