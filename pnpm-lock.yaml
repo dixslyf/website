@@ -17,6 +17,12 @@ importers:
       '@catppuccin/palette':
         specifier: ^1.7.1
         version: 1.7.1
+      '@fontsource-variable/noto-sans-sc':
+        specifier: ^5.2.6
+        version: 5.2.6
+      '@fontsource/iosevka':
+        specifier: ^5.2.5
+        version: 5.2.5
       '@iconify-json/devicon-plain':
         specifier: ^1.2.29
         version: 1.2.29
@@ -405,6 +411,12 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource-variable/noto-sans-sc@5.2.6':
+    resolution: {integrity: sha512-PbDg8YG05A/8mFiII8lqK0Nvn5gDbCcvDctwNQjIFaBptLFNXDofmnocvki+A4ss3VxdYCyG4xznauMPQi+/RA==}
+
+  '@fontsource/iosevka@5.2.5':
+    resolution: {integrity: sha512-Zv/UHJodDug1LcnWv2u2+GPp3oWP3U6Xp16cJOsqqZQNsCu8sA/ttT331N0NypxBZ+7c8szlSRlYDcy9liZ8pw==}
 
   '@iconify-json/devicon-plain@1.2.29':
     resolution: {integrity: sha512-yw8u5/wvyWicACQHK81kWKwQXGnyEsWwVU5axG8rWM4smXD47xSzijIJKbZRCjP46kW5iOFwieOlZ8+TSu1aTA==}
@@ -2757,6 +2769,10 @@ snapshots:
 
   '@esbuild/win32-x64@0.25.5':
     optional: true
+
+  '@fontsource-variable/noto-sans-sc@5.2.6': {}
+
+  '@fontsource/iosevka@5.2.5': {}
 
   '@iconify-json/devicon-plain@1.2.29':
     dependencies:
