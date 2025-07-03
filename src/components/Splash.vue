@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { onMounted, ref } from "vue";
 
-  import { AnimatePresence, motion } from "motion-v";
+  import { AnimatePresence, Motion, motion } from "motion-v";
 
   import { Stack, Center } from "@/components/primitives";
   import { NameDisplay } from "@/components";
@@ -32,9 +32,8 @@
 </script>
 
 <template>
-  <AnimatePresence client:load>
+  <AnimatePresence>
     <motion.div
-      client:load
       v-if="showSplash"
       v-bind="splashProps()"
       :class="$style.splashRoot"
