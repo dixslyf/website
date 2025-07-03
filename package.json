@@ -9,11 +9,14 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/vercel": "^8.2.0",
     "@astrojs/vue": "^5.1.0",
     "@catppuccin/palette": "^1.7.1",
     "@iconify-json/devicon-plain": "^1.2.29",
     "@iconify-json/simple-icons": "^1.2.41",
     "@iconify/vue": "^5.0.0",
+    "@octokit/rest": "^22.0.0",
+    "@octokit/types": "^14.1.0",
     "@vueuse/core": "^13.5.0",
     "astro": "^5.10.1",
     "gh-lang-colors": "^0.1.13",

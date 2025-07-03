@@ -1,4 +1,9 @@
 <script setup lang="ts">
+  import type { RepoInfo } from "@/utils/projects";
+
+  import { Box, Stack, Cluster } from "@/components/primitives";
+  import { IconText, Badge, LanguagesBar } from "@/components";
+
   const { repo } = defineProps<{
     repo: RepoInfo;
   }>();
@@ -45,7 +50,7 @@
             <span>
               <span :class="$style.repoTitleText">{{ repo.owner.login }}/{{ repo.name }}</span>
               <Icon
-                name="lucide:external-link"
+                icon="lucide:external-link"
                 :class="$style.repoTitleExternalLink"
               />
             </span>
