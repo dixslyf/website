@@ -1,0 +1,90 @@
+---
+import { Motion } from "motion-v";
+
+import { RootLayout } from "@/layouts";
+import { Grid } from "@/components/primitives";
+import { ContactBox } from "@/components";
+import { slideInProps } from "@/utils/animations";
+
+const gridTargetMinWidth = "13rem";
+
+const contactData: Array<{
+  href: string | null;
+  label: string;
+  icon: string;
+}> = [
+  {
+    href: "//github.com/dixslyf",
+    label: "GitHub",
+    icon: "simple-icons:github",
+  },
+  {
+    href: "//gitlab.com/dixslyf",
+    label: "GitLab",
+    icon: "simple-icons:gitlab",
+  },
+  {
+    href: "//www.linkedin.com/in/dixslyf/",
+    label: "LinkedIn",
+    icon: "devicon-plain:linkedin",
+  },
+  {
+    href: "",
+    label: "Email",
+    icon: "lucide:mail",
+  },
+];
+---
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const emailLink = document.getElementById("contactbox-email") as HTMLAnchorElement | null;
+    if (!emailLink) {
+      // Probably on a different page.
+      return;
+    }
+
+    // Basic email obfuscation to prevent scrapers from getting my email address.
+    const EMAIL_B64 = "Y29udGFjdEBkaXhzbHlmLmRldgo=";
+    const email = atob(EMAIL_B64);
+    emailLink.href = `mailto:${email}`;
+  });
+</script>
+
+<RootLayout>
+  <div class="contactRoot">
+    <Grid
+      targetMinWidth={gridTargetMinWidth}
+      gap="var(--space-m)"
+    >
+      {
+        contactData.map(({ href, label, icon }, idx) => (
+          <Motion
+            client:load
+            {...slideInProps({ direction: "left", idx })}
+          >
+            <a
+              id={`contactbox-${label.toLowerCase()}`}
+              {href}
+              target="_blank"
+            >
+              <ContactBox
+                {icon}
+                {label}
+              />
+            </a>
+          </Motion>
+        ))
+      }
+    </Grid>
+  </div>
+</RootLayout>
+
+<style>
+  .contactRoot {
+    margin-top: var(--fluid-h-0-120);
+
+    /* @link https://utopia.fyi/clamp/calculator?a=500,1280,0—320 */
+    margin-inline: clamp(0rem, -12.8205rem + 41.0256vw, 20rem);
+  }
+</style>

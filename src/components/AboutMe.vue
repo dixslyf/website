@@ -1,3 +1,7 @@
+<script setup lang="ts">
+  import { Box, Stack } from "@/components/primitives";
+</script>
+
 <template>
   <Box
     paddingInline="var(--space-m)"
