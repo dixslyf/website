@@ -1,4 +1,4 @@
 {
-    "$schema": "https://openapi.vercel.sh/vercel.json",
-    "framework": "nuxtjs"
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "astro"
 }

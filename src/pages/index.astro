@@ -1,0 +1,26 @@
+---
+import { motion } from "motion-v";
+
+import { RootLayout } from "@/layouts";
+import { AboutMe, Technologies } from "@/components";
+import { Stack } from "@/components/primitives";
+import { slideInProps } from "@/utils/animations";
+---
+
+<RootLayout>
+  <Stack gap="var(--space-l)">
+    <motion.div
+      client:load
+      {...slideInProps({ direction: "right" })}
+    >
+      <AboutMe />
+    </motion.div>
+    <motion.div
+      client:load
+      {...slideInProps({ direction: "right", idx: 1, delayStep: 0.4 })}
+    >
+      <Technologies client:load />
+    </motion.div>
+  </Stack>
+  <Stack gap="var(--space-l)" />
+</RootLayout>

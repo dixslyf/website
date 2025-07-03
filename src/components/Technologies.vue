@@ -2,6 +2,10 @@
   import * as simpleIcons from "simple-icons";
   import type { SimpleIcon } from "simple-icons";
 
+  import { Badge, IconText } from "@/components";
+  import { Box, Grid, Stack, Cluster } from "@/components/primitives";
+  import { FALLBACK_LANG_COLOR, getLanguageColor } from "@/utils/languages";
+
   type Tech = {
     icon: string | null;
     label: string;

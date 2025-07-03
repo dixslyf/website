@@ -1,0 +1,29 @@
+---
+import { Icon } from "@iconify/vue";
+
+import { Box, Stack } from "@/components/primitives";
+
+interface Props {
+  icon: string;
+  label: string;
+}
+
+const { icon, label } = Astro.props;
+---
+
+<Box
+  paddingBlock="var(--space-m)"
+  paddingInline="var(--space-m)"
+>
+  <Stack
+    gap="var(--space-xs)"
+    alignItems="center"
+  >
+    <Icon
+      client:load
+      icon={icon}
+      font-size="2.5em"
+    />
+    <span>{label}</span>
+  </Stack>
+</Box>

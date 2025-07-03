@@ -1,0 +1,12 @@
+export { default as Badge } from "./Badge.vue";
+export { default as Navbar } from "./Navbar.vue";
+export { default as Splash } from "./Splash.vue";
+export { default as Spinner } from "./Spinner.vue";
+export { default as AboutMe } from "./AboutMe.vue";
+export { default as IconText } from "./IconText.vue";
+export { default as RepoCard } from "./RepoCard.vue";
+export { default as TextCaret } from "./TextCaret.vue";
+export { default as NameDisplay } from "./NameDisplay.vue";
+export { default as Technologies } from "./Technologies.vue";
+export { default as LanguagesBar } from "./LanguagesBar.vue";
+export { default as ContactBox } from "./ContactBox.astro";

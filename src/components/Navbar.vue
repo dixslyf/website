@@ -1,17 +1,41 @@
 <script setup lang="ts">
-  import { watch } from "vue";
+  import { onMounted, ref, watch } from "vue";
 
-  import { useDark, useToggle } from "@vueuse/core";
+  import { useDark, useToggle, useEventListener } from "@vueuse/core";
+  import { AnimatePresence, Motion } from "motion-v";
+  import { Icon } from "@iconify/vue";
 
+  import { TextCaret } from "@/components";
+  import { Box, Cluster } from "@/components/primitives";
   import { TypewriterState, useTypewriter } from "@/composables/typewriter";
+  import { slideProps } from "@/utils/animations";
 
-  const { routes, currentRoutePath } = defineProps<{
-    routes: ReadonlyArray<{
-      path: string;
-      name: string;
-    }>;
-    currentRoutePath: string;
+  const { initialRoutePath } = defineProps<{
+    initialRoutePath: string;
   }>();
+
+  const currentRoutePath = ref(initialRoutePath);
+
+  onMounted(() => {
+    useEventListener(document, "astro:before-preparation", (event) => {
+      currentRoutePath.value = event.to.pathname;
+    });
+  });
+
+  const routes = [
+    {
+      path: "/",
+      name: "about",
+    },
+    {
+      path: "/projects",
+      name: "projects",
+    },
+    {
+      path: "/contact",
+      name: "contact",
+    },
+  ] as const;
 
   function routeDisplay(route: string) {
     if (route === "/") {
@@ -20,8 +44,11 @@
     return route;
   }
 
-  const isDark = useDark();
+  const isDark = useDark({
+    selector: "body",
+  });
   const toggleDark = useToggle(isDark);
+
   const themeAnimProps = slideProps({
     inDirection: "up",
     outDirection: "up",
@@ -30,13 +57,10 @@
     duration: 0.3,
   });
 
-  const typewriter = useTypewriter({ initialText: routeDisplay(currentRoutePath) });
-  watch(
-    () => currentRoutePath,
-    (newRoute, _oldRoute) => {
-      typewriter.type(routeDisplay(newRoute));
-    },
-  );
+  const typewriter = useTypewriter();
+  watch(currentRoutePath, (newRoute, _oldRoute) => {
+    typewriter.type(routeDisplay(newRoute));
+  });
 
   const columnGap = "var(--space-m)";
 </script>
@@ -62,10 +86,10 @@
           :columnGap
           rowGap="var(--space-2xs)"
         >
-          <NuxtLink
+          <a
             v-for="route in routes"
             :key="route.path"
-            :to="route.path"
+            :href="route.path"
             :class="[
               $style.navlink,
               'hoverUnderline',
@@ -73,7 +97,7 @@
             ]"
           >
             {{ route.name }}
-          </NuxtLink>
+          </a>
           <div :class="$style.themeIconContainer">
             <AnimatePresence mode="wait">
               <Motion
@@ -82,7 +106,7 @@
                 v-bind="themeAnimProps"
               >
                 <Icon
-                  :name="'lucide:moon'"
+                  :icon="'lucide:moon'"
                   :class="$style.themeIcon"
                   @click="toggleDark()"
                 />
@@ -93,7 +117,7 @@
                 v-bind="themeAnimProps"
               >
                 <Icon
-                  :name="'lucide:sun'"
+                  :icon="'lucide:sun'"
                   :class="$style.themeIcon"
                   @click="toggleDark()"
                 />
