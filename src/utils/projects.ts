@@ -1,4 +1,5 @@
 import type { Endpoints } from "@octokit/types";
+import { Octokit } from "@octokit/rest";
 
 export type RepoInfo = Endpoints["GET /users/{username}/repos"]["response"]["data"][number] & {
   languages: Endpoints["GET /repos/{owner}/{repo}/languages"]["response"]["data"];
@@ -6,7 +7,7 @@ export type RepoInfo = Endpoints["GET /users/{username}/repos"]["response"]["dat
 
 export const DIXSLYF_ID = 56017218;
 
-export function sortRepos(repoA: RepoInfo, repoB: RepoInfo): number {
+export function sortGitHubRepos(repoA: RepoInfo, repoB: RepoInfo): number {
   // If A has more stars than B, A should be before B, and vice versa.
   const repoAStars = repoA.stargazers_count ?? 0;
   const repoBStars = repoB.stargazers_count ?? 0;
@@ -39,4 +40,34 @@ export function sortRepos(repoA: RepoInfo, repoB: RepoInfo): number {
   }
 
   return 0;
+}
+
+export async function fetchGitHubProjects() {
+  const octokit = new Octokit({
+    userAgent: "dixslyf-website",
+    request: {
+      fetch,
+    },
+    auth: import.meta.env.GITHUB_TOKEN,
+  });
+
+  const res = await octokit.rest.repos.listForUser({
+    username: "dixslyf",
+    type: "all",
+  });
+
+  // Filter out forks.
+  const rawRepos = res.data.filter((repo) => !repo.fork);
+
+  // Fetch languages.
+  const repoPromises = rawRepos.map(async (repo) => {
+    const res = await octokit.rest.repos.listLanguages({
+      owner: repo.owner.login,
+      repo: repo.name,
+    });
+    return { ...repo, languages: res.data };
+  });
+
+  const repos = await Promise.all(repoPromises);
+  return repos.sort(sortGitHubRepos);
 }

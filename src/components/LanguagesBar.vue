@@ -1,6 +1,8 @@
 <script setup lang="ts">
   import { computed, ref, type Ref } from "vue";
 
+  import { Stack, Cluster } from "@/components/primitives";
+  import { IconText, Badge } from "@/components";
   import { getLanguageIcon, getLanguageColor } from "@/utils/languages";
 
   const { languages } = defineProps<{
