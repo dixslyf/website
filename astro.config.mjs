@@ -7,6 +7,9 @@ import vercel from "@astrojs/vercel";
 // https://astro.build/config
 export default defineConfig({
   integrations: [vue()],
-  adapter: vercel(),
+  adapter: vercel({
+    isr: {
+      expiration: 60 * 60,
+    },
+  }),
 });
-
