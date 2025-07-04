@@ -44,6 +44,9 @@ importers:
       gh-lang-colors:
         specifier: ^0.1.13
         version: 0.1.13
+      luxon:
+        specifier: ^3.6.1
+        version: 3.6.1
       motion-v:
         specifier: ^1.4.0
         version: 1.4.0(vue@3.5.17(typescript@5.8.3))
@@ -78,6 +81,9 @@ importers:
       '@octokit/types':
         specifier: ^14.1.0
         version: 14.1.0
+      '@types/luxon':
+        specifier: ^3.6.2
+        version: 3.6.2
       '@types/node':
         specifier: ^24.0.10
         version: 24.0.10
@@ -773,6 +779,9 @@ packages:
   '@types/linkify-it@5.0.0':
     resolution: {integrity: sha512-sVDA58zAw4eWAffKOaQH5/5j3XeayukzDk+ewSsnv3p4yJEZHCCzMDiZM8e0OUrRvmpGZ85jf4yDHkHsgBNr9Q==}
 
+  '@types/luxon@3.6.2':
+    resolution: {integrity: sha512-R/BdP7OxEMc44l2Ex5lSXHoIXTB2JLNa3y2QISIbr58U/YcsffyQrYW//hZSdrfxrjRZj3GcUoxMPGdO8gSYuw==}
+
   '@types/markdown-it@14.1.2':
     resolution: {integrity: sha512-promo4eFwuiW+TfGxhi+0x3czqTYJkG8qB17ZUJiVF10Xm7NLVRSLUsfRTU/6h1e24VvRnXCx+hG7li58lkzog==}
 
@@ -1409,6 +1418,10 @@ packages:
 
   lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+
+  luxon@3.6.1:
+    resolution: {integrity: sha512-tJLxrKJhO2ukZ5z0gyjY1zPh3Rh88Ej9P7jNrZiHMUXHae1yvI2imgOZtL1TO8TW6biMMKfTtAOoEJANgtWBMQ==}
+    engines: {node: '>=12'}
 
   magic-string@0.30.17:
     resolution: {integrity: sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==}
@@ -2390,6 +2403,8 @@ snapshots:
 
   '@types/linkify-it@5.0.0': {}
 
+  '@types/luxon@3.6.2': {}
+
   '@types/markdown-it@14.1.2':
     dependencies:
       '@types/linkify-it': 5.0.0
@@ -3118,6 +3133,8 @@ snapshots:
   lodash.merge@4.6.2: {}
 
   lodash@4.17.21: {}
+
+  luxon@3.6.1: {}
 
   magic-string@0.30.17:
     dependencies:

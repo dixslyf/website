@@ -1,4 +1,5 @@
 import { Octokit } from "@octokit/rest";
+import { DateTime } from "luxon";
 
 import type { Endpoints } from "@octokit/types";
 export type RepoInfo = Endpoints["GET /users/{username}/repos"]["response"]["data"][number] & {
@@ -63,7 +64,7 @@ async function fetchGitHubRepos(octokit: Octokit) {
   );
 }
 
-export default async function projectsData(): Promise<{ repos: RepoInfo[] }> {
+export default async function projectsData(): Promise<{ timestamp: string; repos: RepoInfo[] }> {
   const octokit = new Octokit({
     userAgent: "dixslyf-website",
     request: {
@@ -73,7 +74,8 @@ export default async function projectsData(): Promise<{ repos: RepoInfo[] }> {
   });
 
   const repos = (await fetchGitHubRepos(octokit)).sort(sortRepos);
-  return { repos };
+  const now = DateTime.utc();
+  return { timestamp: now.toISO(), repos };
 }
 
 export type Data = Awaited<ReturnType<typeof projectsData>>;
