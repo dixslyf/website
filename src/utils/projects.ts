@@ -1,5 +1,6 @@
 import type { Endpoints } from "@octokit/types";
 import { Octokit } from "@octokit/rest";
+import { DateTime } from "luxon";
 
 export type RepoInfo = Endpoints["GET /users/{username}/repos"]["response"]["data"][number] & {
   languages: Endpoints["GET /repos/{owner}/{repo}/languages"]["response"]["data"];
@@ -68,6 +69,8 @@ export async function fetchGitHubProjects() {
     return { ...repo, languages: res.data };
   });
 
-  const repos = await Promise.all(repoPromises);
-  return repos.sort(sortGitHubRepos);
+  const repos = (await Promise.all(repoPromises)).sort(sortGitHubRepos);
+
+  const now = DateTime.utc();
+  return { timestamp: now.toISO(), repos };
 }

@@ -1,37 +1,42 @@
 ---
 export const prerender = false;
 
+import { DateTime } from "luxon";
 import { motion } from "motion-v";
 
 import { fetchGitHubProjects } from "@/utils/projects";
 import { slideInProps } from "@/utils/animations";
 import { RootLayout } from "@/layouts";
-import { Grid } from "@/components/primitives";
+import { Stack, Grid } from "@/components/primitives";
 import { RepoCard } from "@/components";
 
-const repos = await fetchGitHubProjects();
+const { timestamp, repos } = await fetchGitHubProjects();
+const timestampF = DateTime.fromISO(timestamp, { zone: "UTC" }).toFormat("d MMMM yyyy 'at' TTT");
 ---
 
 <RootLayout>
-  <Grid
-    targetMinWidth="30rem"
-    gap="var(--space-m)"
-  >
-    {
-      repos.map((repo, idx) => (
-        <motion.div
-          client:load
-          class="repoCardWrapper"
-          {...slideInProps({ direction: "up", idx })}
-        >
-          <RepoCard
+  <Stack>
+    <span><em>Last updated at: {timestampF}</em></span>
+    <Grid
+      targetMinWidth="30rem"
+      gap="var(--space-m)"
+    >
+      {
+        repos.map((repo, idx) => (
+          <motion.div
             client:load
-            {repo}
-          />
-        </motion.div>
-      ))
-    }
-  </Grid>
+            class="repoCardWrapper"
+            {...slideInProps({ direction: "up", idx })}
+          >
+            <RepoCard
+              client:load
+              {repo}
+            />
+          </motion.div>
+        ))
+      }
+    </Grid>
+  </Stack>
 </RootLayout>
 
 <style>
