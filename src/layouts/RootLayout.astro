@@ -71,11 +71,7 @@ const pageTransition = {
       <Center gutters="0">
         <Stack gap="var(--space-xl)">
           <header>
-            <Navbar
-              client:load
-              transition:persist="navbar"
-              initialRoutePath={Astro.url.pathname}
-            />
+            <Navbar transition:persist="navbar" />
           </header>
           <main transition:animate={pageTransition}>
             <slot />

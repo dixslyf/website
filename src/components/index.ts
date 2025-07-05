@@ -1,5 +1,7 @@
 export { default as Badge } from "./Badge.vue";
-export { default as Navbar } from "./Navbar.vue";
+export { default as RouteDisplay } from "./RouteDisplay.vue";
+export { default as ThemeSwitch } from "./ThemeSwitch.vue";
+export { default as Navbar } from "./Navbar.astro";
 export { default as Splash } from "./Splash.vue";
 export { default as Spinner } from "./Spinner.vue";
 export { default as AboutMe } from "./AboutMe.vue";
