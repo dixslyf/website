@@ -21,11 +21,17 @@ const columnGap = "var(--space-m)";
 ---
 
 <script>
+  import { currentUrl } from "@/stores/eager-current-url";
+
   // Highlight the current route's link.
   const links = document.getElementsByClassName("navlink") as HTMLCollectionOf<HTMLAnchorElement>;
-  document.addEventListener("astro:before-preparation", (e) => {
+  currentUrl.subscribe((url) => {
+    if (!url) {
+      return;
+    }
+
     for (const link of links) {
-      if (link.href === e.to.href) {
+      if (link.href === url?.href) {
         link.classList.add("navlinkCurrent");
       } else {
         link.classList.remove("navlinkCurrent");

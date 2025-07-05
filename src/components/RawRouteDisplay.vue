@@ -15,7 +15,7 @@
     return route;
   }
 
-  const typewriter = useTypewriter();
+  const typewriter = useTypewriter({ initialText: currentRoutePath });
   watch(
     () => currentRoutePath,
     (newRoute, _oldRoute) => {

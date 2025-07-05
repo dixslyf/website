@@ -42,6 +42,7 @@ const pageTransition = {
     <ClientRouter />
     <script>
       import { swapFunctions } from "astro:transitions/client";
+      import { currentUrl, registerCurrentUrlHook } from "@/stores/eager-current-url";
 
       function swap(newDoc: Document) {
         swapFunctions.deselectScripts(newDoc);
@@ -61,6 +62,9 @@ const pageTransition = {
       document.addEventListener("astro:before-swap", (event) => {
         event.swap = () => swap(event.newDocument);
       });
+
+      currentUrl.set(Astro.url);
+      registerCurrentUrlHook();
     </script>
   </head>
 

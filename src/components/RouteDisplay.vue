@@ -1,20 +1,17 @@
 <script setup lang="ts">
-  import { onMounted, ref } from "vue";
+  import { computed } from "vue";
 
-  import { useEventListener } from "@vueuse/core";
+  import { useStore } from "@nanostores/vue";
 
   import RawRouteDisplay from "./RawRouteDisplay.vue";
+  import { currentUrl } from "@/stores/eager-current-url";
 
-  const { initialRoutePath } = defineProps<{ initialRoutePath: string }>();
+  const { initialRoutePath } = defineProps<{
+    initialRoutePath: string;
+  }>();
 
-  const currentRoutePath = ref(initialRoutePath);
-
-  onMounted(() => {
-    useEventListener(document, "astro:before-preparation", (event) => {
-      // Eagerly set up the route display's current path.
-      currentRoutePath.value = event.to.pathname;
-    });
-  });
+  const $currentUrl = useStore(currentUrl);
+  const currentRoutePath = computed(() => $currentUrl.value?.pathname ?? initialRoutePath);
 </script>
 
 <template>
