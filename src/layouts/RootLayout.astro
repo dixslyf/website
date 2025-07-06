@@ -5,22 +5,6 @@ import { ClientRouter } from "astro:transitions";
 
 import { Navbar, Splash, LoadingIndicator } from "@/components";
 import { Center, Stack } from "@/components/primitives";
-
-const pageAnim = {
-  // Out transition
-  old: {
-    name: "slideOut",
-    duration: "0.5s",
-    easing: "ease-in",
-  },
-  // In transition is handled by the pages themselves.
-  new: { name: "" },
-};
-
-const pageTransition = {
-  forwards: pageAnim,
-  backwards: pageAnim,
-};
 ---
 
 <html>
@@ -43,8 +27,13 @@ const pageTransition = {
 
     <script>
       import { swapFunctions } from "astro:transitions/client";
-      import { currentUrl, registerCurrentUrlHook } from "@/stores/eager-current-url";
 
+      import { animate } from "motion";
+
+      import { currentUrl, registerCurrentUrlHook } from "@/stores/eager-current-url";
+      import { exitSlideDirection } from "@/utils/routes";
+
+      // Custom swap function to only replace the main element instead of body.
       function swap(newDoc: Document) {
         swapFunctions.deselectScripts(newDoc);
         swapFunctions.swapRootAttributes(newDoc);
@@ -61,7 +50,26 @@ const pageTransition = {
       }
 
       document.addEventListener("astro:before-swap", (event) => {
-        event.swap = () => swap(event.newDocument);
+        // WARN: This is a hack to have custom, dynamic exit animations.
+        // The swap function seen by Astro is a no-op. We instead call the
+        // actual swap function after the custom animation completes asynchronously.
+        // Currently, this doesn't cause any side effects, but that is not guaranteed
+        // to always be the case.
+
+        // Exit animation.
+        const exitDirection = exitSlideDirection(event.from, event.to);
+        const main = document.querySelector("main")!;
+        const anim = animate(
+          main,
+          { x: exitDirection === "left" ? "-25rem" : "25rem", opacity: 0 },
+          { duration: 0.5, ease: "easeInOut" },
+        );
+
+        anim.finished.then(() => {
+          swap(event.newDocument);
+        });
+
+        event.swap = () => {};
       });
 
       currentUrl.set(Astro.url);
@@ -79,7 +87,7 @@ const pageTransition = {
           <header>
             <Navbar transition:persist="navbar" />
           </header>
-          <main transition:animate={pageTransition}>
+          <main>
             <slot />
           </main>
         </Stack>

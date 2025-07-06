@@ -1,4 +1,17 @@
-import type { RouteLocationNormalizedGeneric } from "vue-router";
+export const routes = [
+  {
+    path: "/",
+    name: "about",
+  },
+  {
+    path: "/projects",
+    name: "projects",
+  },
+  {
+    path: "/contact",
+    name: "contact",
+  },
+] as const;
 
 export function sortRoutes(routeAName: string, routeBName: string): number {
   if (routeAName === "about") {
@@ -20,7 +33,14 @@ export function sortRoutes(routeAName: string, routeBName: string): number {
   return 0;
 }
 
-export function slideDirection(toName: string, fromName: string): "left" | "right" {
+export function exitSlideDirection(from: URL, to: URL): "left" | "right" | null {
+  const fromName = routes.find(({ path }) => path === from.pathname)?.name;
+  const toName = routes.find(({ path }) => path === to.pathname)?.name;
+
+  if (!fromName || !toName) {
+    return null;
+  }
+
   const sorted = [fromName, toName].sort(sortRoutes);
 
   // If `fromName` is first, then it's to the left of the route we're going to,

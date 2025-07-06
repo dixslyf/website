@@ -2,20 +2,7 @@
 import { Box, Cluster } from "@/components/primitives";
 import { RouteDisplay, ThemeSwitch } from ".";
 
-const routes = [
-  {
-    path: "/",
-    name: "about",
-  },
-  {
-    path: "/projects",
-    name: "projects",
-  },
-  {
-    path: "/contact",
-    name: "contact",
-  },
-] as const;
+import { routes } from "@/utils/routes";
 
 const columnGap = "var(--space-m)";
 ---
