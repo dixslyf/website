@@ -4,6 +4,7 @@
   import { AnimatePresence, Motion, motion } from "motion-v";
 
   import { Stack, Center } from "@/components/primitives";
+  import { WMotionConfig } from "@/components/wrappers";
   import { NameDisplay } from "@/components";
   import { splashProps, fadeProps } from "@/utils/animations";
 
@@ -32,25 +33,27 @@
 </script>
 
 <template>
-  <AnimatePresence>
-    <motion.div
-      v-if="showSplash"
-      v-bind="splashProps()"
-      :class="$style.splashRoot"
-    >
-      <Stack :class="$style.splashStack">
-        <Center>
-          <Motion
-            v-if="showNameDisplay"
-            v-bind="fadeProps()"
-            asChild
-          >
-            <NameDisplay :class="$style.splashContent" />
-          </Motion>
-        </Center>
-      </Stack>
-    </motion.div>
-  </AnimatePresence>
+  <WMotionConfig>
+    <AnimatePresence>
+      <motion.div
+        v-if="showSplash"
+        v-bind="splashProps()"
+        :class="$style.splashRoot"
+      >
+        <Stack :class="$style.splashStack">
+          <Center>
+            <Motion
+              v-if="showNameDisplay"
+              v-bind="fadeProps()"
+              asChild
+            >
+              <NameDisplay :class="$style.splashContent" />
+            </Motion>
+          </Center>
+        </Stack>
+      </motion.div>
+    </AnimatePresence>
+  </WMotionConfig>
 </template>
 
 <style module>

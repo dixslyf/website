@@ -1,8 +1,7 @@
 ---
-import { Motion } from "motion-v";
-
 import { RootLayout } from "@/layouts";
 import { Grid } from "@/components/primitives";
+import { WMotion } from "@/components/wrappers";
 import { ContactBox } from "@/components";
 import { slideInProps } from "@/utils/animations";
 
@@ -59,7 +58,7 @@ const contactData: Array<{
     >
       {
         contactData.map(({ href, label, icon }, idx) => (
-          <Motion
+          <WMotion
             client:load
             {...slideInProps({ direction: "left", idx })}
           >
@@ -73,7 +72,7 @@ const contactData: Array<{
                 {label}
               />
             </a>
-          </Motion>
+          </WMotion>
         ))
       }
     </Grid>

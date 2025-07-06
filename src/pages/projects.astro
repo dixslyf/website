@@ -2,13 +2,13 @@
 export const prerender = false;
 
 import { DateTime } from "luxon";
-import { motion } from "motion-v";
 
-import { fetchGitHubProjects } from "@/utils/projects";
-import { slideInProps } from "@/utils/animations";
 import { RootLayout } from "@/layouts";
 import { Stack, Grid } from "@/components/primitives";
+import { WMotion } from "@/components/wrappers";
 import { RepoCard } from "@/components";
+import { fetchGitHubProjects } from "@/utils/projects";
+import { slideInProps } from "@/utils/animations";
 
 const { timestamp, repos } = await fetchGitHubProjects();
 const timestampF = DateTime.fromISO(timestamp, { zone: "UTC" }).toFormat("d MMMM yyyy 'at' TTT");
@@ -23,16 +23,17 @@ const timestampF = DateTime.fromISO(timestamp, { zone: "UTC" }).toFormat("d MMMM
     >
       {
         repos.map((repo, idx) => (
-          <motion.div
+          <WMotion
             client:load
-            class="repoCardWrapper"
             {...slideInProps({ direction: "up", idx })}
           >
-            <RepoCard
-              client:load
-              {repo}
-            />
-          </motion.div>
+            <div class="repoCardWrapper">
+              <RepoCard
+                client:load
+                {repo}
+              />
+            </div>
+          </WMotion>
         ))
       }
     </Grid>
@@ -40,8 +41,10 @@ const timestampF = DateTime.fromISO(timestamp, { zone: "UTC" }).toFormat("d MMMM
 </RootLayout>
 
 <style>
+  /* Make the repo card take the full size of grid cell. */
   .repoCardWrapper {
-    /* Make the repo card take the full size of the wrapper. */
     display: grid;
+    height: 100%;
+    width: 100%;
   }
 </style>

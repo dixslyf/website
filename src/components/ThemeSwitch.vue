@@ -3,6 +3,8 @@
   import { AnimatePresence, Motion } from "motion-v";
 
   import { Icon } from "@iconify/vue";
+
+  import { WMotionConfig } from "@/components/wrappers";
   import { slideProps } from "@/utils/animations";
 
   const isDark = useDark({
@@ -20,27 +22,29 @@
 </script>
 
 <template>
-  <div
-    :class="$style.themeIconContainer"
-    @click="toggleDark()"
-  >
-    <AnimatePresence mode="wait">
-      <Motion
-        asChild
-        v-if="isDark"
-        v-bind="themeAnimProps"
-      >
-        <Icon :icon="'lucide:moon'" />
-      </Motion>
-      <Motion
-        asChild
-        v-else
-        v-bind="themeAnimProps"
-      >
-        <Icon :icon="'lucide:sun'" />
-      </Motion>
-    </AnimatePresence>
-  </div>
+  <WMotionConfig>
+    <div
+      :class="$style.themeIconContainer"
+      @click="toggleDark()"
+    >
+      <AnimatePresence mode="wait">
+        <Motion
+          asChild
+          v-if="isDark"
+          v-bind="themeAnimProps"
+        >
+          <Icon :icon="'lucide:moon'" />
+        </Motion>
+        <Motion
+          asChild
+          v-else
+          v-bind="themeAnimProps"
+        >
+          <Icon :icon="'lucide:sun'" />
+        </Motion>
+      </AnimatePresence>
+    </div>
+  </WMotionConfig>
 </template>
 
 <style module>
