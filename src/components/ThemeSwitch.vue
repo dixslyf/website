@@ -5,20 +5,14 @@
   import { Icon } from "@iconify/vue";
 
   import { WMotionConfig } from "@/components/wrappers";
-  import { slideProps } from "@/utils/animations";
+  import { fadeProps } from "@/utils/animations";
 
   const isDark = useDark({
     selector: "body",
   });
   const toggleDark = useToggle(isDark);
 
-  const themeAnimProps = slideProps({
-    inDirection: "up",
-    outDirection: "up",
-    inDistance: 1,
-    outDistance: -1,
-    duration: 0.3,
-  });
+  const themeAnimProps = fadeProps({ duration: 0.2 });
 </script>
 
 <template>
