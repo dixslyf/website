@@ -24,11 +24,7 @@
       })),
   );
 
-  type HoveredLanguage = {
-    source: "bar-section" | "icon-text";
-    language: string;
-  };
-  let hoveredLang: Ref<HoveredLanguage | null> = ref(null);
+  let hoveredLang: Ref<string | null> = ref(null);
 </script>
 
 <template>
@@ -45,12 +41,12 @@
         :class="[
           $style.barSection,
           {
-            [$style.highlighted]: hoveredLang?.language === language,
-            [$style.dimmed]: hoveredLang !== null && hoveredLang.language !== language,
+            [$style.highlighted]: hoveredLang === language,
+            [$style.dimmed]: hoveredLang && hoveredLang !== language,
           },
         ]"
         :style="`background-color: ${color}; width: ${percentage}%;`"
-        @mouseenter="hoveredLang = { source: 'bar-section', language }"
+        @mouseenter="hoveredLang = language"
         @mouseleave="hoveredLang = null"
       ></div>
     </Stack>
@@ -63,15 +59,14 @@
           :class="[
             $style.langBadge,
             {
-              [$style.langBadgeHover]:
-                hoveredLang?.language === language && hoveredLang?.source === 'bar-section',
+              [$style.langBadgeHover]: hoveredLang === language,
             },
           ]"
         >
           <IconText
             :icon="icon"
             :iconColor="color"
-            @mouseenter="hoveredLang = { source: 'icon-text', language }"
+            @mouseenter="hoveredLang = language"
             @mouseleave="hoveredLang = null"
           >
             {{ language }} {{ percentage > 0.1 ? percentage.toFixed(1) : "< 0.1" }}%
@@ -115,14 +110,10 @@
 
   .langBadge {
     transition: transform 100ms ease-in-out;
-
-    &:hover {
-      outline: 2px solid var(--accent-sec);
-    }
   }
 
   .langBadgeHover {
-    transform: translateY(-0.4em);
+    transform: scale(1.03);
     outline: 2px solid var(--accent-sec);
   }
 </style>
