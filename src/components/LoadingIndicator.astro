@@ -1,0 +1,106 @@
+<!--
+Based on: https://github.com/florian-lefebvre/astro-loading-indicator
+
+Changes were made to the original to accommodate my custom page swap function.
+
+License:
+"""
+MIT License
+
+Copyright (c) 2024 Florian Lefebvre
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
+-->
+<script>
+  const el = document.getElementById("loading-indicator")!;
+
+  const animationDuration = 300;
+  const threshold = 200;
+
+  let progress = 0.25;
+  let opacity = 0;
+  let trickleInterval: ReturnType<typeof setInterval> | undefined = undefined;
+  let thresholdTimeout: ReturnType<typeof setTimeout> | undefined = undefined;
+
+  function setProgress(p: number) {
+    progress = p;
+    el.style.setProperty("--progress", String(progress));
+  }
+
+  function setOpacity(o: number) {
+    opacity = o;
+    el.style.setProperty("opacity", String(opacity));
+  }
+
+  setOpacity(opacity);
+
+  document.addEventListener("astro:before-preparation", () => {
+    thresholdTimeout = setTimeout(() => {
+      setOpacity(1);
+      trickleInterval = setInterval(() => {
+        setProgress(progress + Math.random() * 0.03);
+      }, animationDuration);
+    }, threshold);
+  });
+
+  document.addEventListener("astro:after-preparation", (_) => {
+    if (!thresholdTimeout) {
+      return;
+    }
+
+    clearTimeout(thresholdTimeout);
+
+    clearInterval(trickleInterval);
+    trickleInterval = undefined;
+
+    setProgress(1);
+    setTimeout(() => {
+      setOpacity(0);
+    }, animationDuration / 2);
+
+    setTimeout(() => {
+      setProgress(0.25);
+    }, animationDuration * 2);
+  });
+</script>
+
+<div
+  id="loading-indicator"
+  aria-hidden="true"
+>
+</div>
+
+<style>
+  #loading-indicator {
+    pointer-events: none;
+    background-color: var(--accent-sec);
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    transition:
+      transform 300ms ease-out,
+      opacity 150ms 150ms ease-in;
+    transform: translate3d(0, 0, 0) scaleX(var(--progress, 0));
+    transform-origin: 0;
+  }
+</style>

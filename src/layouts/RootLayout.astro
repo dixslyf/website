@@ -3,7 +3,7 @@ import "@/styles/global.css";
 
 import { ClientRouter } from "astro:transitions";
 
-import { Navbar, Splash } from "@/components";
+import { Navbar, Splash, LoadingIndicator } from "@/components";
 import { Center, Stack } from "@/components/primitives";
 
 const pageAnim = {
@@ -40,6 +40,7 @@ const pageTransition = {
     <title>dixslyf</title>
 
     <ClientRouter />
+
     <script>
       import { swapFunctions } from "astro:transitions/client";
       import { currentUrl, registerCurrentUrlHook } from "@/stores/eager-current-url";
@@ -69,6 +70,7 @@ const pageTransition = {
   </head>
 
   <body>
+    <LoadingIndicator />
     <div class="root">
       <Splash client:load />
 
