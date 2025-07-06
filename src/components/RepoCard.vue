@@ -1,6 +1,8 @@
 <script setup lang="ts">
   import type { RepoInfo } from "@/utils/projects";
 
+  import { Icon } from "@iconify/vue";
+
   import { Box, Stack, Cluster } from "@/components/primitives";
   import { IconText, Badge, LanguagesBar } from "@/components";
 
