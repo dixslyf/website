@@ -8,7 +8,7 @@ import { Stack, Grid } from "@/components/primitives";
 import { WMotion } from "@/components/wrappers";
 import { RepoCard } from "@/components";
 import { fetchGitHubProjects } from "@/utils/projects";
-import { slideInProps } from "@/utils/animations";
+import { slideInProps, fadeProps } from "@/utils/animations";
 
 const { timestamp, repos } = await fetchGitHubProjects();
 const timestampF = DateTime.fromISO(timestamp, { zone: "UTC" }).toFormat("d MMMM yyyy 'at' TTT");
@@ -16,7 +16,12 @@ const timestampF = DateTime.fromISO(timestamp, { zone: "UTC" }).toFormat("d MMMM
 
 <RootLayout>
   <Stack>
-    <span><em>Last updated at: {timestampF}</em></span>
+    <WMotion
+      client:load
+      {...fadeProps()}
+    >
+      <span class="timestamp"><em>Last updated at: {timestampF}</em></span>
+    </WMotion>
     <Grid
       targetMinWidth="30rem"
       gap="var(--space-m)"
@@ -46,5 +51,9 @@ const timestampF = DateTime.fromISO(timestamp, { zone: "UTC" }).toFormat("d MMMM
     display: grid;
     height: 100%;
     width: 100%;
+  }
+
+  .timestamp {
+    color: var(--fg-dim-0);
   }
 </style>

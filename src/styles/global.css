@@ -218,3 +218,7 @@ a {
 strong {
   color: var(--fg-strong);
 }
+
+em {
+  font-style: italic;
+}
