@@ -33,6 +33,10 @@ const contactData: Array<{
     icon: "lucide:mail",
   },
 ];
+
+const titlePath = "contact";
+const description = "Get in touch with me via GitHub, GitLab, LinkedIn or email.";
+const routePath = "/contact";
 ---
 
 <script>
@@ -50,7 +54,11 @@ const contactData: Array<{
   });
 </script>
 
-<RootLayout>
+<RootLayout
+  {titlePath}
+  {description}
+  {routePath}
+>
   <div class="contactRoot">
     <Grid
       targetMinWidth={gridTargetMinWidth}

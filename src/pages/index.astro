@@ -4,9 +4,20 @@ import { Stack } from "@/components/primitives";
 import { WMotion } from "@/components/wrappers";
 import { AboutMe, Technologies } from "@/components";
 import { slideInProps } from "@/utils/animations";
+
+const titlePath = "about";
+const description =
+  "Hello! I'm Dixon Sean Low Yan Feng," +
+  " a developer with an interest in Linux, open-source software and reproducibility." +
+  " Welcome to my corner on the Internet!";
+const routePath = "/";
 ---
 
-<RootLayout>
+<RootLayout
+  {titlePath}
+  {description}
+  {routePath}
+>
   <Stack gap="var(--space-l)">
     <WMotion
       client:load

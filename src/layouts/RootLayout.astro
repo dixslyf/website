@@ -3,25 +3,27 @@ import "@/styles/global.css";
 
 import { ClientRouter } from "astro:transitions";
 
-import { Navbar, Splash, LoadingIndicator } from "@/components";
+import { Meta, Navbar, Splash, LoadingIndicator } from "@/components";
 import { Center, Stack } from "@/components/primitives";
+
+export interface Props {
+  titlePath: string;
+  description: string;
+  routePath: string;
+}
+
+const { titlePath, description, routePath } = Astro.props;
+const title = `dixslyf: ${titlePath}`;
+const url = `https://www.dixslyf.dev${routePath}`;
 ---
 
-<html>
+<html lang="en-SG">
   <head>
-    <meta charset="utf-8" />
-    <!--
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="/favicon.svg"
+    <Meta
+      {title}
+      {description}
+      {url}
     />
-    -->
-    <meta
-      name="viewport"
-      content="width=device-width"
-    />
-    <title>dixslyf</title>
 
     <ClientRouter />
 

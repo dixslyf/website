@@ -1,3 +1,4 @@
+export { default as Meta } from "./Meta.astro";
 export { default as Badge } from "./Badge.vue";
 export { default as RouteDisplay } from "./RouteDisplay.vue";
 export { default as ThemeSwitch } from "./ThemeSwitch.vue";

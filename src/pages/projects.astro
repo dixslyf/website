@@ -12,9 +12,19 @@ import { slideInProps, fadeProps } from "@/utils/animations";
 
 const { timestamp, repos } = await fetchGitHubProjects();
 const timestampF = DateTime.fromISO(timestamp, { zone: "UTC" }).toFormat("d MMMM yyyy 'at' TTT");
+
+const titlePath = "projects";
+const description =
+  "Explore my projects, ranging from " +
+  "command-line tools and artificial intelligence to web applications.";
+const routePath = "/projects";
 ---
 
-<RootLayout>
+<RootLayout
+  {titlePath}
+  {description}
+  {routePath}
+>
   <Stack>
     <WMotion
       client:load
