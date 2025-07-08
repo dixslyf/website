@@ -21,13 +21,13 @@ const routePath = "/";
   <Stack gap="var(--space-l)">
     <WMotion
       client:load
-      {...slideInProps({ direction: "right" })}
+      {...slideInProps({ direction: "left" })}
     >
       <AboutMe />
     </WMotion>
     <WMotion
       client:load
-      {...slideInProps({ direction: "right", idx: 1, delayStep: 0.4 })}
+      {...slideInProps({ direction: "left", idx: 1, delayStep: 0.4 })}
     >
       <Technologies client:load />
     </WMotion>
