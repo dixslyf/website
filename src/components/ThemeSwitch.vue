@@ -7,15 +7,24 @@
   import { WMotionConfig } from "@/components/wrappers";
   import { fadeProps } from "@/utils/animations";
   import { theme, cycleTheme } from "@/stores/theme";
+  import { computed } from "vue";
 
   const $theme = useStore(theme);
+  const title = computed(() =>
+    $theme.value === "system"
+      ? "Follow system theme"
+      : $theme.value === "dark"
+        ? "Dark mode"
+        : "Light mode",
+  );
 
   const themeAnimProps = fadeProps({ duration: 0.2 });
 </script>
 
 <template>
   <WMotionConfig>
-    <div
+    <button
+      :title
       :class="$style.themeIconContainer"
       @click="() => cycleTheme()"
     >
@@ -42,7 +51,7 @@
           <Icon :icon="'lucide:sun-moon'" />
         </Motion>
       </AnimatePresence>
-    </div>
+    </button>
   </WMotionConfig>
 </template>
 
