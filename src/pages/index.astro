@@ -1,8 +1,8 @@
 ---
 import { RootLayout } from "@/layouts";
-import { Stack } from "@/components/primitives";
+import { Stack, Cluster } from "@/components/primitives";
 import { WMotion } from "@/components/wrappers";
-import { AboutMe, Technologies } from "@/components";
+import { AboutMe, Technologies, Gpg } from "@/components";
 import { slideInProps } from "@/utils/animations";
 
 const titlePath = "about";
@@ -19,12 +19,29 @@ const routePath = "/";
   {routePath}
 >
   <Stack gap="var(--space-l)">
-    <WMotion
-      client:load
-      {...slideInProps({ direction: "left" })}
+    <Cluster
+      rowGap="var(--space-l)"
+      columnGap="var(--space-m)"
     >
-      <AboutMe />
-    </WMotion>
+      <div class="aboutMeWrapper">
+        <WMotion
+          client:load
+          style={{ display: "grid" }}
+          {...slideInProps({ direction: "left" })}
+        >
+          <AboutMe />
+        </WMotion>
+      </div>
+      <div class="gpgWrapper">
+        <WMotion
+          client:load
+          style={{ display: "grid" }}
+          {...slideInProps({ direction: "left" })}
+        >
+          <Gpg />
+        </WMotion>
+      </div>
+    </Cluster>
     <WMotion
       client:load
       {...slideInProps({ direction: "left", idx: 1, delayStep: 0.4 })}
@@ -32,5 +49,16 @@ const routePath = "/";
       <Technologies client:load />
     </WMotion>
   </Stack>
-  <Stack gap="var(--space-l)" />
 </RootLayout>
+
+<style>
+  .aboutMeWrapper {
+    flex: 2 1 30rem;
+    display: grid;
+  }
+
+  .gpgWrapper {
+    flex: 1 1 15rem;
+    display: grid;
+  }
+</style>

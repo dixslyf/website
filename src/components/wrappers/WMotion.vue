@@ -5,7 +5,7 @@
 
   import WMotionConfig from "./WMotionConfig.vue";
 
-  const motionProps = defineProps<MotionProps>();
+  const motionProps = defineProps<MotionProps & { class?: string; style?: Record<string, any> }>();
 </script>
 
 <template>

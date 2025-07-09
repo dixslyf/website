@@ -14,3 +14,4 @@ export { default as Technologies } from "./Technologies.vue";
 export { default as LanguagesBar } from "./LanguagesBar.vue";
 export { default as ContactBox } from "./ContactBox.astro";
 export { default as LoadingIndicator } from "./LoadingIndicator.astro";
+export { default as Gpg } from "./Gpg.vue";
