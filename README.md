@@ -1,11 +1,11 @@
 # dixslyf's Website
 
-This repository contains the source code for my personal website ([dixslyf.dev](https://dixslyf.dev)),
-built with Vue.js + Nuxt.
+This repository contains the source code for my personal website ([dixslyf.dev](https://www.dixslyf.dev)),
+built with [Astro](https://astro.build/) and [Vue.js](https://vuejs.org/).
 
 ## Developing and Building
 
-This project uses `pnpm` for package management.
+This project uses [`pnpm`](https://pnpm.io/) for package management.
 
 To run the development server, run:
 
@@ -27,8 +27,8 @@ pnpm run preview
 
 ## Environment Variables
 
-To fetch information about my projects, the server-side code uses Octokit to query the GitHub REST API.
-If the `NUXT_GITHUB_TOKEN` environment variable is set, it is passed to Octokit for authentication
+To fetch information about my projects, the site uses Octokit for querying the GitHub REST API.
+If the `GITHUB_TOKEN` environment variable is set, it is passed to Octokit for authentication
 (authenticated requests have more generous rate limits).
 
 Environment variables can be specified in a `.env` file.
@@ -37,6 +37,19 @@ Environment variables can be specified in a `.env` file.
 
 The website is currently hosted on Vercel.
 
-The `/projects` route uses incremental static regeneration (ISR) with a 60-minute expiration time —
-every hour, server-side code is run to fetch my projects through the GitHub REST API,
-after which the page is pre-rendered with the fetched data and served statically.
+It also uses [incremental static regeneration (ISR)](https://vercel.com/docs/incremental-static-regeneration)
+with a 60-minute expiration time to avoid excessive calls to the GitHub REST API.
+
+## History
+
+This site served as a guinea pig for trying out different web frameworks.
+Over time, it has been rebuilt using the following technologies and frameworks
+(chronological order):
+
+1. Svelte 5 + SvelteKit (initial version)
+
+1. Vue.js + Nuxt
+
+1. Vue.js + Vike
+
+1. Vue.js + Astro (current)
