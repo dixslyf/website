@@ -3,7 +3,12 @@
 
   import { Stack, Cluster } from "@/components/primitives";
   import { IconText, Badge } from "@/components";
-  import { getLanguageIcon, getLanguageColor } from "@/utils/languages";
+  import { getLanguageIcon, getLanguageColor, contrastColor } from "@/utils/languages";
+  import { useOverlayBg } from "@/composables/overlay-bg";
+  import { useContrastMixColor } from "@/composables/contrast-mix-color";
+
+  const overlayBg = useOverlayBg();
+  const contrastMixColor = useContrastMixColor();
 
   const { languages } = defineProps<{
     languages: Record<string, number>;
@@ -20,7 +25,10 @@
         language: lang,
         percentage: (100 * size) / langsSizeTotal.value,
         icon: getLanguageIcon(lang),
-        color: getLanguageColor(lang),
+        color: computed(() => {
+          const color = getLanguageColor(lang);
+          return contrastColor(color, overlayBg.value, contrastMixColor.value);
+        }),
       })),
   );
 
@@ -45,7 +53,7 @@
             [$style.dimmed]: hoveredLang && hoveredLang !== language,
           },
         ]"
-        :style="`background-color: ${color}; width: ${percentage}%;`"
+        :style="`background-color: ${color.value}; width: ${percentage}%;`"
         @mouseenter="hoveredLang = language"
         @mouseleave="hoveredLang = null"
       ></div>
@@ -65,7 +73,7 @@
         >
           <IconText
             :icon="icon"
-            :iconColor="color"
+            :iconColor="color.value"
             @mouseenter="hoveredLang = language"
             @mouseleave="hoveredLang = null"
           >

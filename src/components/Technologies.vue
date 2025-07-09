@@ -1,17 +1,49 @@
 <script setup lang="ts">
+  import { computed, type ComputedRef } from "vue";
+
   import * as simpleIcons from "simple-icons";
   import type { SimpleIcon } from "simple-icons";
 
   import { Badge, IconText } from "@/components";
   import { Box, Grid, Stack, Cluster } from "@/components/primitives";
-  import { FALLBACK_LANG_COLOR, getLanguageColor } from "@/utils/languages";
+  import { contrastColor, FALLBACK_LANG_COLOR, getLanguageColor } from "@/utils/languages";
+  import { useOverlayBg } from "@/composables/overlay-bg";
+  import { useContrastMixColor } from "@/composables/contrast-mix-color";
+
+  const overlayBg = useOverlayBg();
+  const contrastMixColor = useContrastMixColor();
 
   type Tech = {
     icon: string | null;
     label: string;
+    color: ComputedRef<string | null>;
   };
 
-  const techData: Record<string, Tech[]> = {
+  function getIconColor(tech: Omit<Tech, "color">): string | null {
+    const t = { ...tech, label: tech.label === "NixOS" ? "Nix" : tech.label };
+    if (!t.icon) {
+      return null;
+    }
+
+    const color = getLanguageColor(t.label);
+    if (color !== FALLBACK_LANG_COLOR) {
+      return color;
+    }
+
+    if (t.icon.startsWith("simple-icons:")) {
+      const slug = t.icon.slice("simple-icons:".length);
+      const cSlug = slug[0].toUpperCase() + slug.slice(1);
+      const entryName = `si${cSlug}`;
+      if (entryName in simpleIcons) {
+        const iconData = simpleIcons[entryName as keyof typeof simpleIcons] as SimpleIcon;
+        return `#${iconData["hex"]}`;
+      }
+    }
+
+    return FALLBACK_LANG_COLOR;
+  }
+
+  const rawTechData = {
     Web: [
       { icon: "simple-icons:vuedotjs", label: "Vue.js" },
       { icon: "simple-icons:nuxt", label: "Nuxt" },
@@ -61,28 +93,20 @@
     ],
   };
 
-  function getIconColor(tech: Tech): string | null {
-    if (!tech.icon) {
-      return null;
-    }
-
-    const color = getLanguageColor(tech.label);
-    if (color !== FALLBACK_LANG_COLOR) {
-      return color;
-    }
-
-    if (tech.icon.startsWith("simple-icons:")) {
-      const slug = tech.icon.slice("simple-icons:".length);
-      const cSlug = slug[0].toUpperCase() + slug.slice(1);
-      const entryName = `si${cSlug}`;
-      if (entryName in simpleIcons) {
-        const iconData = simpleIcons[entryName as keyof typeof simpleIcons] as SimpleIcon;
-        return `#${iconData["hex"]}`;
-      }
-    }
-
-    return FALLBACK_LANG_COLOR;
-  }
+  const techData: Record<string, Tech[]> = Object.fromEntries(
+    Object.entries(rawTechData).map(([cat, entries]) => [
+      cat,
+      entries.map(({ icon, label }) => ({
+        icon,
+        label,
+        color: computed(() => {
+          const base = getIconColor({ icon, label });
+          if (!base) return null;
+          return contrastColor(base, overlayBg.value, contrastMixColor.value);
+        }),
+      })),
+    ]),
+  );
 </script>
 
 <template>
@@ -105,10 +129,10 @@
           columnGap="var(--space-xs)"
           rowGap="var(--space-xs)"
         >
-          <Badge v-for="{ icon, label } in values">
+          <Badge v-for="{ icon, label, color } in values">
             <IconText
               :icon="icon"
-              :iconColor="getIconColor({ icon, label }) ?? undefined"
+              :iconColor="color.value ?? undefined"
               >{{ label }}</IconText
             >
           </Badge>
