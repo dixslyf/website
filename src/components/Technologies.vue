@@ -46,8 +46,7 @@
   const rawTechData = {
     Web: [
       { icon: "simple-icons:vuedotjs", label: "Vue.js" },
-      { icon: "simple-icons:nuxt", label: "Nuxt" },
-      { icon: "simple-icons:svelte", label: "Svelte" },
+      { icon: "simple-icons:astro", label: "Astro" },
       { icon: "simple-icons:react", label: "React" },
       { icon: "simple-icons:nextdotjs", label: "Next.js" },
       { icon: "simple-icons:tailwindcss", label: "TailwindCSS" },
@@ -60,6 +59,7 @@
     "Machine learning / artificial intelligence": [
       { icon: "simple-icons:pytorch", label: "PyTorch" },
       { icon: null, label: "Optuna" },
+      { icon: "simple-icons:kaggle", label: "Kaggle" },
     ],
 
     "Languages (proficient)": [
@@ -90,6 +90,12 @@
       { icon: "simple-icons:git", label: "Git" },
       { icon: "simple-icons:neovim", label: "Neovim" },
       { icon: "simple-icons:typst", label: "Typst" },
+    ],
+
+    "Experimented with": [
+      { icon: "simple-icons:nuxt", label: "Nuxt" },
+      { icon: "simple-icons:svelte", label: "Svelte" },
+      { icon: null, label: "Vike" },
     ],
   };
 
