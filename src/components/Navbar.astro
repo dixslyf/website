@@ -1,0 +1,106 @@
+---
+import { Box, Cluster } from "@/components/primitives";
+import { RouteDisplay, ThemeSwitch } from ".";
+
+import { routes } from "@/utils/routes";
+
+const columnGap = "var(--space-m)";
+---
+
+<script>
+  import { currentUrl } from "@/stores/eager-current-url";
+
+  // Highlight the current route's link.
+  const links = document.getElementsByClassName("navlink") as HTMLCollectionOf<HTMLAnchorElement>;
+  currentUrl.subscribe((url) => {
+    if (!url) {
+      return;
+    }
+
+    for (const link of links) {
+      if (link.href === url?.href) {
+        link.classList.add("navlinkCurrent");
+      } else {
+        link.classList.remove("navlinkCurrent");
+      }
+    }
+  });
+</script>
+
+<nav class="navRoot">
+  <Box
+    paddingInline="var(--space-m)"
+    paddingBlock="calc(var(--space-m) / var(--line-height))"
+    label="Navbar"
+  >
+    <Cluster
+      class="outerCluster"
+      rowGap="var(--space-m)"
+      {columnGap}
+    >
+      <RouteDisplay
+        client:load
+        initialRoutePath={Astro.url.pathname}
+      />
+      <Cluster
+        class="innerCluster"
+        {columnGap}
+        rowGap="var(--space-2xs)"
+      >
+        {
+          routes.map((route) => (
+            <a
+              href={route.path}
+              class:list={[
+                "navlink",
+                "hoverUnderline",
+                { navlinkCurrent: route.path === Astro.url.pathname },
+              ]}
+            >
+              {route.name}
+            </a>
+          ))
+        }
+        <ThemeSwitch client:load />
+      </Cluster>
+    </Cluster>
+  </Box>
+</nav>
+
+<style>
+  .navRoot {
+    --local-accent: var(--accent);
+    &:hover {
+      --local-accent: var(--accent-sec);
+    }
+
+    font-size: var(--type-1);
+    font-weight: 500;
+  }
+
+  .outerCluster {
+    justify-content: center;
+  }
+
+  .innerCluster {
+    align-items: center;
+  }
+
+  .navlink {
+    text-decoration: none;
+
+    color: var(--fg);
+
+    transition:
+      color 0.2s ease-in-out,
+      transform 0.2s ease-out; /* For hoverUnderline. */
+
+    &:hover {
+      color: var(--accent-nav-hover) !important;
+    }
+  }
+
+  .navlinkCurrent {
+    color: var(--local-accent) !important;
+  }
+</style>

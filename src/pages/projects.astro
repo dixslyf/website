@@ -1,0 +1,70 @@
+---
+export const prerender = false;
+
+import { DateTime } from "luxon";
+
+import { RootLayout } from "@/layouts";
+import { Stack, Grid } from "@/components/primitives";
+import { WMotion } from "@/components/wrappers";
+import { RepoCard } from "@/components";
+import { fetchGitHubProjects } from "@/utils/projects";
+import { slideInProps, fadeProps } from "@/utils/animations";
+
+const { timestamp, repos } = await fetchGitHubProjects();
+const timestampF = DateTime.fromISO(timestamp, { zone: "UTC" }).toFormat("d MMMM yyyy 'at' TTT");
+
+const titlePath = "projects";
+const description =
+  "Explore my projects, ranging from " +
+  "command-line tools and artificial intelligence to web applications.";
+const routePath = "/projects";
+---
+
+<RootLayout
+  {titlePath}
+  {description}
+  {routePath}
+>
+  <Stack>
+    <WMotion
+      client:load
+      {...fadeProps()}
+    >
+      <span class="timestamp"><em>Last updated at: {timestampF}</em></span>
+    </WMotion>
+    <Grid
+      targetMinWidth="30rem"
+      gap="var(--space-m)"
+    >
+      {
+        repos.map((repo, idx) => (
+          <WMotion
+            client:load
+            {...slideInProps({ direction: "left", idx })}
+          >
+            <div class="repoCardWrapper">
+              <RepoCard
+                client:load
+                {repo}
+              />
+            </div>
+          </WMotion>
+        ))
+      }
+    </Grid>
+  </Stack>
+</RootLayout>
+
+<style>
+  /* Make the repo card take the full size of grid cell. */
+  .repoCardWrapper {
+    display: grid;
+    height: 100%;
+    width: 100%;
+  }
+
+  .timestamp {
+    color: var(--fg-dim-0);
+    margin-inline-start: var(--border-radius);
+  }
+</style>

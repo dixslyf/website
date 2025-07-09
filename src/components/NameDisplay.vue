@@ -1,3 +1,7 @@
+<script setup lang="ts">
+  import { Center, Cluster, Stack } from "@/components/primitives";
+</script>
+
 <template>
   <Center>
     <Cluster
@@ -33,7 +37,7 @@
   .nameChinese {
     font-size: var(--type-6);
     font-weight: 400;
-    font-family: Noto Sans SC;
+    font-family: Noto Sans SC Variable;
     line-height: 1;
     color: var(--accent-splash);
   }

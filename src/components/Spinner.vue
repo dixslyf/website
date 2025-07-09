@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { computed } from "vue";
+
   const {
     count = 8,
     barStartHeight = "0.8rem",

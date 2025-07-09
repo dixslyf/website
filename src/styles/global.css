@@ -1,6 +1,14 @@
 @layer reset;
 @import "the-new-css-reset/css/reset.css" layer(reset);
 
+@import "@fontsource/iosevka/400";
+@import "@fontsource/iosevka/400-italic";
+@import "@fontsource/iosevka/500";
+@import "@fontsource/iosevka/600";
+@import "@fontsource/iosevka/700";
+
+@import "@fontsource-variable/noto-sans-sc";
+
 @import "@catppuccin/palette/css/catppuccin.css";
 
 @import "./utils.css";
@@ -66,7 +74,7 @@
   --content-max-width: 1280px;
 }
 
-html.dark {
+body.dark {
   --bg: var(--dark-bg);
   --fg: var(--dark-fg);
   --fg-dim-0: var(--dark-fg-dim-0);
@@ -88,7 +96,7 @@ html.dark {
   --repo-collaborator-bg: var(--dark-repo-collaborator-bg);
 }
 
-html {
+body {
   --bg: var(--light-bg);
   --fg: var(--light-fg);
   --fg-dim-0: var(--light-fg-dim-0);
@@ -209,4 +217,8 @@ a {
 
 strong {
   color: var(--fg-strong);
+}
+
+em {
+  font-style: italic;
 }

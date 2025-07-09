@@ -1,0 +1,36 @@
+---
+import { RootLayout } from "@/layouts";
+import { Stack } from "@/components/primitives";
+import { WMotion } from "@/components/wrappers";
+import { AboutMe, Technologies } from "@/components";
+import { slideInProps } from "@/utils/animations";
+
+const titlePath = "about";
+const description =
+  "Hello! I'm Dixon Sean Low Yan Feng," +
+  " a developer with an interest in Linux, open-source software and reproducibility." +
+  " Welcome to my corner on the Internet!";
+const routePath = "/";
+---
+
+<RootLayout
+  {titlePath}
+  {description}
+  {routePath}
+>
+  <Stack gap="var(--space-l)">
+    <WMotion
+      client:load
+      {...slideInProps({ direction: "left" })}
+    >
+      <AboutMe />
+    </WMotion>
+    <WMotion
+      client:load
+      {...slideInProps({ direction: "left", idx: 1, delayStep: 0.4 })}
+    >
+      <Technologies client:load />
+    </WMotion>
+  </Stack>
+  <Stack gap="var(--space-l)" />
+</RootLayout>

@@ -23,6 +23,7 @@
 <template>
   <div :class="[$style.box, 'hoverScale']">
     <component
+      v-if="label"
       :is="labelComponent"
       :class="$style.boxLabel"
     >
