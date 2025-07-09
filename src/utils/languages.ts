@@ -40,6 +40,10 @@ export function getLanguageIcon(lang: string): string | null {
     return "simple-icons:nixos";
   }
 
+  if (lang === "vue") {
+    return "simple-icons:vuedotjs";
+  }
+
   if (lang === "jupyter notebook") {
     return "simple-icons:jupyter";
   }
