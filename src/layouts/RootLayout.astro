@@ -46,6 +46,7 @@ const pageTransition = {
     <script>
       import { swapFunctions } from "astro:transitions/client";
       import { currentUrl, registerCurrentUrlHook } from "@/stores/eager-current-url";
+      import { registerThemeApply } from "@/stores/theme";
 
       function swap(newDoc: Document) {
         swapFunctions.deselectScripts(newDoc);
@@ -68,6 +69,7 @@ const pageTransition = {
 
       currentUrl.set(Astro.url);
       registerCurrentUrlHook();
+      registerThemeApply();
     </script>
   </head>
 
