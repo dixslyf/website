@@ -1,15 +1,15 @@
 <script setup lang="ts">
-  import { AnimatePresence, Motion } from "motion-v";
+  import { computed } from "vue";
 
+  import { AnimatePresence, Motion } from "motion-v";
   import { Icon } from "@iconify/vue";
-  import { useStore } from "@nanostores/vue";
 
   import { WMotionConfig } from "@/components/wrappers";
   import { fadeProps } from "@/utils/animations";
   import { theme, cycleTheme } from "@/stores/theme";
-  import { computed } from "vue";
+  import { useLazyStore } from "@/composables/lazy-store";
 
-  const $theme = useStore(theme);
+  const $theme = useLazyStore(theme);
   const title = computed(() =>
     $theme.value === "system"
       ? "Follow system theme"
@@ -31,24 +31,24 @@
       <AnimatePresence mode="wait">
         <Motion
           asChild
-          v-if="$theme === 'dark'"
+          v-if="$theme === 'system'"
+          v-bind="themeAnimProps"
+        >
+          <Icon :icon="'lucide:sun-moon'" />
+        </Motion>
+        <Motion
+          asChild
+          v-else-if="$theme === 'dark'"
           v-bind="themeAnimProps"
         >
           <Icon :icon="'lucide:moon'" />
         </Motion>
         <Motion
           asChild
-          v-else-if="$theme === 'light'"
-          v-bind="themeAnimProps"
-        >
-          <Icon :icon="'lucide:sun'" />
-        </Motion>
-        <Motion
-          asChild
           v-else
           v-bind="themeAnimProps"
         >
-          <Icon :icon="'lucide:sun-moon'" />
+          <Icon :icon="'lucide:sun'" />
         </Motion>
       </AnimatePresence>
     </button>
