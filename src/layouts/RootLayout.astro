@@ -14,7 +14,7 @@ export interface Props {
 
 const { titlePath, description, routePath } = Astro.props;
 const title = `dixslyf: ${titlePath}`;
-const url = `https://www.dixslyf.dev${routePath}`;
+const url = new URL(routePath, Astro.site)
 
 const pageAnim = {
   // Out transition

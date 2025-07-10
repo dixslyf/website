@@ -2,7 +2,7 @@
 export interface Props {
   title: string;
   description: string;
-  url: string;
+  url: URL;
 }
 
 const { title, description, url } = Astro.props;
@@ -106,5 +106,5 @@ const { title, description, url } = Astro.props;
 <!-- Requires a full URL (relative path will not work!) -->
 <meta
   property="og:image"
-  content="https://www.dixslyf.dev/open-graph/image.png"
+  content={new URL("/open-graph/image.png", Astro.site)}
 />
