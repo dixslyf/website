@@ -1,0 +1,87 @@
+:root {
+  /* Dark */
+  --dark-bg: var(--ctp-macchiato-base);
+  --dark-fg: var(--ctp-macchiato-text);
+  --dark-fg-dim-0: var(--ctp-macchiato-subtext1);
+  --dark-fg-dim-1: var(--ctp-macchiato-subtext0);
+  --dark-fg-strong: var(--ctp-macchiato-rosewater);
+  --dark-bg-light: var(--ctp-macchiato-surface0);
+
+  --dark-accent: var(--ctp-macchiato-blue);
+  --dark-accent-sec: var(--ctp-macchiato-pink);
+  --dark-accent-splash: var(--ctp-macchiato-pink);
+  --dark-accent-nav-hover: var(--ctp-macchiato-rosewater);
+
+  --dark-link-fg: var(--ctp-macchiato-lavender);
+  --dark-link-fg-hover: var(--ctp-macchiato-sky);
+
+  --dark-repo-archived-fg: var(--ctp-macchiato-mantle);
+  --dark-repo-archived-bg: var(--ctp-macchiato-peach);
+  --dark-repo-collaborator-fg: var(--ctp-macchiato-mantle);
+  --dark-repo-collaborator-bg: var(--ctp-macchiato-mauve);
+
+  /* Light (Gruvbox Material Hard) */
+  --light-bg: #f9f5d7;
+  --light-fg: #654735;
+  --light-fg-dim-0: #7c6f64;
+  --light-fg-dim-1: #4f3829;
+  --light-fg-strong: #c35e0a;
+  --light-bg-light: #f3eac7;
+
+  --light-accent: #45707a;
+  --light-accent-sec: #945e80;
+  --light-accent-splash: #45707a;
+  --light-accent-nav-hover: #4c7a5d;
+
+  --light-link-fg: #45707a;
+  --light-link-fg-hover: #4c7a5d;
+
+  --light-repo-archived-fg: #f9f5d7;
+  --light-repo-archived-bg: #ae5858;
+  --light-repo-collaborator-fg: #f9f5d7;
+  --light-repo-collaborator-bg: #945e80;
+}
+
+body {
+  --bg: var(--light-bg);
+  --fg: var(--light-fg);
+  --fg-dim-0: var(--light-fg-dim-0);
+  --fg-dim-1: var(--light-fg-dim-1);
+  --fg-strong: var(--light-fg-strong);
+  --bg-light: var(--light-bg-light);
+
+  --accent: var(--light-accent);
+  --accent-sec: var(--light-accent-sec);
+  --accent-splash: var(--light-accent-splash);
+  --accent-nav-hover: var(--light-accent-nav-hover);
+
+  --link-fg: var(--light-link-fg);
+  --link-fg-hover: var(--light-link-fg-hover);
+
+  --repo-archived-fg: var(--light-repo-archived-fg);
+  --repo-archived-bg: var(--light-repo-archived-bg);
+  --repo-collaborator-fg: var(--light-repo-collaborator-fg);
+  --repo-collaborator-bg: var(--light-repo-collaborator-bg);
+}
+
+body.dark {
+  --bg: var(--dark-bg);
+  --fg: var(--dark-fg);
+  --fg-dim-0: var(--dark-fg-dim-0);
+  --fg-dim-1: var(--dark-fg-dim-1);
+  --fg-strong: var(--dark-fg-strong);
+  --bg-light: var(--dark-bg-light);
+
+  --accent: var(--dark-accent);
+  --accent-sec: var(--dark-accent-sec);
+  --accent-splash: var(--dark-accent-splash);
+  --accent-nav-hover: var(--dark-accent-nav-hover);
+
+  --link-fg: var(--dark-link-fg);
+  --link-fg-hover: var(--dark-link-fg-hover);
+
+  --repo-archived-fg: var(--dark-repo-archived-fg);
+  --repo-archived-bg: var(--dark-repo-archived-bg);
+  --repo-collaborator-fg: var(--dark-repo-collaborator-fg);
+  --repo-collaborator-bg: var(--dark-repo-collaborator-bg);
+}
