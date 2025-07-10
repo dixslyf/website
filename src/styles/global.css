@@ -10,6 +10,8 @@
 
 @import "@fontsource-variable/noto-sans-sc";
 
+@import '@fontsource-variable/sixtyfour/full.css';
+
 @import "@catppuccin/palette/css/catppuccin.css";
 
 @import "./theme.css";

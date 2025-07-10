@@ -1,0 +1,60 @@
+---
+import "@/styles/global.css";
+
+import { Icon } from "@iconify/vue";
+
+import { BaseMeta, FaviconMeta } from "@/components/meta";
+import { Center, Stack } from "@/components/primitives";
+import { Error404 } from "@/components";
+---
+
+<html lang="en-SG">
+  <head>
+    <BaseMeta
+      title="dixslyf: 404"
+      description="Page not found."
+    />
+    <FaviconMeta />
+  </head>
+
+  <body class="dark">
+    <main class="root">
+      <Center gutters="0">
+        <Stack gap="var(--space-3xl)">
+          <Error404 />
+          <Center>
+            <a
+              class="homeLink"
+              href="/"
+            >
+              <Stack
+                direction="row"
+                align-items="center"
+                gap="1ex"
+              >
+                <Icon
+                  icon="lucide:house"
+                  client:load
+                />Back to home
+              </Stack>
+            </a>
+          </Center>
+        </Stack>
+      </Center>
+    </main>
+  </body>
+</html>
+
+<style>
+  .root {
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .homeLink {
+    font-size: var(--type-1);
+    text-align: center;
+  }
+</style>
