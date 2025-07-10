@@ -36,7 +36,7 @@ const routePath = "/";
         <WMotion
           client:load
           style={{ display: "grid" }}
-          {...slideInProps({ direction: "left" })}
+          {...slideInProps({ direction: "left", idx: 1 })}
         >
           <Gpg />
         </WMotion>
@@ -44,7 +44,7 @@ const routePath = "/";
     </Cluster>
     <WMotion
       client:load
-      {...slideInProps({ direction: "left", idx: 1, delayStep: 0.4 })}
+      {...slideInProps({ direction: "left", idx: 2 })}
     >
       <Technologies client:load />
     </WMotion>
