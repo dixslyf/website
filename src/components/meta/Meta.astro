@@ -1,0 +1,36 @@
+---
+import BaseMeta from "./BaseMeta.astro";
+import FaviconMeta from "./FaviconMeta.astro";
+import OpenGraphMeta from "./OpenGraphMeta.astro";
+
+export interface Props {
+  title: string;
+  description: string;
+  url: URL;
+}
+
+const { title, description, url } = Astro.props;
+---
+
+<BaseMeta
+  {title}
+  {description}
+/>
+
+<link
+  rel="canonical"
+  href={url}
+/>
+
+<meta
+  name="robots"
+  content="index, follow"
+/>
+
+<FaviconMeta />
+
+<OpenGraphMeta
+  {title}
+  {description}
+  {url}
+/>

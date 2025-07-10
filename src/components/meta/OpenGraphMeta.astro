@@ -1,0 +1,35 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  url: URL;
+}
+
+const { title, description, url } = Astro.props;
+---
+
+<meta
+  property="og:type"
+  content="website"
+/>
+
+<meta
+  property="og:title"
+  content={title}
+/>
+
+<meta
+  property="og:description"
+  content={description}
+/>
+
+<meta
+  property="og:url"
+  content={url}
+/>
+
+<!-- Requires a full URL (relative path will not work!) -->
+<meta
+  property="og:image"
+  content={new URL("/open-graph/image.png", Astro.site)}
+/>

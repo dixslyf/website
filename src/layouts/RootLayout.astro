@@ -3,7 +3,8 @@ import "@/styles/global.css";
 
 import { ClientRouter } from "astro:transitions";
 
-import { Meta, Navbar, Splash, LoadingIndicator } from "@/components";
+import { Meta } from "@/components/meta";
+import { Navbar, Splash, LoadingIndicator } from "@/components";
 import { Center, Stack } from "@/components/primitives";
 
 export interface Props {
@@ -14,7 +15,7 @@ export interface Props {
 
 const { titlePath, description, routePath } = Astro.props;
 const title = `dixslyf: ${titlePath}`;
-const url = new URL(routePath, Astro.site)
+const url = new URL(routePath, Astro.site);
 
 const pageAnim = {
   // Out transition
