@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { Box, Stack, Cluster } from "@/components/primitives";
+  import { Box, Stack } from "@/components/primitives";
 
   const keyId = "0xFF5F4B30A41BBAC8";
   const fingerprint = "E6F4BFB48DE3893F68FCA15FFF5F4B30A41BBAC8";

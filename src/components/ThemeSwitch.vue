@@ -34,21 +34,21 @@
           v-if="$theme === 'system'"
           v-bind="themeAnimProps"
         >
-          <Icon :icon="'lucide:sun-moon'" />
+          <Icon icon="lucide:sun-moon" />
         </Motion>
         <Motion
           asChild
           v-else-if="$theme === 'dark'"
           v-bind="themeAnimProps"
         >
-          <Icon :icon="'lucide:moon'" />
+          <Icon icon="lucide:moon" />
         </Motion>
         <Motion
           asChild
           v-else
           v-bind="themeAnimProps"
         >
-          <Icon :icon="'lucide:sun'" />
+          <Icon icon="lucide:sun" />
         </Motion>
       </AnimatePresence>
     </button>
