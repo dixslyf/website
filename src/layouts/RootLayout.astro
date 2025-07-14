@@ -64,7 +64,21 @@ const pageTransition = {
         restoreFocusFunction();
       }
 
+      document.addEventListener("astro:before-preparation", (event) => {
+        // Skip loading if navigating to self.
+        if (event.from.href === event.to.href) {
+          event.loader = async () => {};
+          return;
+        }
+      });
+
       document.addEventListener("astro:before-swap", (event) => {
+        // Don't swap if navigating to self.
+        if (event.from.href === event.to.href) {
+          event.swap = () => {};
+          event.viewTransition.skipTransition();
+          return;
+        }
         event.swap = () => swap(event.newDocument);
       });
 
