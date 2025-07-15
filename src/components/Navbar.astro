@@ -11,7 +11,8 @@ const columnGap = "var(--space-m)";
   import { currentUrl } from "@/stores/eager-current-url";
 
   // Highlight the current route's link.
-  const links = document.getElementsByClassName("navlink") as HTMLCollectionOf<HTMLAnchorElement>;
+  const navbar = document.getElementById("navbar")!;
+  const links = navbar.getElementsByClassName("navlink") as HTMLCollectionOf<HTMLAnchorElement>;
   currentUrl.subscribe((url) => {
     if (!url) {
       return;
@@ -25,9 +26,35 @@ const columnGap = "var(--space-m)";
       }
     }
   });
+
+  // Prevent a reload and transition when navigating to self.
+  function navigateSelf(e: MouseEvent) {
+    window.scrollTo({ top: 0 });
+    e.preventDefault(); // Prevent Astro's onclick handler from running.
+  }
+
+  function updateLinks(currentHref: string) {
+    for (const link of links) {
+      if (link.href === currentHref) {
+        link.addEventListener("click", navigateSelf);
+      } else {
+        link.removeEventListener("click", navigateSelf);
+      }
+    }
+  }
+
+  document.addEventListener("astro:before-preparation", (event) => {
+    updateLinks(event.to.href);
+  });
+
+  // Needed to prevent self-navigation on initial load.
+  updateLinks(window.location.href);
 </script>
 
-<nav class="navRoot">
+<nav
+  id="navbar"
+  class="navRoot"
+>
   <Box
     paddingInline="var(--space-m)"
     paddingBlock="calc(var(--space-m) / var(--line-height))"
