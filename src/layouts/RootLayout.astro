@@ -68,7 +68,7 @@ const pageTransition = {
         event.swap = () => swap(event.newDocument);
       });
 
-      currentUrl.set(Astro.url);
+      currentUrl.set(new URL(window.location.toString()));
       registerCurrentUrlHook();
       registerThemeApply();
     </script>
