@@ -14,12 +14,10 @@ const columnGap = "var(--space-m)";
   const navbar = document.getElementById("navbar")!;
   const links = navbar.getElementsByClassName("navlink") as HTMLCollectionOf<HTMLAnchorElement>;
   currentUrl.subscribe((url) => {
-    if (!url) {
-      return;
-    }
-
     for (const link of links) {
-      if (link.href === url?.href) {
+      // The current URL should already have been initialised on initial load
+      // in the root layout.
+      if (link.href === url!.href) {
         link.classList.add("navlinkCurrent");
       } else {
         link.classList.remove("navlinkCurrent");
