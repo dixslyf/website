@@ -10,7 +10,7 @@
 
 @import "@fontsource-variable/noto-sans-sc";
 
-@import '@fontsource-variable/sixtyfour/full.css';
+@import "@fontsource-variable/sixtyfour/full.css";
 
 @import "@catppuccin/palette/css/catppuccin.css";
 
@@ -28,6 +28,10 @@
 
   /* Misc */
   --content-max-width: 1280px;
+}
+
+:root {
+  scroll-behavior: smooth;
 }
 
 * {
