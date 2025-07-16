@@ -51,10 +51,12 @@
           >
             <span>
               <span :class="$style.repoTitleText">{{ repo.owner.login }}/{{ repo.name }}</span>
-              <Icon
-                icon="lucide:external-link"
-                :class="$style.repoTitleExternalLink"
-              />
+              <span :class="$style.repoTitleExternalLinkWrapper">
+                <Icon
+                  icon="lucide:external-link"
+                  :class="$style.repoTitleExternalLink"
+                />
+              </span>
             </span>
           </IconText>
         </a>
@@ -113,6 +115,10 @@
 
   .repoTitleText {
     text-decoration: underline;
+  }
+
+  .repoTitleExternalLinkWrapper {
+    white-space: nowrap;
   }
 
   .repoTitleExternalLink {
