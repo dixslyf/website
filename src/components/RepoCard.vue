@@ -87,6 +87,17 @@
           :class="$style.repoSmallStats"
           column-gap="var(--space-m)"
         >
+          <IconText
+            icon="lucide:link"
+            v-if="repo.homepage"
+          >
+            <a
+              :href="repo.homepage"
+              target="_blank"
+            >
+              Website
+            </a>
+          </IconText>
           <template v-for="{ icon, label } in smallStats">
             <IconText :icon="icon">
               {{ label }}
