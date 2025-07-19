@@ -11,7 +11,8 @@ type FilteredRepoAttributes =
   | "owner"
   | "name"
   | "archived"
-  | "description";
+  | "description"
+  | "homepage";
 
 type RawRepoInfo = Endpoints["GET /users/{username}/repos"]["response"]["data"][number];
 
@@ -86,6 +87,7 @@ export async function fetchGitHubProjects(): Promise<{
       name: repo.name,
       archived: repo.archived,
       description: repo.description,
+      homepage: repo.homepage,
     }));
 
   // Fetch languages.
