@@ -2,7 +2,20 @@ import type { Endpoints } from "@octokit/types";
 import { Octokit } from "@octokit/rest";
 import { DateTime } from "luxon";
 
-export type RepoInfo = Endpoints["GET /users/{username}/repos"]["response"]["data"][number] & {
+type FilteredRepoAttributes =
+  | "stargazers_count"
+  | "watchers_count"
+  | "forks_count"
+  | "license"
+  | "html_url"
+  | "owner"
+  | "name"
+  | "archived"
+  | "description";
+
+type RawRepoInfo = Endpoints["GET /users/{username}/repos"]["response"]["data"][number];
+
+export type RepoInfo = Pick<RawRepoInfo, FilteredRepoAttributes> & {
   languages: Endpoints["GET /repos/{owner}/{repo}/languages"]["response"]["data"];
 };
 
@@ -43,7 +56,10 @@ export function sortGitHubRepos(repoA: RepoInfo, repoB: RepoInfo): number {
   return 0;
 }
 
-export async function fetchGitHubProjects() {
+export async function fetchGitHubProjects(): Promise<{
+  timestamp: string;
+  repos: RepoInfo[];
+}> {
   const octokit = new Octokit({
     userAgent: "dixslyf-website",
     request: {
@@ -57,8 +73,20 @@ export async function fetchGitHubProjects() {
     type: "all",
   });
 
-  // Filter out forks.
-  const rawRepos = res.data.filter((repo) => !repo.fork);
+  // Filter out forks and unneeded attributes.
+  const rawRepos = res.data
+    .filter((repo) => !repo.fork)
+    .map((repo) => ({
+      stargazers_count: repo.stargazers_count,
+      watchers_count: repo.watchers_count,
+      forks_count: repo.forks_count,
+      license: repo.license,
+      html_url: repo.html_url,
+      owner: repo.owner,
+      name: repo.name,
+      archived: repo.archived,
+      description: repo.description,
+    }));
 
   // Fetch languages.
   const repoPromises = rawRepos.map(async (repo) => {
@@ -66,7 +94,7 @@ export async function fetchGitHubProjects() {
       owner: repo.owner.login,
       repo: repo.name,
     });
-    return { ...repo, languages: res.data };
+    return { ...repo, languages: res.data } satisfies RepoInfo;
   });
 
   const repos = (await Promise.all(repoPromises)).sort(sortGitHubRepos);
