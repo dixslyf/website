@@ -21,7 +21,7 @@
     "@iconify/vue": "^5.0.0",
     "@nanostores/persistent": "^1.1.0",
     "@nanostores/vue": "^1.0.1",
-    "@octokit/rest": "^22.0.0",
+    "@octokit/graphql": "^9.0.1",
     "@octokit/types": "^14.1.0",
     "astro": "^5.11.1",
     "chroma-js": "^3.1.2",

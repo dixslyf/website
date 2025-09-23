@@ -13,19 +13,19 @@
   const smallStats = [
     {
       icon: "lucide:star",
-      label: (repo.stargazers_count ?? 0).toString(),
+      label: repo.stargazers.toString(),
     },
     {
       icon: "lucide:eye",
-      label: (repo.watchers_count ?? 0).toString(),
+      label: repo.watchers.toString(),
     },
     {
       icon: "lucide:git-fork",
-      label: (repo.forks_count ?? 0).toString(),
+      label: repo.forks.toString(),
     },
     {
       icon: "lucide:scale",
-      label: repo.license?.name ?? "Unlicensed",
+      label: repo.license ?? "Unlicensed",
     },
   ];
 </script>
@@ -42,7 +42,7 @@
       <Cluster :class="$style.cardHeader">
         <a
           :class="$style.repoTitle"
-          :href="repo.html_url"
+          :href="repo.url"
           target="_blank"
         >
           <IconText
@@ -50,7 +50,7 @@
             iconSize="2em"
           >
             <span>
-              <span :class="$style.repoTitleText">{{ repo.owner.login }}/{{ repo.name }}</span>
+              <span :class="$style.repoTitleText">{{ repo.owner }}/{{ repo.name }}</span>
               <span :class="$style.repoTitleExternalLinkWrapper">
                 <Icon
                   icon="lucide:external-link"
@@ -63,7 +63,7 @@
 
         <Cluster :class="$style.repoStatusCluster">
           <Badge
-            v-if="repo.owner.login !== 'dixslyf'"
+            v-if="repo.owner !== 'dixslyf'"
             fg="var(--repo-collaborator-fg)"
             bg="var(--repo-collaborator-bg)"
             >Collaborator</Badge
