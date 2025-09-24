@@ -51,10 +51,13 @@
           >
             <span>
               <span :class="$style.repoTitleText">{{ repo.owner }}/{{ repo.name }}</span>
-              <span :class="$style.repoTitleExternalLinkWrapper">
+              <span
+                v-if="repo.pinned"
+                :class="$style.repoTitlePinWrapper"
+              >
                 <Icon
-                  icon="lucide:external-link"
-                  :class="$style.repoTitleExternalLink"
+                  icon="mynaui:pin"
+                  :class="$style.repoTitlePin"
                 />
               </span>
             </span>
@@ -128,13 +131,13 @@
     text-decoration: underline;
   }
 
-  .repoTitleExternalLinkWrapper {
+  .repoTitlePinWrapper {
     white-space: nowrap;
   }
 
-  .repoTitleExternalLink {
-    font-size: 0.8em;
-    margin-inline-start: 0.25em;
+  .repoTitlePin {
+    font-size: 0.9em;
+    margin-inline-start: 0.375em;
   }
 
   .repoStatusCluster {
