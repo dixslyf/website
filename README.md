@@ -27,9 +27,9 @@ pnpm run preview
 
 ## Environment Variables
 
-To fetch information about my projects, the site uses Octokit for querying the GitHub REST API.
-If the `GITHUB_TOKEN` environment variable is set, it is passed to Octokit for authentication
-(authenticated requests have more generous rate limits).
+To fetch information about my projects, the site uses Octokit for querying the GitHub GraphQL API,
+which requires a valid GitHub token.
+This token must be specified using the `GITHUB_TOKEN` environment variable.
 
 Environment variables can be specified in a `.env` file.
 
