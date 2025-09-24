@@ -3,30 +3,36 @@ import { DateTime } from "luxon";
 
 // Ref: https://github.com/octokit/graphql-schema/blob/main/schema.d.ts
 type QueryResponse = {
-  repositories: {
-    nodes: {
-      stargazerCount: number;
-      watchers: { totalCount: number };
-      forkCount: number;
-      languages: {
-        edges:
-          | {
-              node: {
-                name: string;
-                color: string;
-              };
-              size: number;
-            }[]
-          | null;
-      } | null;
-      licenseInfo: { name: string } | null;
-      url: string;
-      owner: { login: string };
-      name: string;
-      isArchived: boolean;
-      description: string | null;
-      homepageUrl: string | null;
-    }[];
+  repositoryOwner: {
+    repositories: {
+      pageInfo: {
+        hasNextPage: boolean;
+        endCursor: string | null;
+      };
+      nodes: {
+        stargazerCount: number;
+        watchers: { totalCount: number };
+        forkCount: number;
+        languages: {
+          edges:
+            | {
+                node: {
+                  name: string;
+                  color: string;
+                };
+                size: number;
+              }[]
+            | null;
+        } | null;
+        licenseInfo: { name: string } | null;
+        url: string;
+        owner: { login: string };
+        name: string;
+        isArchived: boolean;
+        description: string | null;
+        homepageUrl: string | null;
+      }[];
+    };
   };
 };
 
@@ -47,6 +53,68 @@ type RepoInfo = {
 };
 
 export const DIXSLYF_LOGIN = "dixslyf";
+
+const queryGitHub = graphql.defaults({
+  headers: {
+    authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
+  },
+});
+
+async function queryRepos(): Promise<QueryResponse["repositoryOwner"]["repositories"]["nodes"]> {
+  let hasNextPage = true;
+  let cursor = null;
+  const repos = [];
+  let reqCount = 0;
+
+  // `reqCount` is there as a safeguard to prevent spamming requests
+  // in case something unexpectedly goes wrong. I'll probably never reach
+  // 1,000 public repositories.
+  while (hasNextPage && reqCount < 10) {
+    const res: QueryResponse = await queryGitHub<QueryResponse>(`
+      query repos($after: String) {
+        repositoryOwner(login: "dixslyf") {
+          repositories(ownerAffiliations: [OWNER, COLLABORATOR], visibility: PUBLIC, isFork: false, first: 100, after: $after) {
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+            nodes {
+              stargazerCount
+              watchers { totalCount }
+              forkCount
+              languages(first: 10) {
+                edges {
+                  node {
+                    name
+                    color
+                  }
+                  size
+                }
+              }
+              licenseInfo { name }
+              url
+              owner { login }
+              name
+              isArchived
+              description
+              homepageUrl
+            }
+          }
+        }
+      }`,
+      {
+        after: cursor,
+      },
+    );
+
+    repos.push(...res.repositoryOwner.repositories.nodes);
+    hasNextPage = res.repositoryOwner.repositories.pageInfo.hasNextPage;
+    cursor = res.repositoryOwner.repositories.pageInfo.endCursor;
+    reqCount += 1;
+  }
+
+  return repos;
+}
 
 export function sortGitHubRepos(repoA: RepoInfo, repoB: RepoInfo): number {
   // If A has more stars than B, A should be before B, and vice versa.
@@ -87,42 +155,8 @@ export async function fetchGitHubProjects(): Promise<{
   timestamp: string;
   repos: RepoInfo[];
 }> {
-  const queryGitHub = graphql.defaults({
-    headers: {
-      authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
-    },
-  });
-
-  const res = await queryGitHub<{ repositoryOwner: QueryResponse }>(`{
-    repositoryOwner(login: "dixslyf") {
-      repositories(ownerAffiliations: [OWNER, COLLABORATOR], visibility: PUBLIC, isFork: false, first: 100) {
-        nodes {
-          stargazerCount
-          watchers { totalCount }
-          forkCount
-          languages(first: 10) {
-            edges {
-              node { 
-                name
-                color
-              }
-              size
-            }
-          }
-          licenseInfo { name }
-          url
-          owner { login }
-          name
-          isArchived
-          description
-          homepageUrl
-        }
-      }
-    }
-  }`);
-
-  // Transform response into the return type.
-  const repos: RepoInfo[] = res.repositoryOwner.repositories.nodes
+  const rawRepos = await queryRepos();
+  const repos: RepoInfo[] = rawRepos
     .map(
       (rawRepo) =>
         ({
