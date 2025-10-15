@@ -15,7 +15,7 @@
         <li>Tinker with <strong>Linux</strong> and <strong>open-source software</strong>.</li>
         <li>
           Use the <strong>terminal</strong>. Here are some of my favourite tools: Neovim, Git, Nix,
-          Zeillj, zoxide.
+          Zellij, zoxide.
         </li>
         <li><strong>Learn</strong> new things (usually, but not limited to, software).</li>
       </ul>
