@@ -7,6 +7,14 @@ built with [Astro](https://astro.build/) and [Vue.js](https://vuejs.org/).
 
 This project uses [`pnpm`](https://pnpm.io/) for package management.
 
+A Nix development shell is available:
+
+```bash
+nix develop
+```
+
+Install dependencies with `pnpm install` before running the commands below.
+
 To run the development server, run:
 
 ```bash
