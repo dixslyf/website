@@ -9,7 +9,6 @@
 
   --dark-accent: var(--ctp-macchiato-blue);
   --dark-accent-sec: var(--ctp-macchiato-pink);
-  --dark-accent-splash: var(--ctp-macchiato-pink);
   --dark-accent-nav-hover: var(--ctp-macchiato-rosewater);
 
   --dark-link-fg: var(--ctp-macchiato-lavender);
@@ -60,7 +59,6 @@
 
   --light-accent: #45707a;
   --light-accent-sec: #945e80;
-  --light-accent-splash: #45707a;
   --light-accent-nav-hover: #4c7a5d;
 
   --light-link-fg: #45707a;
@@ -82,7 +80,6 @@ body {
 
   --accent: var(--light-accent);
   --accent-sec: var(--light-accent-sec);
-  --accent-splash: var(--light-accent-splash);
   --accent-nav-hover: var(--light-accent-nav-hover);
 
   --link-fg: var(--light-link-fg);
@@ -104,7 +101,6 @@ body.dark {
 
   --accent: var(--dark-accent);
   --accent-sec: var(--dark-accent-sec);
-  --accent-splash: var(--dark-accent-splash);
   --accent-nav-hover: var(--dark-accent-nav-hover);
 
   --link-fg: var(--dark-link-fg);

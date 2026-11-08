@@ -13,7 +13,6 @@
     "@astrojs/vercel": "^8.2.2",
     "@astrojs/vue": "^5.1.0",
     "@catppuccin/palette": "^1.7.1",
-    "@fontsource-variable/noto-sans-sc": "^5.2.6",
     "@fontsource-variable/sixtyfour": "^5.2.6",
     "@fontsource/iosevka": "^5.2.5",
     "@iconify-json/devicon-plain": "^1.2.30",

@@ -96,10 +96,3 @@ export function fadeProps(options?: FadeOptions) {
     transition: { delay: baseDelay + delayStep * idx, duration, ease: "easeInOut" as const },
   };
 }
-
-export function splashProps() {
-  return {
-    exit: { opacity: 0, filter: "blur(1rem)" },
-    transition: { duration: 1.5, ease: "easeInOut" as const },
-  };
-}

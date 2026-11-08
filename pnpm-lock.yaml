@@ -20,9 +20,6 @@ importers:
       '@catppuccin/palette':
         specifier: ^1.7.1
         version: 1.7.1
-      '@fontsource-variable/noto-sans-sc':
-        specifier: ^5.2.6
-        version: 5.2.6
       '@fontsource-variable/sixtyfour':
         specifier: ^5.2.6
         version: 5.2.6
@@ -442,9 +439,6 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
-
-  '@fontsource-variable/noto-sans-sc@5.2.6':
-    resolution: {integrity: sha512-PbDg8YG05A/8mFiII8lqK0Nvn5gDbCcvDctwNQjIFaBptLFNXDofmnocvki+A4ss3VxdYCyG4xznauMPQi+/RA==}
 
   '@fontsource-variable/sixtyfour@5.2.6':
     resolution: {integrity: sha512-JqfJODbXKNOxX/T0RA8UWY878Swlm6gv3gtxMaaMYPZCkuVvxu0Rz8PzVvn90kPDNoobmgbNK2hGt1u13GxCcA==}
@@ -2844,8 +2838,6 @@ snapshots:
 
   '@esbuild/win32-x64@0.25.6':
     optional: true
-
-  '@fontsource-variable/noto-sans-sc@5.2.6': {}
 
   '@fontsource-variable/sixtyfour@5.2.6': {}
 

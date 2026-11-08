@@ -4,7 +4,7 @@ import "@/styles/global.css";
 import { ClientRouter } from "astro:transitions";
 
 import { Meta } from "@/components/meta";
-import { Navbar, Splash, LoadingIndicator } from "@/components";
+import { Navbar, LoadingIndicator } from "@/components";
 import { Center, Stack } from "@/components/primitives";
 
 export interface Props {
@@ -77,8 +77,6 @@ const pageTransition = {
   <body>
     <LoadingIndicator />
     <div class="root">
-      <Splash client:load />
-
       <Center gutters="0">
         <Stack gap="var(--space-xl)">
           <header>
